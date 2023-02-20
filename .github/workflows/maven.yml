@@ -24,7 +24,8 @@ jobs:
         cache: maven
 
       - name: Change wrapper permissions
-        run: chmod +x ./mwnw
+        run: |
+        chmod +x ./mwnw
 
     - name: Build with Maven
       run: |
