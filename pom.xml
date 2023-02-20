@@ -14,7 +14,7 @@
 	<name>volunteer-project</name>
 	<description>Volunteer project by team nameless</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
