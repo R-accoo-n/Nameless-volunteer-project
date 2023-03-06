@@ -17,9 +17,4 @@ class VolunteerProjectApplicationTests {
 	@Mock
 	UserRepository userRepository;
 
-	@Test
-	void testScenario(){
-
-	}
-
 }
