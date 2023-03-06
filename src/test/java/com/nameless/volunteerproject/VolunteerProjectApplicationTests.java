@@ -19,8 +19,7 @@ class VolunteerProjectApplicationTests {
 
 	@Test
 	void testScenario(){
-		User u = new User();
-		assertThat(u != null);
+
 	}
 
 }
