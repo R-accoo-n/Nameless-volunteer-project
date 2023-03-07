@@ -1,6 +1,6 @@
 package com.nameless.volunteerproject.models;
 
-import com.nameless.volunteerproject.emuns.UserRole;
+import com.nameless.volunteerproject.enums.UserRole;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
