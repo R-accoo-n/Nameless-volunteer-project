@@ -34,9 +34,61 @@ class VolunteerProjectApplicationTests {
 	@InjectMocks
 	private FundraisingService fundraisingService;
 
+
 	@Test
 	public void givenFundraisingType_whenGetFundraisingType_thenReturnFunraisingsByType() {
-	   assertThat(47).isEqualTo(47);
+		Fundraising fundraising1 = new Fundraising();
+		fundraising1.setFundraisingName("Fundraising 1");
+		fundraising1.setType(FundraisingType.TRANSPORT);
+		fundraising1.setActive(true);
+
+		Fundraising fundraising2 = new Fundraising();
+		fundraising2.setFundraisingName("Fundraising 2");
+		fundraising2.setType(FundraisingType.TRANSPORT);
+		fundraising2.setActive(true);
+
+		Fundraising fundraising3 = new Fundraising();
+		fundraising3.setFundraisingName("Fundraising 3");
+		fundraising3.setType(FundraisingType.TRANSPORT);
+		fundraising3.setActive(true);
+
+		Fundraising fundraising4 = new Fundraising();
+		fundraising4.setFundraisingName("Fundraising 4");
+		fundraising4.setType(FundraisingType.TRANSPORT);
+		fundraising4.setActive(false);
+
+		Fundraising fundraising5 = new Fundraising();
+		fundraising5.setFundraisingName("Fundraising 5");
+		fundraising5.setType(FundraisingType.TECHNIQUE);
+		fundraising5.setActive(true);
+
+		Fundraising fundraising6 = new Fundraising();
+		fundraising6.setFundraisingName("Fundraising 6");
+		fundraising6.setType(FundraisingType.TECHNIQUE);
+		fundraising6.setActive(true);
+
+		Fundraising fundraising7 = new Fundraising();
+		fundraising7.setFundraisingName("Fundraising 7");
+		fundraising7.setType(FundraisingType.TECHNIQUE);
+		fundraising7.setActive(false);
+
+		Fundraising fundraising8 = new Fundraising();
+		fundraising8.setFundraisingName("Fundraising 8");
+		fundraising8.setType(FundraisingType.TECHNIQUE);
+		fundraising8.setActive(false);
+
+		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.TRANSPORT))
+				.willReturn(Arrays.asList(fundraising1, fundraising2, fundraising3));
+		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.TECHNIQUE))
+				.willReturn(Arrays.asList(fundraising5, fundraising6));
+
+		List<Fundraising> activeFundraisings = fundraisingService.getActiveFundraisingsByType(FundraisingType.TRANSPORT);
+		List<Fundraising> activeFundraisings2 = fundraisingService.getActiveFundraisingsByType(FundraisingType.TECHNIQUE);
+
+		assertThat(activeFundraisings.size()).isEqualTo(3);
+		assertThat(activeFundraisings).isEqualTo(Arrays.asList(fundraising1, fundraising2, fundraising3));
+		assertThat(activeFundraisings2.size()).isEqualTo(2);
+		assertThat(activeFundraisings2).isEqualTo(Arrays.asList(fundraising5, fundraising6));
 	}
 
 
