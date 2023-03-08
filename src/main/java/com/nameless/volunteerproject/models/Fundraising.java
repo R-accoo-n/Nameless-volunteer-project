@@ -1,6 +1,6 @@
 package com.nameless.volunteerproject.models;
 
-import com.nameless.volunteerproject.emuns.FundraisingType;
+import com.nameless.volunteerproject.enums.FundraisingType;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

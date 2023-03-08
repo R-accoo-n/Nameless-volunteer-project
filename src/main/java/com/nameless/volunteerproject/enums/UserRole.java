@@ -1,4 +1,4 @@
-package com.nameless.volunteerproject.emuns;
+package com.nameless.volunteerproject.enums;
 
 /**
  * Enumerations for user's role
