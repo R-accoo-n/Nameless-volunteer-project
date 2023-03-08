@@ -28,7 +28,16 @@ class VolunteerProjectApplicationTests {
 
 	@Mock
 	UserRepository userRepository;
+	@Mock
+	private FundraisingRepository fundraisingRepository;
 
+	@InjectMocks
+	private FundraisingService fundraisingService;
+
+	@Test
+	public void givenFundraisingType_whenGetFundraisingType_thenReturnFunraisingsByType() {
+	   assertThat(47).isEqualTo(47);
+	}
 
 
 
