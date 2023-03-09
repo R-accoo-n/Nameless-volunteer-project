@@ -32,6 +32,7 @@ public class Fundraising {
         name = "UUID",
         strategy = "org.hibernate.id.UUIDGenerator"
     )
+
     private UUID id;
     private UUID userId;
     private String whom;

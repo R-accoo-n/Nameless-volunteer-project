@@ -12,10 +12,6 @@ import java.util.List;
 
 @SpringBootApplication
 public class VolunteerProjectApplication {
-
-
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(VolunteerProjectApplication.class, args);
 

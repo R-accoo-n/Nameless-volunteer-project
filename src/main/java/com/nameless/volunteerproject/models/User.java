@@ -3,12 +3,8 @@ package com.nameless.volunteerproject.models;
 import com.nameless.volunteerproject.enums.UserRole;
 import java.util.List;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 @ToString
 @NoArgsConstructor
 @Builder
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -41,7 +38,9 @@ public class User {
     private String phoneNumber;
     private String userName;
     private String password;
-    boolean showRealName;
+    private boolean showRealName;
+    private boolean isSelected;
+
     @OneToMany
     private List<Fundraising> fundraisings;
     @OneToMany
