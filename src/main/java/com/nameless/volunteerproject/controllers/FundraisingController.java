@@ -4,6 +4,8 @@ import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.services.FundraisingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.UUID;
+
 
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class FundraisingController {
     @PostMapping("/home")
     public void createFundraising(@RequestBody Fundraising fundraising) {
         fundraisingService.createFundraising(fundraising);
+    }
+
+    @GetMapping("/profile")
+    public List<Fundraising> getCompletedFundraisings(@PathVariable("userId") UUID userId) {
+        return fundraisingService.getCompletedFundraisings(userId);
     }
 
 }

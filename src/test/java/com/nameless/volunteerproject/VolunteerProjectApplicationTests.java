@@ -18,7 +18,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Arrays;
 import static org.mockito.BDDMockito.given;
-
+import java.util.UUID;
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
@@ -89,6 +90,22 @@ class VolunteerProjectApplicationTests {
 		assertThat(activeFundraisings).isEqualTo(Arrays.asList(fundraising1, fundraising2, fundraising3));
 		assertThat(activeFundraisings2.size()).isEqualTo(2);
 		assertThat(activeFundraisings2).isEqualTo(Arrays.asList(fundraising5, fundraising6));
+	}
+	@Test
+	public void  givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
+		UUID userId = UUID.randomUUID();
+		List<Fundraising> fundraisings = Arrays.asList(
+				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).type(FundraisingType.TRANSPORT).build(),
+				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).type(FundraisingType.TECHNIQUE).build(),
+				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).type(FundraisingType.DEMINING_EQUIPMENT).build()
+		);
+
+		when(fundraisingRepository.findByUserIdAndIsActiveFalse(userId)).thenReturn(fundraisings.subList(0, 1));
+
+		List<Fundraising> completedFundraisings = fundraisingService.getCompletedFundraisings(userId);
+
+		assertThat(completedFundraisings).hasSize(1);
+		assertThat(completedFundraisings.get(0).getId()).isEqualTo(fundraisings.get(0).getId());
 	}
 
 
