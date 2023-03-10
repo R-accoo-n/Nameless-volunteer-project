@@ -12,7 +12,6 @@ import com.nameless.volunteerproject.enums.UserRole;
 
 
 @RestController
-@RequestMapping("/admin/{adminId}/approve")
 public class AdminController {
     private final UserService userService;
 
