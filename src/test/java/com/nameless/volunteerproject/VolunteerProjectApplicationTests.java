@@ -6,6 +6,7 @@ import com.nameless.volunteerproject.enums.FundraisingType;
 import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.UserRepository;
+import com.nameless.volunteerproject.services.UserService;
 import com.nameless.volunteerproject.services.VolunteerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,14 +19,23 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Arrays;
 import static org.mockito.BDDMockito.given;
+
+import java.util.Optional;
 import java.util.UUID;
 import static org.mockito.Mockito.when;
+import com.nameless.volunteerproject.enums.UserRole;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 
 
 @SpringBootTest
 class VolunteerProjectApplicationTests {
 	@InjectMocks
 	VolunteerService volunteerService;
+	@InjectMocks
+	UserService userService;
 
 	@Mock
 	UserRepository userRepository;
@@ -91,8 +101,9 @@ class VolunteerProjectApplicationTests {
 		assertThat(activeFundraisings2.size()).isEqualTo(2);
 		assertThat(activeFundraisings2).isEqualTo(Arrays.asList(fundraising5, fundraising6));
 	}
+
 	@Test
-	public void  givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
+	public void givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
 		UUID userId = UUID.randomUUID();
 		List<Fundraising> fundraisings = Arrays.asList(
 				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).type(FundraisingType.TRANSPORT).build(),
@@ -109,6 +120,36 @@ class VolunteerProjectApplicationTests {
 	}
 
 
+		@Test
+		public void givenExistingUser_whenVerifyUser_thenMakeUserVerified() {
+			UUID userId = UUID.randomUUID();
+			UserRole role = UserRole.MILITARY;
+			User user = User.builder()
+					.id(userId)
+					.name("John")
+					.surname("Doe")
+					.role(UserRole.VOLUNTEER)
+					.build();
+			when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+			when(userRepository.save(any(User.class))).thenReturn(user);
+			boolean result = userService.verifyUser(userId, role);
+			assertTrue(result);
+			assertEquals(role, user.getRole());
+			verify(userRepository).findById(userId);
+			verify(userRepository).save(user);
+		}
+
+		@Test
+		public void givenNotExisistingUser_whenVerifyUser_thenReturnFalse() {
+			UUID userId = UUID.randomUUID();
+			UserRole role = UserRole.MILITARY;
+			when(userRepository.findById(userId)).thenReturn(Optional.empty());
+			boolean result = userService.verifyUser(userId, role);
+			assertFalse(result);
+			verify(userRepository).findById(userId);
+			verifyNoMoreInteractions(userRepository);
+		}
 
 
-}
+	}
+
