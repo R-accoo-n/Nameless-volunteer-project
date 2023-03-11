@@ -4,8 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nameless.volunteerproject.enums.FundraisingType;
 import com.nameless.volunteerproject.models.Fundraising;
+import com.nameless.volunteerproject.models.SupportTicket;
 import com.nameless.volunteerproject.models.User;
+import com.nameless.volunteerproject.repositories.SupportTicketRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
+import com.nameless.volunteerproject.services.SupportTicketService;
 import com.nameless.volunteerproject.services.UserService;
 import com.nameless.volunteerproject.services.VolunteerService;
 import org.junit.jupiter.api.Test;
@@ -44,6 +47,12 @@ class VolunteerProjectApplicationTests {
 
 	@InjectMocks
 	private FundraisingService fundraisingService;
+	@Mock
+	private SupportTicketRepository supportTicketRepository;
+
+	@InjectMocks
+	private SupportTicketService supportTicketService;
+
 
 
 	@Test
@@ -149,6 +158,71 @@ class VolunteerProjectApplicationTests {
 			verify(userRepository).findById(userId);
 			verifyNoMoreInteractions(userRepository);
 		}
+	@Test
+	public void givenSupportTicket_whenCreateSupportTicket_thenSaveTicket() {
+		SupportTicket ticket = SupportTicket.builder()
+				.id(UUID.randomUUID())
+				.description("Test ticket")
+				.problemType("Test type")
+				.problemSubtype("Test subtype")
+				.build();
+
+		when(supportTicketRepository.save(ticket)).thenReturn(ticket);
+
+		SupportTicket savedTicket = supportTicketService.createSupportTicket(ticket);
+
+		verify(supportTicketRepository, times(1)).save(ticket);
+		assertEquals(ticket, savedTicket);
+	}
+	@Test
+	public void givenSupportTicket_whenFindById_thenReturnTicket() {
+		UUID id = UUID.randomUUID();
+		SupportTicket ticket = SupportTicket.builder()
+				.id(id)
+				.description("Test ticket")
+				.problemType("Test type")
+				.problemSubtype("Test subtype")
+				.build();
+
+		when(supportTicketRepository.findById(id)).thenReturn(Optional.of(ticket));
+
+		Optional<SupportTicket> foundTicket = supportTicketService.getSupportTicketById(id);
+
+		verify(supportTicketRepository, times(1)).findById(id);
+		assertTrue(foundTicket.isPresent());
+		assertEquals(ticket, foundTicket.get());
+	}
+	@Test
+	public void givenSupportTicket_whenfindAll_thenReturnListOfSupportTickets() {
+		List<SupportTicket> tickets = Arrays.asList(
+				SupportTicket.builder()
+						.id(UUID.randomUUID())
+						.description("Ticket 1")
+						.problemType("Type 1")
+						.problemSubtype("Subtype 1")
+						.build(),
+				SupportTicket.builder()
+						.id(UUID.randomUUID())
+						.description("Ticket 2")
+						.problemType("Type 2")
+						.problemSubtype("Subtype 2")
+						.build(),
+				SupportTicket.builder()
+						.id(UUID.randomUUID())
+						.description("Ticket 3")
+						.problemType("Type 3")
+						.problemSubtype("Subtype 3")
+						.build()
+		);
+
+		when(supportTicketRepository.findAll()).thenReturn(tickets);
+
+		List<SupportTicket> allTickets = supportTicketService.getAllSupportTickets();
+
+		verify(supportTicketRepository, times(1)).findAll();
+		assertEquals(tickets, allTickets);
+	}
+
 
 
 	}
