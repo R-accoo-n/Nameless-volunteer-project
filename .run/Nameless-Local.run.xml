@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Nameless-Local" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" value="local" />
-    <module name="volunteer-project" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.nameless.volunteerproject.VolunteerProjectApplication" />
+    <module name="Nameless-volunteer-project" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.nameless.volunteerproject.volunteerProjectApplication" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
