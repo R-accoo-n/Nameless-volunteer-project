@@ -41,6 +41,7 @@ public class Fundraising {
     private int cardNumber;
     private String description;
     private boolean isActive;
+    private boolean isSelected;
     private FundraisingType type;
 
 }

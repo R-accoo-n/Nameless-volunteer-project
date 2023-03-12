@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
     @GetMapping("/home")
     public String home(){
-        return "registration";
+        return "index";
     }
+
 }
