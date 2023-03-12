@@ -12,7 +12,7 @@
 	<groupId>com.nameless</groupId>
 	<artifactId>volunteer-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>volunteer-project</name>
+	<name>Nameless-volunteer-project</name>
 	<description>Volunteer project by team nameless</description>
 	<properties>
 		<java.version>11</java.version>

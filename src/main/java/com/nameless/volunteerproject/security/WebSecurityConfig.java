@@ -28,8 +28,8 @@ class SecurityConfiguration {
 
         http.authorizeHttpRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/login", "/register", "/home").permitAll()
-                .antMatchers("/css/**","/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
+                .antMatchers("/", "/login", "/register", "/home", "/registration", "/register/save", "/save").permitAll()
+                .antMatchers("/css/**", "/js/**","/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable().formLogin()
