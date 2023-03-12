@@ -37,14 +37,19 @@ public class User {
     private String email;
     private String phoneNumber;
     private String userName;
+
     private String password;
+
     private boolean showRealName;
-    private boolean isSelected;
+
+    private String photo;
 
     @OneToMany
     private List<Fundraising> fundraisings;
     @OneToMany
     private List<FundraisingRequest> requests;
+    @OneToMany
+    private List<Fundraising>selected;
 
     /**
      *User constructor for military and volunteer roles
