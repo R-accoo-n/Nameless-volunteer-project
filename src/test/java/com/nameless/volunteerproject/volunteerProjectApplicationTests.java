@@ -34,7 +34,8 @@ import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
-class VolunteerProjectApplicationTests {
+class volunteerProjectApplicationTests {
+
 	@InjectMocks
 	VolunteerService volunteerService;
 	@InjectMocks

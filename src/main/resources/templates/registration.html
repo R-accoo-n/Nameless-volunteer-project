@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+><head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/registration.css}"/>
+    <title>Registration</title>
+</head>
+<body>
+    <div class="registration">
+        <p class="text-reg">Реєстрація</p>
+        <div class="field-registration" >
+            <p class="you">Ви:</p>
+            <ul class="all">
+                <ul class="role">
+                    <div class="role-div">
+                        <button class="role-button" id="show-fields">Хочете допомогти грошима?</button>
+                    </div>
+                    <div class="role-div">
+                        <button class="role-button" id="show-for-volunteer">Волонтер</button>
+                    </div>
+                    <div class="role-div" >
+                        <button class="role-button" id="show-for-military">Військовий</button>
+                    </div>
+                </ul>
+                <ul class="countinue">
+                    <button class="countinue-button">
+                        <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
+                    </button>
+                    <button class="countinue-button">
+                        <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}" alt="facebook_icon">Продовжити з Facebook</span>
+                    </button>
+                    <button class="countinue-button">
+                        <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
+                    </button>
+                </ul>
+            </ul>
+
+            <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
+            <form method="post" th:object="${user}" th:action="@{/register/save}">
+            <div id="hidden" style="display:none;">
+                <ul class="all-data">
+                    <ul class="row-data">
+                        <input class="Data" id="Name" name="Name" th:field="*{name}" type="text" placeholder="Ім'я">
+                        <input class="Data" id="Surname" name="Surname" th:field="*{surname}" type="text" placeholder="Прізвище">
+                    </ul>
+                    <input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"><br>
+                    <input class="Data" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" type="text" placeholder="Номер телефону"><br>
+                    <div id="hiddenForVolunteer" style="display:none;"><input class="Data" type="text" placeholder="Посилання на соцмережі"></div> <!--для волонтера-->
+                    <div id="hiddenForMilitary" style="display:none;">
+                        <label>Завантажити фото документів</label>
+                        <input type="file" name="image" placeholder="Завантажити фото документів" accept="image/png, image/jpeg"/></div><!--фото доків для волонтера та військового-->
+                    <ul class="row-data">
+                        <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
+                    </ul>
+                </ul>
+                <p class="agreement">Реєструючись, ви погоджуєтесь з:</p>
+                <a class="agreement">користувацькою угодою</a>
+                <button type="submit" class="end-registration">Зареєструватись</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const showFields = document.getElementById("show-fields");
+        const showForVolunteer = document.getElementById("show-for-volunteer");
+        const showForMilitary = document.getElementById("show-for-military");
+        const hidden = document.getElementById("hidden");
+        const hiddenForVolunteer = document.getElementById("hiddenForVolunteer");
+        const hiddenForMilitary = document.getElementById("hiddenForMilitary");
+
+
+        showFields.addEventListener("click", function() {
+            if(hiddenForVolunteer.style.display === "block" && hiddenForMilitary.style.display === "block"){
+                hiddenForVolunteer.style.display = "none";
+                hiddenForMilitary.style.display = "none";
+            }
+            else if (hiddenForMilitary.style.display === "block") {
+                hiddenForMilitary.style.display = "none";
+            }
+            else if (hiddenForVolunteer.style.display === "block") {
+                hiddenForVolunteer.style.display = "none";
+            }
+            hidden.style.display = "block";
+        });
+
+
+        showForVolunteer.addEventListener("click", function() {
+            if (hiddenForMilitary.style.display === "block") {
+                hiddenForMilitary.style.display = "none";
+            }
+            hidden.style.display = "block";
+            hiddenForMilitary.style.display = "block";
+            hiddenForVolunteer.style.display = "block";
+        });
+
+
+        showForMilitary.addEventListener("click", function() {
+            if (hiddenForVolunteer.style.display === "block") {
+                hiddenForVolunteer.style.display = "none";
+            }
+            hidden.style.display = "block";
+            hiddenForMilitary.style.display = "block";
+        });
+    </script>
+</body>
+</html>

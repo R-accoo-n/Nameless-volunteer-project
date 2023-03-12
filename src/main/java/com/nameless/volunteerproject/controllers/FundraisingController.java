@@ -16,12 +16,12 @@ public class FundraisingController {
     @Autowired
     private FundraisingService fundraisingService;
 
-    @GetMapping("/home")
+    @GetMapping("/activeFundraising")
     public List<Fundraising> getActiveFundraisingsByType(@PathVariable FundraisingType type) {
         return fundraisingService.getActiveFundraisingsByType(type);
     }
 
-    @PostMapping("/home")
+    @PostMapping("/createFundraising")
     public void createFundraising(@RequestBody Fundraising fundraising) {
         fundraisingService.createFundraising(fundraising);
     }
