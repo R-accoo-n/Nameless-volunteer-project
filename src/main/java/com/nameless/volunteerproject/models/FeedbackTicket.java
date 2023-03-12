@@ -5,12 +5,8 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -20,6 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @ToString
 @Builder
+@EqualsAndHashCode
 public class FeedbackTicket {
     @Id
     @GeneratedValue(generator = "UUID")

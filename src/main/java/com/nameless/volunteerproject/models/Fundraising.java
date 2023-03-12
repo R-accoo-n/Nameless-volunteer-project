@@ -5,12 +5,8 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -25,6 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @ToString
 @Builder
+@EqualsAndHashCode
 public class Fundraising {
     @Id
     @GeneratedValue(generator = "UUID")
