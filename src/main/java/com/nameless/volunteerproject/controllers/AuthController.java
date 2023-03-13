@@ -47,4 +47,11 @@ public class AuthController {
         return "redirect:/register?success";
     }
 
+    @GetMapping("/login")
+    public String login(Model model){
+        User user=new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
+
 }
