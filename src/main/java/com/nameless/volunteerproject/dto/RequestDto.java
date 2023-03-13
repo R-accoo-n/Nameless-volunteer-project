@@ -1,8 +1,5 @@
 package com.nameless.volunteerproject.dto;
 
-
-import com.nameless.volunteerproject.enums.UserRole;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +12,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDto {
+public class RequestDto {
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -24,19 +22,11 @@ public class UserDto {
     )
     private UUID id;
 
-    private String surname;
-
     private String name;
 
-    private String email;
+    private String whom;
 
-    private String phoneNumber;
+    private boolean greyZone;
 
-    private String password;
-
-    private UserRole role;
-
-    private String photo;
-
-    private String socialMedia;
+    private String description;
 }

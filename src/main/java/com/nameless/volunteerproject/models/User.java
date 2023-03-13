@@ -36,6 +36,8 @@ public class User {
 
     private String password;
 
+    private String socialMedia;
+
     private boolean showRealName;
 
     private String photo;
