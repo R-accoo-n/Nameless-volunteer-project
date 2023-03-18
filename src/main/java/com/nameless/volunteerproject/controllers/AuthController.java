@@ -1,6 +1,7 @@
 package com.nameless.volunteerproject.controllers;
 
 import com.nameless.volunteerproject.dto.UserDto;
+import com.nameless.volunteerproject.enums.UserRole;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
 
 @Controller
 public class AuthController {
@@ -26,7 +31,13 @@ public class AuthController {
     public String registrationForm(Model model){
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        return "register";
+        List<UserRole> roles =
+                new ArrayList<UserRole>(EnumSet.allOf(UserRole.class));
+        for (UserRole role:roles) {
+            System.out.println(role);
+        }
+        model.addAttribute("roles", roles);
+        return "registration";
     }
 
     @PostMapping("/register/save")

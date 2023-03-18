@@ -15,7 +15,7 @@
   <!--/*@thymesVar id="militarysRequest" type="com.nameless.volunteerproject.models.FundraisingRequest"*/-->
   <form method="post" th:object="${militarysRequest}" enctype="multipart/form-data" th:action="@{/request/save}">
     <p>Створити запит:</p>
-    <input th:field="*{name}" id="requestName" name="requestName"  type="text" placeholder="Назва збору"><br>
+    <input id="requestName" th:field="*{name}" name="requestName"  type="text" placeholder="Назва збору"><br>
     <input name="whom" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br>
     <span>Сіра зона:</span>
     <input name="greyZone" th:field="*{greyZone}" id="greyZone" type="checkbox" ><br>

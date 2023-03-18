@@ -16,57 +16,57 @@
             <p class="you">Ви:</p>
             <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
             <form method="post" th:object="${user}" enctype="multipart/form-data" th:action="@{/register/save}">
-            <ul class="all">
-                <ul class="role">
-                    <div class="role-div">
-                        <button class="role-button" th:value="USER" name="show-fields" th:field="*{role}" id="show-fields"><option value="USER"></option>Хочете допомогти грошима?</button>
-                    </div>
-                    <div class="role-div">
-                        <button class= "role-button" th:value="VOLUNTEER" id="show-for-volunteer" name="show-for-volunteer" th:field="*{role}" >Волонтер</button>
-                    </div>
-                    <div class="role-div" >
-                        <button class="role-button" th:value="MILITARY" id="show-for-military" name="show-for-military" th:field="*{role}" >Військовий</button>
-                    </div>
-                </ul>
-                <ul class="countinue">
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
-                    </button>
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}" alt="facebook_icon">Продовжити з Facebook</span>
-                    </button>
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
-                    </button>
-                </ul>
-            </ul>
-            <div id="hidden" style="display:none;">
-                <ul class="all-data">
-                    <ul class="row-data">
-                        <input class="Data" id="Name" name="Name" th:field="*{name}" type="text" placeholder="Ім'я">
-                        <input class="Data" id="Surname" name="Surname" th:field="*{surname}" type="text" placeholder="Прізвище">
+                <ul class="all">
+                    <ul class="role">
+                        <div class="role-div">
+                            <button class="role-button" name="USER" th:field="*{role}" id="USER"><option th:field="" th:value="USER"></option>Хочете допомогти грошима?</button>
+                        </div>
+                        <div class="role-div">
+                            <button class= "role-button" th:value="VOLUNTEER" id="VOLUNTEER" name="VOLUNTEER" th:field="*{role}" >Волонтер</button>
+                        </div>
+                        <div class="role-div" >
+                            <button class="role-button" th:value="MILITARY" id="MILITARY" name="MILITARY" th:field="*{role}" >Військовий</button>
+                        </div>
                     </ul>
-                    <input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"><br>
-                    <input class="Data" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" type="text" placeholder="Номер телефону"><br>
-                    <div id="hiddenForVolunteer" style="display:none;"><input class="Data" id="social" name="social" th:field="*{socialMedia}" type="text" placeholder="Посилання на соцмережі"></div> <!--для волонтера-->
-                    <div id="hiddenForMilitary" style="display:none;">
-                        <label>Завантажити фото документів</label>
-                        <input type="file" name="image" placeholder="Завантажити фото документів" accept="image/png, image/jpeg"/></div><!--фото доків для волонтера та військового-->
-                    <ul class="row-data">
-                        <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
+                    <ul class="countinue">
+                        <button class="countinue-button">
+                            <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
+                        </button>
+                        <button class="countinue-button">
+                            <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}" alt="facebook_icon">Продовжити з Facebook</span>
+                        </button>
+                        <button class="countinue-button">
+                            <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
+                        </button>
                     </ul>
                 </ul>
-                <p class="agreement">Реєструючись, ви погоджуєтесь з:</p>
-                <a class="agreement">користувацькою угодою</a>
-                <button type="submit" class="end-registration">Зареєструватись</button>
-            </div>
+                <div id="hidden" style="display:none;">
+                    <ul class="all-data">
+                        <ul class="row-data">
+                            <input class="Data" id="Name" name="Name" th:field="*{name}" type="text" placeholder="Ім'я">
+                            <input class="Data" id="Surname" name="Surname" th:field="*{surname}" type="text" placeholder="Прізвище">
+                        </ul>
+                        <input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"><br>
+                        <input class="Data" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" type="text" placeholder="Номер телефону"><br>
+                        <div id="hiddenForVolunteer" style="display:none;"><input class="Data" id="social" name="social" th:field="*{socialMedia}" type="text" placeholder="Посилання на соцмережі"></div> <!--для волонтера-->
+                        <div id="hiddenForMilitary" style="display:none;">
+                            <label>Завантажити фото документів</label>
+                            <input type="file" name="image" placeholder="Завантажити фото документів" accept="image/png, image/jpeg"/></div><!--фото доків для волонтера та військового-->
+                        <ul class="row-data">
+                            <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
+                        </ul>
+                    </ul>
+                    <p class="agreement">Реєструючись, ви погоджуєтесь з:</p>
+                    <a class="agreement">користувацькою угодою</a>
+                    <button type="submit" class="end-registration">Зареєструватись</button>
+                </div>
             </form>
         </div>
     </div>
     <script>
-        const showFields = document.getElementById("show-fields");
-        const showForVolunteer = document.getElementById("show-for-volunteer");
-        const showForMilitary = document.getElementById("show-for-military");
+        const showFields = document.getElementById("USER");
+        const showForVolunteer = document.getElementById("VOLUNTEER");
+        const showForMilitary = document.getElementById("MILITARY");
         const hidden = document.getElementById("hidden");
         const hiddenForVolunteer = document.getElementById("hiddenForVolunteer");
         const hiddenForMilitary = document.getElementById("hiddenForMilitary");
