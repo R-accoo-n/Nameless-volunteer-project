@@ -4,13 +4,16 @@ import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.enums.UserRole;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
-import org.springframework.stereotype.Controller;
+import java.net.PasswordAuthentication;
+import java.util.Optional;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -19,10 +22,10 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-@Controller
+@RestController
 public class AuthController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public AuthController(UserService userService) {
         this.userService = userService;}
@@ -64,6 +67,21 @@ public class AuthController {
         User user=new User();
         model.addAttribute("user", user);
         return "login";
+    }
+
+    @PostMapping("/login/authorisation")
+    public String userLogin(@RequestParam("name") String name,
+                            @RequestParam("password") String password,
+                            Model model) {
+        Optional<User> existingUser = userService.findUserByEmail(name);
+
+        if(existingUser.isEmpty()){
+            throw new UsernameNotFoundException("User with this email doesn't exist");
+        }else if(existingUser.get().getPassword() != password){
+            throw new UsernameNotFoundException("Wrong password");
+        }
+
+        return "redirect:/home?success";
     }
 
 }

@@ -17,8 +17,6 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.services.FundraisingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Arrays;
 import static org.mockito.BDDMockito.given;
@@ -34,7 +32,7 @@ import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
-class volunteerProjectApplicationTests {
+class VolunteerProjectApplicationTests {
 
 	@InjectMocks
 	VolunteerService volunteerService;
