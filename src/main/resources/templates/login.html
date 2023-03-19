@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!-- <!DOCTYPE html> 
 <html lang="uk"
       xmlns:th="http://www.thymeleaf.org"
 >
@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" th:href="@{/css/login.css}"/>
-  <!--js file-->
-  <title>Login Page</title>
+  <js file>
+  < <title>Login Page</title>
 </head>
 <body>
 <div class="login">
-  <p class="text-login">Вхід</p>
+  <p class="text-login">Вхід</p> -->
   <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
-  <form method="get" th:object="${user}" th:action="@{/login}">
+  <!-- <form method="get" th:object="${user}" th:action="@{/login}">
   <div class="field-login" >
     <ul class="countinue">
       <div>
@@ -44,5 +44,51 @@
   </form>
 </div>
 </div>
+</body>
+</html> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./js/registration.js">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="login">
+        <p class="text-login">Вхід</p>
+        <div class="field-login" >
+            <ul class-"all-data">
+                <input class="Data" type="text" placeholder="Пошта"><br>
+                <input class="Data" type="password" placeholder="Пароль">
+            </ul>
+               
+            <ul class="countinue">
+                <div> 
+                    <button class="countinue-button">
+                    <span class="countinue-p"><img class="svg"src="./images/google_icon.svg" alt="google_icon">Продовжити з Google</span>
+                </div>
+                <div>
+                </button>
+                <button class="countinue-button">
+                    <span class="countinue-p"><img class="svg" src="./images/facebook_icon.svg" alt="facebook_icon">Продовжити з Facebook</span>
+                </div>
+                <div>
+                </button>
+                <button class="countinue-button">
+                    <span class="countinue-p"><img class="svg" src="./images/gmail_icon.svg" alt="gmail_icon">Продовжити з e-mail</span>
+                </button>
+                </div>
+            </ul>    
+        </div>
+        
+        <div> 
+            <button class="end-login">Увійти</button>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
 </body>
 </html>
