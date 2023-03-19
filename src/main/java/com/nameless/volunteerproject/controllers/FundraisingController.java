@@ -7,16 +7,15 @@ import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.services.FundraisingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class FundraisingController {
     private final FundraisingService fundraisingService;
@@ -32,10 +31,16 @@ public class FundraisingController {
         return fundraisingService.getCompletedFundraisings(userId);
     }
 
-    @PostMapping("/fundraising")
-    public ResponseEntity<Fundraising> createFundraising(@RequestBody FundraisingDto fundraisingDto) {
+    @GetMapping("/fundraising")
+    public String fundraisingForm(Model model){
+        FundraisingDto fundraisingDto=new FundraisingDto();
+        model.addAttribute("fundraisingRequest", fundraisingDto);
+        return "fundraisingOfTheVolunteerOrMilitary";
+    }
+    @PostMapping("/fundraising/save")
+    public String createFundraising(@Valid @ModelAttribute("fundraisingRequest") FundraisingDto fundraisingDto) {
         Fundraising fundraising = fundraisingService.createFundraising(fundraisingDto);
-        return ResponseEntity.ok().body(fundraising);
+        return "redirect:/fundraising?success";
     }
 
     @GetMapping("/statusFundraising")

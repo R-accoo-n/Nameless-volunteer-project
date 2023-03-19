@@ -12,9 +12,7 @@
 </head>
 <body>
 <div class="login">
-  <p class="text-login">Вхід</p> -->
-  <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
-  <!-- <form method="get" th:object="${user}" th:action="@{/login}">
+  <p class="text-login">Вхід</p>
   <div class="field-login" >
     <ul class="countinue">
       <div>
@@ -33,15 +31,17 @@
         </button>
       </div>
     </ul>
+    <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
+    <form method="post" role="form" th:action="@{/login/authorisation}">
     <ul>
-      <input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"><br>
-      <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
+      <input class="Data" id="email" name="email" type="text" placeholder="Пошта"><br>
+      <input class="Data" id="password" name="password" type="password" placeholder="Пароль">
     </ul>
     <div>
       <button type="submit" class="end-login">Увійти</button>
     </div>
+    </form>
   </div>
-  </form>
 </div>
 </div>
 </body>

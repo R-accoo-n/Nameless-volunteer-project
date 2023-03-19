@@ -39,6 +39,6 @@ public class Fundraising {
     private String description;
     private boolean isActive;
     private boolean isSelected;
-    private FundraisingType type;
+    private FundraisingType socialType;
 
 }

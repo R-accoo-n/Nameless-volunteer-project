@@ -22,7 +22,7 @@ public class FundraisingService {
     private final FundraisingRequestRepository fundraisingRequestRepository;
 
     public List<Fundraising> getActiveFundraisingsByType(FundraisingType type) {
-        return fundraisingRepository.findByTypeAndIsActive(type, true);
+        return fundraisingRepository.findBySocialTypeAndIsActive(type, true);
     }
 
     public List<Fundraising> getCompletedFundraisings(UUID userId) {
@@ -57,13 +57,13 @@ public class FundraisingService {
     private Fundraising mapFundraisingDtoToFundraising(FundraisingDto fundraisingDto) {
         Fundraising fundraising = new Fundraising();
         fundraising.setId(fundraisingDto.getId());
-        fundraising.setUserId(fundraisingDto.getUserId());
+        //fundraising.setUserId(fundraisingDto.getUserId());
         fundraising.setCardNumber(fundraisingDto.getCardNumber());
         fundraising.setDescription(fundraisingDto.getDescription());
         fundraising.setFundraisingName(fundraisingDto.getFundraisingName());
         fundraising.setActive(fundraisingDto.isActive());
         fundraising.setSum(fundraisingDto.getSum());
-        fundraising.setType(fundraisingDto.getType());
+        fundraising.setSocialType(fundraisingDto.getSocialType());
         fundraising.setWhom(fundraisingDto.getWhom());
         fundraising.setSelected(fundraisingDto.isSelected());
         return fundraising;

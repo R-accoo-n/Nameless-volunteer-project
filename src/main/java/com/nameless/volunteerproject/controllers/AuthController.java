@@ -7,6 +7,7 @@ import com.nameless.volunteerproject.services.UserService;
 import java.net.PasswordAuthentication;
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-@RestController
+@Controller
 public class AuthController {
 
     private final UserService userService;
@@ -64,24 +65,20 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login(Model model){
-        User user=new User();
-        model.addAttribute("user", user);
         return "login";
     }
 
     @PostMapping("/login/authorisation")
-    public String userLogin(@RequestParam("name") String name,
+    public String userLogin(@RequestParam("email") String email,
                             @RequestParam("password") String password,
                             Model model) {
-        Optional<User> existingUser = userService.findUserByEmail(name);
-
+        Optional<User> existingUser = userService.findUserByEmail(email);
         if(existingUser.isEmpty()){
             throw new UsernameNotFoundException("User with this email doesn't exist");
         }else if(existingUser.get().getPassword() != password){
             throw new UsernameNotFoundException("Wrong password");
         }
-
-        return "redirect:/home?success";
+        return "redirect:/login?success";
     }
 
 }
