@@ -5,5 +5,20 @@ POST http://localhost:8080/users
 GET http://localhost:8080/fundraisings
 
 ###
-# @no-redirect
-GET http://localhost:8080/statusFundraisings
+GET http://localhost:8080/statusFundraising
+
+### fundraising
+POST http://localhost:8080/fundraising
+Content-Type: application/json
+
+{
+  "userId": "f107d7d7-1ebc-4822-8a38-6fc146d89c17",
+  "whom": "John Smith",
+  "sum": 500.0,
+  "fundraisingName": "Help me pay for medical bills",
+  "cardNumber": 1234567890,
+  "description": "I've been diagnosed with a rare condition that requires expensive treatment.",
+  "isActive": true,
+  "isSelected": false,
+  "type": "TRANSPORT"
+}

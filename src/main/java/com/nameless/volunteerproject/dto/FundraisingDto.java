@@ -29,6 +29,6 @@ public class FundraisingDto {
     private String description;
     private boolean isActive;
     private boolean isSelected;
-    private FundraisingType type;
+    private FundraisingType socialType;
 
 }
