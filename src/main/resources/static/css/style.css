@@ -1,28 +1,29 @@
 body,
 html {
+    position: absolute;
     padding: 0;
     margin: 0;
+    width: 100%;
+    clear: left;
 }
 
 .wrapper {
     position: relative;
-    width: 1440px;
-    height: 2428px;
+    min-width: fit-content;
+    height: 2350px;
     background: #FAFAFA;
     margin: 0px auto;
 }
 
-.header-container {
-    width: 1440px;
-    height: 598px;
-    background-repeat: no-repeat;
-    background-size: cover;
+#header-container {
     position: relative;
-
+    width: fit-content;
 }
 
-.header-img {
-    display: block;
+#header-img {
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
 }
 
 
@@ -230,6 +231,10 @@ border: 1px solid #252525;
 border-radius: 50px;
 }
 
+.row-slider{
+    margin: 0 150px 0 150px;
+}
+
 .column {
     float: left;
     width: 25%;
@@ -244,7 +249,7 @@ border-radius: 50px;
   }
 
 .container {
-    width: 1440px;
+    width: 100%;
     height: 252px;
     left: 0px;
     top: 2176px;
@@ -281,7 +286,7 @@ ul {
 }
 
 .space {
-    margin-bottom: 105px;
+    margin: 100px  70px 50px 30px;
 }
 
 .card {
@@ -338,7 +343,7 @@ top: 318px;
 .all-funds-container {
     margin-top: 24px;
     margin-bottom: 24px;
-    width: 1440px;
+    width: 100%;
     height: 996px;
     left: 0px;
     top: 618px;
