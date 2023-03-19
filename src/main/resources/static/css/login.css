@@ -15,7 +15,9 @@ ul{
     padding-inline-start: 0;
     margin: 0;
 }
-
+.field-login{
+    display: flex;
+}
 
 .countinue-button{
     border: 1px solid var(--second-color);
@@ -26,7 +28,7 @@ ul{
     margin: 10px;
     color: var(--second-color);
     align-items: center;
-
+    
 }
 
 .all{
@@ -43,7 +45,7 @@ ul{
 }
 
 .login{
-    background-color: var(--second-color);
+    background-color: var(--main-color);
     width: 500px;
     margin: 100px auto;
     padding: var(--registration-padding);
@@ -74,8 +76,8 @@ ul{
     border: 1px solid var(--second-color);
     border-radius: 12px;
     width: 184px;
-    height: 20px;
-    margin: 10px;
+    height: 30px;
+    margin: 20px;
 }
 .Data{
     padding-inline-start: 10px;
@@ -89,7 +91,7 @@ ul{
     width: 240px;
     height: 40px;
     margin: 30px 140px;
-    color: var( --second-color);
+    color: var( --main-color);
     font-size: 20px;
     font-weight: 600;
 }
