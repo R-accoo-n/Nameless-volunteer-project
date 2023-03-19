@@ -56,10 +56,10 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         System.out.println(userDto.getRole());
         user.setRole(userDto.getRole());
-        if (user.getRole().name().equals("show-for-volunteer")||user.getRole().equals("show-for-military")) {
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
-        }
+//        if (user.getRole().name().equals("show-for-volunteer")||user.getRole().equals("show-for-military")) {
+//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//            user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
+//        }
         System.out.println(user);
         userRepository.save(user);
     }

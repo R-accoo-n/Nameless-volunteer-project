@@ -3,8 +3,6 @@ package com.nameless.volunteerproject.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -23,8 +21,8 @@ class SecurityConfiguration {
 
         http.authorizeHttpRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/login", "/register", "/home", "/registration", "/register/save", "/save", "/request", "/request/save").permitAll()
-                .antMatchers("/css/**", "/js/**","/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
+                .antMatchers("/", "/login", "/register", "/home", "/registration", "/register/save", "/save", "/request", "/request/save", "/fundraising", "/fundraising/save", "/statusFundraising").permitAll()
+                .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable().formLogin()
@@ -41,6 +39,6 @@ class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/mixins/**", "/webjars/**", "/css/**", "/static/**","/js/**", "/images/**", "/static/js/**");
+        return (web) -> web.ignoring().antMatchers("/mixins/**", "/webjars/**", "/css/**", "/static/**", "/js/**", "/images/**", "/static/js/**");
     }
 }
