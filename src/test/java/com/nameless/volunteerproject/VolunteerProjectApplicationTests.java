@@ -116,7 +116,7 @@ class VolunteerProjectApplicationTests {
 		List<Fundraising> fundraisings = Arrays.asList(
 				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).socialType(FundraisingType.АВТО).build(),
 				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).socialType(FundraisingType.АВТО).build(),
-				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.ЖИВЛЕННЯ).build()
+				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.АВТО).build()
 		);
 
 		when(fundraisingRepository.findByUserIdAndIsActiveFalse(userId)).thenReturn(fundraisings.subList(0, 1));
