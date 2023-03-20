@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<header>
+
+</header>
+<main>
+  <!--/*@thymesVar id="militarysRequest" type="com.nameless.volunteerproject.models.FundraisingRequest"*/-->
+  <form method="post" th:object="${militarysRequest}" enctype="multipart/form-data" th:action="@{/request/save}">
+    <p>Створити запит:</p>
+    <input id="name" th:field="*{name}" name="name"  type="text" placeholder="Назва збору"><br>
+    <input name="whom" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br>
+    <span>Сіра зона:</span>
+    <input name="greyZone" th:field="*{greyZone}" id="greyZone" type="checkbox" ><br>
+    <textarea name="description" th:field="*{description}" id="description" placeholder="Опис збору:"></textarea>
+    <button type="submit" class="end-registration">Створити запит</button>
+  </form>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/requestofthemilitary.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="req">
+        <p class="text-create-req">Створити запит:</p>
+        <form method="post" th:object="${militarysRequest}" enctype="multipart/form-data" th:action="@{/request/save}">
+        <div class="all-data" >
+            <input class="Data" id="requestName" th:field="*{name}" name="requestName" type="text" placeholder="Назва збору"><br>
+            <input class="Data" name="whom" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br>
+            <span class="zone">Сіра зона:</span>
+            <input name="greyZone" th:field="*{greyZone}" id="greyZone" type="checkbox" ><br>
+            <textarea class="Data-textarea"  name="description" th:field="*{description}" id="description" placeholder="Опис збору:"></textarea>
+        </div>
+            <button type="submit" class="button-create-req">Створити запит</button>
+        </div>
+        </form>
+</body>
+</html>
+-->
