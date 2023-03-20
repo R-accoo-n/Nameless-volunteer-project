@@ -3,7 +3,7 @@
     --second-color: #9F9D9D;
     --third-color:rgb(187, 142, 229);
     --some-color: black;
-    --login-padding: 70px;
+    --registration-padding: 70px;
 }
 
 body, html{
@@ -15,11 +15,9 @@ ul{
     padding-inline-start: 0;
     margin: 0;
 }
-.field-login{
-    display: flex;
-}
 
-.countinue-button{
+
+.role-button,.countinue-button{
     border: 1px solid var(--second-color);
     background-color: var(--main-color);
     border-radius: 12px;
@@ -44,9 +42,9 @@ ul{
     display: flex;
 }
 
-.login{
+.registration{
     background-color: var(--main-color);
-    width: 570px;
+    width: 500px;
     margin: 100px auto;
     padding: var(--registration-padding);
     border: 2px solid var(--second-color);
@@ -58,6 +56,12 @@ ul{
     display: block;
 }
 
+.you{
+    margin: 0;
+    padding-inline-start: 40px;
+    font-size: 20px;
+    font-weight: 600;
+}
 .countinue-p{
     padding: 0;
     margin: 0;
@@ -65,38 +69,46 @@ ul{
     align-items: center;
 }
 
-.text-login{
+.text-reg{
     text-align: center;
     margin: 10px;
     font-size: 40px;
     font-weight: 700;
 }
 
-.Data{
+.Data, .Data-foto{
     border: 1px solid var(--second-color);
     border-radius: 12px;
     width: 184px;
-    height: 30px;
-    margin: 20px;
+    height: 20px;
+    margin: 10px;
 }
 .Data{
     padding-inline-start: 10px;
 }
+.Data-foto{
+    width: 420px;
+    height: 100px;
+}
 
-
-.end-login{
+.end-registration{
     background-color: var(--third-color);
     border: 1px solid var(--second-color);
     border-radius: 12px;
     width: 240px;
     height: 40px;
     margin: 30px 140px;
-    color: var( --main-color);
+    color: var(--main-color);
     font-size: 20px;
     font-weight: 600;
 }
 
-
+.agreement{
+    margin: 0px;
+    line-height: 0px;
+    padding-inline-start: 60px;
+    font-size: 10px;
+}
 .svg{
     height: 20px;
     width: 20px;

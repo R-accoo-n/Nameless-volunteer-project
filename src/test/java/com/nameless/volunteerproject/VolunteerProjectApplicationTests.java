@@ -58,51 +58,51 @@ class VolunteerProjectApplicationTests {
 	public void givenFundraisingType_whenGetFundraisingType_thenReturnFunraisingsByType() {
 		Fundraising fundraising1 = new Fundraising();
 		fundraising1.setFundraisingName("Fundraising 1");
-		fundraising1.setSocialType(FundraisingType.TRANSPORT);
+		fundraising1.setSocialType(FundraisingType.АВТО);
 		fundraising1.setActive(true);
 
 		Fundraising fundraising2 = new Fundraising();
 		fundraising2.setFundraisingName("Fundraising 2");
-		fundraising2.setSocialType(FundraisingType.TRANSPORT);
+		fundraising2.setSocialType(FundraisingType.АВТО);
 		fundraising2.setActive(true);
 
 		Fundraising fundraising3 = new Fundraising();
 		fundraising3.setFundraisingName("Fundraising 3");
-		fundraising3.setSocialType(FundraisingType.TRANSPORT);
+		fundraising3.setSocialType(FundraisingType.АВТО);
 		fundraising3.setActive(true);
 
 		Fundraising fundraising4 = new Fundraising();
 		fundraising4.setFundraisingName("Fundraising 4");
-		fundraising4.setSocialType(FundraisingType.TRANSPORT);
+		fundraising4.setSocialType(FundraisingType.АВТО);
 		fundraising4.setActive(false);
 
 		Fundraising fundraising5 = new Fundraising();
 		fundraising5.setFundraisingName("Fundraising 5");
-		fundraising5.setSocialType(FundraisingType.TECHNIQUE);
+		fundraising5.setSocialType(FundraisingType.АВТО);
 		fundraising5.setActive(true);
 
 		Fundraising fundraising6 = new Fundraising();
 		fundraising6.setFundraisingName("Fundraising 6");
-		fundraising6.setSocialType(FundraisingType.TECHNIQUE);
+		fundraising6.setSocialType(FundraisingType.АВТО);
 		fundraising6.setActive(true);
 
 		Fundraising fundraising7 = new Fundraising();
 		fundraising7.setFundraisingName("Fundraising 7");
-		fundraising7.setSocialType(FundraisingType.TECHNIQUE);
+		fundraising7.setSocialType(FundraisingType.АВТО);
 		fundraising7.setActive(false);
 
 		Fundraising fundraising8 = new Fundraising();
 		fundraising8.setFundraisingName("Fundraising 8");
-		fundraising8.setSocialType(FundraisingType.TECHNIQUE);
+		fundraising8.setSocialType(FundraisingType.АВТО);
 		fundraising8.setActive(false);
 
-		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.TRANSPORT))
+		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.АВТО))
 				.willReturn(Arrays.asList(fundraising1, fundraising2, fundraising3));
-		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.TECHNIQUE))
+		given(fundraisingService.getActiveFundraisingsByType(FundraisingType.АВТО))
 				.willReturn(Arrays.asList(fundraising5, fundraising6));
 
-		List<Fundraising> activeFundraisings = fundraisingService.getActiveFundraisingsByType(FundraisingType.TRANSPORT);
-		List<Fundraising> activeFundraisings2 = fundraisingService.getActiveFundraisingsByType(FundraisingType.TECHNIQUE);
+		List<Fundraising> activeFundraisings = fundraisingService.getActiveFundraisingsByType(FundraisingType.АВТО);
+		List<Fundraising> activeFundraisings2 = fundraisingService.getActiveFundraisingsByType(FundraisingType.АВТО);
 
 		assertThat(activeFundraisings.size()).isEqualTo(3);
 		assertThat(activeFundraisings).isEqualTo(Arrays.asList(fundraising1, fundraising2, fundraising3));
@@ -114,9 +114,9 @@ class VolunteerProjectApplicationTests {
 	public void givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
 		UUID userId = UUID.randomUUID();
 		List<Fundraising> fundraisings = Arrays.asList(
-				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).socialType(FundraisingType.TRANSPORT).build(),
-				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).socialType(FundraisingType.TECHNIQUE).build(),
-				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.DEMINING_EQUIPMENT).build()
+				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).socialType(FundraisingType.АВТО).build(),
+				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).socialType(FundraisingType.АВТО).build(),
+				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.ЖИВЛЕННЯ).build()
 		);
 
 		when(fundraisingRepository.findByUserIdAndIsActiveFalse(userId)).thenReturn(fundraisings.subList(0, 1));
