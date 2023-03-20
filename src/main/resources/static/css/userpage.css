@@ -1,0 +1,191 @@
+:root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:rgb(187, 142, 229);
+    --some-color: black;
+}
+body, html,header,main,footer{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    list-style: none;
+}
+li{
+    display: flex;
+    margin: 10px;
+}
+#data-about-user, #edit-data-about-user{
+    padding: 50px;
+
+}
+#ul-data-about-user{
+    width: 500px;
+}
+
+.all-data-in-main {
+    /*margin-top: 24px;*/
+    padding: 20px;
+    width: 1440px;
+    left: 0px;
+    top: 618px;
+    background: #EFEFEE;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 200px;
+}
+
+
+.li-data-about-user{
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-data{
+}
+.wrapper-data{
+    display: flex;
+    position: relative;
+}
+#edit-foto{
+    background-color: transparent;
+    min-width: 298px;
+    min-height: 298px;
+    max-width: 298px;
+    max-height: 298px;
+    border-radius: 150px;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    border: 1px solid black;
+}
+.avatar{
+    background-color: antiquewhite;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 150px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0px 150px;
+}
+.avatar-foto{
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    position: absolute;
+}
+.feesontheuserspage{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.initialization, .init-from-database, .social-Networks-list, .edit-Database{
+    width: 200px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 400;
+}
+#edit-button, #end-edit-button{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 12px;
+    padding: 0px;
+    margin: 0px;
+    top: 5px;
+    right: 0px;
+
+}
+
+.edit-Database{
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.init-from-database,.edit-Database{
+    padding-inline-start: 5px;
+}
+.li-social-Networks-list{
+    display: inline-block;
+    float: left;
+    margin: 0px 70px;
+    margin-left: 0px;
+}
+
+.add-another-social-network{
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+    border-radius: 12px;
+}
+.item-socials{
+    height: 25px;
+    width: 100px;
+    padding: 0px;
+    border-radius: 12px;
+}
+
+.one-Of-The-Social-Networks{
+    height: 25px;
+    width: 200px;
+    padding: 0px;
+    border-radius: 12px;
+    padding-inline-start: 3px;
+}
+
+.item-add-socials{
+    margin: 6px 0px;
+}
+
+
+#create-fundraising{
+    height: 50px;
+    width: 500px;
+    border-radius: 12px;
+    display: flex;
+    margin: 0px auto;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--third-color);
+    color: var(--main-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#active-fundraising, #done-fundraising, .inscription-description{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+.inscription-description{
+    padding-inline-start: 150px;
+}
+.your-description{
+    display: block;
+    min-width: 1000px;
+    max-width: 1000px;
+    margin: 0px auto;
+    border-radius: 12px;
+    min-height: 76px;
+    padding: 0px 5px;
+}
+#social-Networks-list{
+    /*max-height: 136px;*/
+}
+
+.container-for-fundraising{
+    padding: 0px 200px;
+}
