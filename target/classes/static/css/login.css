@@ -46,7 +46,7 @@ ul{
 
 .login{
     background-color: var(--main-color);
-    width: 500px;
+    width: 570px;
     margin: 100px auto;
     padding: var(--registration-padding);
     border: 2px solid var(--second-color);

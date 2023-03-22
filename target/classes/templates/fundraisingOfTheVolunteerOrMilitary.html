@@ -11,23 +11,21 @@
 <main>
 </main>
 <body>
-    <div class="form-request">
-        <p>Створити збору:</p>
-        <!--/*@thymesVar id="fundraising" type="com.nameless.volunteerproject.models.Fundraising"*/-->
-        <form method="post" th:object="${fundraisingRequest}" th:action="@{/fundraising/save}">
-            <input class="" th:field="*{fundraisingName}" id="fundraisingName" type="text" placeholder="Назва збору"><br>
-            <input class="" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br><!--підрозділ-->
-            <input class="" th:field="*{sum}" id="sum"  type="text" placeholder="Сума:"><br>
-            <select>
-                <option th:each="choose:${T(com.nameless.volunteerproject.enums.FundraisingType).values()}" th:value="${choose}" th:text="${choose}"></option><br>
-            </select>
-            <br><input class="" th:field="*{cardNumber}" id="cardNumber" type="text" placeholder="Номер карти:"><br>
-            <textarea class="" th:field="*{description}" id="description" placeholder="Опис збору:"></textarea>
-            <input class="" id="" type="image" placeholder="Додайте зображення"><br>
-            <button type="submit" class="end-registration">Створити</button>
-        </form>
-
-
-    </div>
+<div class="form-request">
+    <p>Створити збору:</p>
+    <!--/*@thymesVar id="fundraising" type="com.nameless.volunteerproject.models.Fundraising"*/-->
+    <form method="post" th:object="${fundraisingRequest}" th:action="@{/fundraising/save}">
+    <input class="" th:field="*{fundraisingName}" id="fundraisingName" type="text" placeholder="Назва збору"><br>
+    <input class="" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br><!--підрозділ-->
+    <input class="" th:field="*{sum}" id="sum"  type="text" placeholder="Сума:"><br>
+    <select>
+        <option th:each="choose:${T(com.nameless.volunteerproject.enums.FundraisingType).values()}" th:value="${choose}" th:text="${choose}"></option><br>
+    </select>
+    <br><input class="" th:field="*{cardNumber}" id="cardNumber" type="text" placeholder="Номер карти:"><br>
+    <textarea class="" th:field="*{description}" id="description" placeholder="Опис збору:"></textarea>
+    <input class="" id="" type="image" placeholder="Додайте зображення"><br>
+    <button type="submit" class="end-registration">Створити</button>
+    </form>
+</div>
 </body>
 </html>

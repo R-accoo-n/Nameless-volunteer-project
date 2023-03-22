@@ -25,7 +25,7 @@ public class FundraisingDto {
     private String whom;
     private Double sum;
     private String fundraisingName;
-    private int cardNumber;
+    private String cardNumber;
     private String description;
     private boolean isActive;
     private boolean isSelected;
