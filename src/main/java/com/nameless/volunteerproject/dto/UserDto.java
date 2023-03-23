@@ -39,4 +39,6 @@ public class UserDto {
     private String photo;
 
     private String socialMedia;
+
+    private boolean isApproved;
 }
