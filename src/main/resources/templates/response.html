@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Надіслати відгук</p>
+    <p>Ваша оцінка</p>
+    <div class="form-request">
+        <p>Ваша оцінка</p>
+        <!--/*@thymesVar id="feedback" type="com.nameless.volunteerproject.models.FeedbackTicket"*/-->
+        <form method="post" th:object="${feedback}" th:action="@{/feedback}">
+            <input class="" th:field="*{rate}" id="rate" type="text" placeholder="Рейтинг:">
+            <br><select>
+            <button type="submit">
+                <option value="1-5"></option></button>S<br>
+            </select>
+            <textarea class="" th:field="*{description}" id="description" placeholder="Опис відгуку:"></textarea>
+            <button type="submit" class="end-registration">Створити</button>
+        </form>
+
+    </div>
+    <p>Ваш відгук важливий для нас!</p>
+    <textarea name="" id="" cols="30" rows="10" placeholder="Напишіть нам"></textarea>
+    <button>Надіслати</button>
+</body>
+</html>
