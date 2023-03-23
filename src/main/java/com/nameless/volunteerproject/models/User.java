@@ -40,6 +40,8 @@ public class User {
 
     private boolean showRealName;
 
+    private boolean isApproved;
+
     private String photo;
 
     @OneToMany

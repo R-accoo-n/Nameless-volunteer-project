@@ -3,19 +3,12 @@ package com.nameless.volunteerproject.services;
 import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.UserRepository;
-import java.util.Collection;
-import java.util.stream.Collectors;
-import javax.management.relation.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Base64;
 import java.util.UUID;
 import com.nameless.volunteerproject.enums.UserRole;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
@@ -35,11 +28,23 @@ public class UserService {
 
 //    public void saveUser(User user);
 //    public List<Object> isUserPresent(User user);
+
     public boolean verifyUser(UUID userId, UserRole role) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.setRole(role);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean approveUser(UUID userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setApproved(true);
             userRepository.save(user);
             return true;
         }
@@ -54,6 +59,7 @@ public class UserService {
         user.setEmail(userDto.getEmail());
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setApproved(userDto.isApproved());
         System.out.println(userDto.getRole());
         user.setRole(userDto.getRole());
 //        if (user.getRole().name().equals("show-for-volunteer")||user.getRole().equals("show-for-military")) {

@@ -1,5 +1,6 @@
 package com.nameless.volunteerproject.security;
 
+import com.nameless.volunteerproject.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ class SecurityConfiguration {
                 // URL matching for accessibility
                 .antMatchers("/", "/login", "/register", "/home", "/registration", "/register/save", "/save", "/request", "/request/save", "/fundraising", "/fundraising/save", "/statusFundraising").permitAll()
                 .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
+                .antMatchers("/admin/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable().formLogin()
