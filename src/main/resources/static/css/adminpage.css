@@ -1,0 +1,100 @@
+:root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:rgb(187, 142, 229);
+    --some-color: black;
+    --registration-padding: 70px;
+}
+.wrpper-for-all {
+    margin-top: 24px;
+    width: 1440px;
+    left: 0px;
+    top: 618px;
+    background: #EFEFEE;
+    padding: 100px;
+    padding-top: 0px;
+}
+
+table{
+    margin: 0px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0.5px solid black;
+}
+thead{
+    background-color: var(--second-color);
+}
+
+td, th {
+    text-align: left;
+    padding: 5px;
+    width: 250px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+
+}
+tr{
+    height: 20px;
+}
+
+tbody tr:hover {
+    background-color: rgb(202, 202, 202);
+}
+
+
+
+#button-confirmation-yes, #button-confirmation-no{
+    width: 150px;
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    color: var(--main-color);
+    font-weight: 600;
+}
+#button-confirmation-yes{
+    background-color: rgba(146, 214, 44, 0.185);
+}
+#button-confirmation-no{
+    background-color: rgba(255, 0, 0, 0.199);
+}
+.all-data-about-admin{
+    width: 600px;
+    margin: 0px auto;
+    padding: 30px;
+
+}
+.container-for-pib-or-mail{
+    display: flex;
+    margin: 10px;
+}
+
+.inscription-data{
+    width: 150px;
+}
+.inscription-data, .data-about-admin{
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.inscription{
+    font-size: 16px;
+    font-weight: 600;
+
+}
+#div-for-button-yesno{
+    display: flex;
+}
+#button-more{
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    height: 40px;
+    width: 180px;
+    margin: 10px;
+    margin-left: 1050px;
+    color: var(--main-color);
+    background-color: var(--third-color);
+}
