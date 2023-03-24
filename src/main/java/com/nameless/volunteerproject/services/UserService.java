@@ -1,8 +1,11 @@
 package com.nameless.volunteerproject.services;
 
 import com.nameless.volunteerproject.dto.UserDto;
+import com.nameless.volunteerproject.models.Donations;
 import com.nameless.volunteerproject.models.User;
+import com.nameless.volunteerproject.repositories.DonationsRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,10 +23,14 @@ public class UserService {
 
     private PasswordEncoder passwordEncoder;
 
+    private final DonationsRepository donationsRepository;
+
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                       DonationsRepository donationsRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder=passwordEncoder;
+        this.donationsRepository = donationsRepository;
     }
 
 //    public void saveUser(User user);
@@ -72,6 +79,10 @@ public class UserService {
 
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public List<Donations> findDonationHistory(UUID userId){
+        return donationsRepository.findAllByUserID(userId);
     }
 
 }
