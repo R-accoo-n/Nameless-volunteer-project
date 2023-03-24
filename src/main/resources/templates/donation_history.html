@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="./css/"> -->
+    <title id="Donation_history">My donations</title>
+</head>
+
+<body>
+    <header class="header-container">
+        <img src="./images/header_small.png" class="header-img" style="width: fit-content;">
+        <h1 class="site-name ">Volunteer.ua</h1>
+        <div class="rows top-page justify-content-between">
+            <a href="#Main">Головна</a>
+            <a href="#Donation_history">Історія донатів</a>
+        </div>
+        <a href="#"><img src="./images/Group 37.png" class="icon"></a>
+    </header>
+    <main>
+        <div class="donation-container">
+            <img class="donation-img">
+            <h3 class="donation-name"></h3>
+            <p class="donation-description"></p>
+            <div class="progress-container" data-percentage=' '>
+                <div class="progress"></div>
+                <div class="percentage">0%</div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container ">
+            <div>
+                <p>Соціальні мережі: </p>
+                <div class="social-media">
+                    <img src="./images/facebook_icon.svg" class="img" width="25px" height="25px">
+                    <img src="./images/instagram-2016-5.svg" class="img" width="25px" height="25px">
+                    <img src="./images/telegram-1.svg" class="img" width="25px" height="25px">
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <span class="phone-word">Телефон:</span>
+                    <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+                </li>
+                <li>
+                    <span>Email:</span>
+                    <a href="mailto:volunteerua@gmail.com">volunteerua@gmail.com</a>
+                </li>
+            </ul>
+
+            <div>
+                <ul>
+                    <li><a href="#Privacy-policy">Політика приватності</a></li>
+                    <li><a href="#Send-reviews">Надіслати відгук</a></li>
+                    <li><a href="#Support">Служба підтримки</a></li>
+                    <li><a href="#Cooperation">Співпраця</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const progressContainer = document.querySelector('.progress-container');
+
+        // initial call
+        setPercentage();
+
+        function setPercentage() {
+            const percentage = progressContainer.getAttribute('data-percentage') + '%';
+
+            const progressEl = progressContainer.querySelector('.progress');
+            const percentageEl = progressContainer.querySelector('.percentage');
+
+            progressEl.style.width = percentage;
+            percentageEl.innerText = percentage;
+            percentageEl.style.left = percentage;
+        }
+    </script>
+</body>
+
+</html>

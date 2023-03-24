@@ -23,6 +23,7 @@ class SecurityConfiguration {
         http.authorizeHttpRequests()
                 // URL matching for accessibility
                 .antMatchers("/", "/login", "/register", "/home", "/registration", "/register/save", "/save", "/request", "/request/save", "/fundraising", "/fundraising/save", "/statusFundraising","/user/**").permitAll()
+
                 .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
                 .antMatchers("/admin/**").permitAll()
                 .anyRequest().authenticated()

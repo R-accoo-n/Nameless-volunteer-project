@@ -1,31 +1,43 @@
 body,
 html {
+    position: absolute;
     padding: 0;
     margin: 0;
+    width: 100%;
+    clear: left;
 }
 
+/* Header */
 .wrapper {
-    position: relative;
-    width: 1440px;
-    height: 2428px;
+    min-width: fit-content;
+    height: 2350px;
     background: #FAFAFA;
     margin: 0px auto;
 }
 
-.header-container {
-    width: 1440px;
-    height: 598px;
-    background-repeat: no-repeat;
-    background-size: cover;
+#header-container {
     position: relative;
-
-}
-
-.header-img {
-    display: block;
+    width: fit-content;
 }
 
 
+#header-img {
+    background-position: center;
+    position: relative;
+    background-size: cover;
+}
+
+.page-name {
+    position: absolute;
+    margin-left: 70px;
+    top: 0px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 56px;
+    color: #000000;
+}
 
 .row {
     position: absolute;
@@ -41,23 +53,7 @@ html {
     height: auto;
     display: flex;
     align-items: center;
-    justify-content: center; 
-}
-
-.page-name {
-    position: absolute;
-    margin-left: 70px;
-    top: 0px;
-    /* width: 280px;
-    height: 56px;
-    left: 0px;
-    top: 47px; */
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 48px;
-    line-height: 56px;
-    color: #000000;
+    justify-content: center;
 }
 
 
@@ -77,24 +73,6 @@ html {
     height: 32px;
     background: #D9D9D9;
     border-radius: 12px;
-}
-
-.categories {
-    margin-bottom: 24px;
-    font-family: 'Scada';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 37px;
-    color: #000000;
-}
-
-
-.categories:click,
-.categories:active {
-    font-weight: 700;
-    line-height: 37px;
-    text-decoration-line: underline;
 }
 
 .register {
@@ -120,51 +98,6 @@ html {
     top: 219px;
 }
 
-.search {
-    position: absolute;
-    width: 402px;
-    height: 60px;
-    left: 86px;
-    top: 392px;
-
-    background: #FFFFFF;
-    border-radius: 24px;
-}
-
-.card-container{
-    padding: 0 43px 0 43px;
-}
-.card-img {
-    border-radius: 12px 12px 0px 0px;
-    width: 298px;
-    height: 142px;
-    left: 21px;
-    top: 1px;
-}
-
-.card-name {
-    text-align: center;
-    font-family: 'Scada';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 30px;
-    color: #000000;
-}
-
-.card-name:hover {
-    color: #008B69;
-}
-
-.card-description {
-    font-family: 'Roboto Flex';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    color: #000000;
-}
-
 .type {
     position: absolute;
     width: 402px;
@@ -183,18 +116,19 @@ html {
     color: #BBBBBB;
 }
 
+/* Main */
 
 .nav-scroller {
-    padding: 0px 30px;
+    padding: 0 30px;
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
     height: 2.75rem;
     overflow-y: hidden;
 }
 
 .py-1 {
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
 }
 
 .justify-content-between {
@@ -219,32 +153,138 @@ html {
     list-style: none;
 }
 
+.categories {
+    margin-bottom: 24px;
+    font-family: 'Scada';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 37px;
+    color: #000000;
+}
+
+
+.categories:click {
+    font-weight: 700;
+    line-height: 37px;
+    text-decoration-line: underline;
+}
+
+.all-funds-container {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    height: 996px;
+    left: 0px;
+    top: 618px;
+    background: #EFEFEE;
+}
+
+.card {
+    position: absolute;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    width: 300px;
+    height: 374px;
+}
+
+.card:hover {
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    box-shadow: 4px 4px 20px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+
+.card:hover .card-name {
+    color: #008B69;
+}
+
+
+.card-img {
+    border-radius: 12px 12px 0px 0px;
+    width: 298px;
+    height: 142px;
+    left: 21px;
+    top: 1px;
+}
+
+.card-container {
+    padding: 0 43px 0 43px;
+}
+
+.card-name {
+    text-align: center;
+    font-family: 'Scada';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
+
+
+.card-description {
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+}
+
 .bar {
     position: absolute;
-width: 214px;
-height: 12px;
-left: 43px;
-top: 283px;
-background: #D9D9D9;
-border: 1px solid #252525;
-border-radius: 50px;
+    width: 214px;
+    height: 12px;
+    left: 43px;
+    top: 283px;
+    background: #D9D9D9;
+    border: 1px solid #252525;
+    border-radius: 50px;
+}
+
+.help {
+    position: absolute;
+    width: 134px;
+    height: 36px;
+    left: 83px;
+    top: 318px;
+}
+
+.help:hover {
+    background: #AAAAAA;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px;
+}
+
+.famous {
+    margin: 100px 70px 50px 30px;
+}
+
+
+.row-slider {
+    margin: 0 150px 0 150px;
 }
 
 .column {
     float: left;
     width: 25%;
     padding: 5px;
-  }
-  
-  /* Clear floats after image containers */
-  .row::after {
+}
+
+/* Clear floats after image containers */
+.row::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
+
+/* Footer */
 
 .container {
-    width: 1440px;
+    width: 100%;
     height: 252px;
     left: 0px;
     top: 2176px;
@@ -272,77 +312,6 @@ border-radius: 50px;
 
 ul {
     list-style-type: none;
-}
-
-.mySlides,
-.swiper-wrapper {
-    height: 256px;
-    width: 293px;
-}
-
-.space {
-    margin-bottom: 105px;
-}
-
-.card {
-    position: absolute;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border: 1px solid #BBBBBB;
-    border-radius: 12px;
-    width: 300px;
-    height: 374px;
-}
-
-.card:hover {
-    background: #FFFFFF;
-    /* frame border */
-
-    border: 1px solid #BBBBBB;
-    /* тінь */
-
-    box-shadow: 4px 4px 20px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-}
-
-.help {
-    position: absolute;
-width: 134px;
-height: 36px;
-left: 83px;
-top: 318px;
-}
-
-.help:hover {
-    background: #AAAAAA;
-    border: 1px solid #BBBBBB;
-    border-radius: 5px;
-}
-
-.mySlides {
-    display: none
-}
-
-.w3-left,
-.w3-right,
-.w3-badge {
-    cursor: pointer
-}
-
-.w3-badge {
-    height: 23px;
-    width: 150px;
-    padding: 0
-}
-
-.all-funds-container {
-    margin-top: 24px;
-    margin-bottom: 24px;
-    width: 1440px;
-    height: 996px;
-    left: 0px;
-    top: 618px;
-    background: #EFEFEE;
 }
 
 a {
