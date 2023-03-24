@@ -22,3 +22,12 @@ Content-Type: application/json
   "isSelected": false,
   "type": "TRANSPORT"
 }
+
+### feedback
+POST http://localhost:8080/feedback
+Content-Type: application/json
+
+{
+  "rate": 3,
+  "description": "I had a great experience using this service! The staff was friendly and helpful."
+}

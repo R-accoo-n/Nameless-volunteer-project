@@ -57,7 +57,6 @@ public class FundraisingService {
     private Fundraising mapFundraisingDtoToFundraising(FundraisingDto fundraisingDto) {
         Fundraising fundraising = new Fundraising();
         fundraising.setId(fundraisingDto.getId());
-        //fundraising.setUserId(fundraisingDto.getUserId());
         fundraising.setCardNumber(fundraisingDto.getCardNumber());
         fundraising.setDescription(fundraisingDto.getDescription());
         fundraising.setFundraisingName(fundraisingDto.getFundraisingName());
