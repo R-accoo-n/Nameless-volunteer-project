@@ -6,26 +6,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/fundr.css}">
+    <link rel="stylesheet" th:href="@{/js/fundr.js}">
+    <title>Fundraising</title>
+    <style>
+        .text-request{
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .divs{
+            margin-left: 40px;
+        }
+        .desc_and_photo{
+            margin-left: 20px;
+        }
+        .label{
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
-<main>
-</main>
 <body>
-<div class="form-request">
-    <p>Створити збору:</p>
-    <!--/*@thymesVar id="fundraising" type="com.nameless.volunteerproject.models.Fundraising"*/-->
-    <form method="post" th:object="${fundraisingRequest}" th:action="@{/fundraising/save}">
-    <input class="" th:field="*{fundraisingName}" id="fundraisingName" type="text" placeholder="Назва збору"><br>
-    <input class="" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br><!--підрозділ-->
-    <input class="" th:field="*{sum}" id="sum"  type="text" placeholder="Сума:"><br>
-    <select>
-        <option th:each="choose:${T(com.nameless.volunteerproject.enums.FundraisingType).values()}" th:value="${choose}" th:text="${choose}"></option><br>
-    </select>
-    <br><input class="" th:field="*{cardNumber}" id="cardNumber" type="text" placeholder="Номер карти:"><br>
-    <textarea class="" th:field="*{description}" id="description" placeholder="Опис збору:"></textarea>
-    <input class="" id="" type="image" placeholder="Додайте зображення"><br>
-    <button type="submit" class="end-registration">Створити</button>
-    </form>
+<div class="request">
+    <p class="text-request">Створення збору</p>
+    <div class="field-req" >
+        <!--/*@thymesVar id="fundraising" type="com.nameless.volunteerproject.models.Fundraising"*/-->
+        <form method="post" th:object="${fundraisingRequest}" th:action="@{/fundraising/save}">
+        <ul class="all-data">
+            <div class="divs">
+                <label>Кому:</label>
+                <input class="Data" th:field="*{whom}" id="whom" type="text" placeholder="підрозділ">
+
+                <label>Назва збору:</label>
+                <input class="Data" th:field="*{fundraisingName}" id="fundraisingName" type="text" placeholder="назва"><br>
+            </div>
+            <div class="divs">
+                <label>Потрібна сума:</label>
+                <input class="Data" th:field="*{sum}" id="sum" type="number" placeholder="сума">
+
+                <label>Тип збору:</label>
+                <select th:field="*{socialType}">
+                    <option th:each="choose:${T(com.nameless.volunteerproject.enums.FundraisingType).values()}" th:value="${choose}" th:text="${choose}"></option><br>
+                </select><br>
+            </div>
+            <div class="divs">
+                <label>Номер картки:</label>
+                <input class="Data" th:field="*{cardNumber}" id="cardNumber" type="text" ><br>
+            </div>
+
+            <div class="desc_and_photo">
+                <label class="label">Опис збору:</label>
+                <input th:field="*{description}" id="description"  class="Data2" type="text" >
+            </div>
+            <div class="desc_and_photo">
+                <label class="label" for="myfile">Додайте зображення:</label>
+                <input class="Data2"type="file" id="myfile" name="myfile">
+            </div>
+        </ul>
+            <button class="end" type="submit">Створити збір</button>
+        </form>
+    </div>
+    <div>
+    </div>
 </div>
+<script th:src="@{/js/fundr.js}"></script>
 </body>
 </html>

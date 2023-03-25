@@ -6,6 +6,9 @@ import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
 import java.net.PasswordAuthentication;
 import java.util.Optional;
+
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,8 +67,21 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login()
+    {
+        User user=getPrincipal();
+        if (user!=null){
+            return "authentication";
+        }
         return "login";
+    }
+
+    private User getPrincipal(){
+        User user=null;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User){
+            user=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        return user;
     }
 
     @PostMapping("/login/authorisation")
@@ -73,12 +89,14 @@ public class AuthController {
                             @RequestParam("password") String password,
                             Model model) {
         Optional<User> existingUser = userService.findUserByEmail(email);
+        System.out.println(email);
+        System.out.println(password);
         if(existingUser.isEmpty()){
             throw new UsernameNotFoundException("User with this email doesn't exist");
         }else if(existingUser.get().getPassword() != password){
             throw new UsernameNotFoundException("Wrong password");
         }
-        return "redirect:/login?success";
+        return "redirect:/home";
     }
 
 }

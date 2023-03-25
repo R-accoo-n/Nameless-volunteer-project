@@ -19,14 +19,13 @@
 <body>
     <div class="login">
         <p class="text-login">Вхід</p>
-        <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
         <form method="post" role="form" th:action="@{/login}">
             <div class="field-login" >
                 <ul class="all-data">
                     <input class="Data" type="text" placeholder="Пошта"><br>
                     <input class="Data" type="password" placeholder="Пароль">
                 </ul>
-
+                <div th:if="${param.error}"><p>Email or Password is invalid.</p></div><br />
                 <ul class="countinue">
                     <div>
                         <button class="countinue-button">

@@ -42,6 +42,8 @@ public class User {
 
     private boolean isApproved;
 
+    private boolean isBlocked;
+
     private String photo;
 
     @OneToMany

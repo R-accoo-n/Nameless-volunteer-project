@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="uk">
-
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap"
+        th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css">
     <link rel="stylesheet" href="./css/userpage.css">
-    <title id="Main" role="main">militarypage</title>
+    <title id="Main" role="main">volunteerpage</title>
 </head>
 
 <body class="wrapper">
@@ -35,7 +36,7 @@
             <h2 class="banner-text">Долучайся до підтримки Збройних Сил України</h2>
         </div>
         <!-- Search -->
-        <input type="text" class="type" placeholder="Пошук..">
+        <input type="text" class="type" placeholder="Пошук.." style="padding-inline-start: 10px;">
     </header>
     <!-- Fundraising -->
     <main>
@@ -103,7 +104,7 @@
                     </div>
                 </div>
                 <p class="inscription-description">Ваш опис:</p>
-                <textarea class="your-description" name="" id=""  placeholder="Ваш опис" >11111</textarea>
+                <textarea class="your-description" name="" id=""  placeholder="Ваш опис" value="111"></textarea>
             </div>
 
 <!--ending Editing profile-->
@@ -124,9 +125,9 @@
                         </div>
                     </div>
                 </div>
-
+    
                 <p id="done-fundraising">Завершені збори:</p>
-
+    
                 <div class="categories-container">
                     <div class="card" style="margin-top: 40px;padding-right: 23px;">
                         <img class="card-img">
@@ -140,6 +141,8 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
     </main>
 
