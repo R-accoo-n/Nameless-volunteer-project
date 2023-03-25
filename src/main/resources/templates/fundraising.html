@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/fundraising.css">
+    <link rel="stylesheet" href="./js/fundraising.js">
+    <title>Request</title>
+</head>
+<body>
+    <div class="request">
+        <p class="text-request">Створення збору</p>
+        <div class="field-req" >
+            <ul class="all-data">
+                <div>
+                    <label for="кому">Кому:</label>
+                    <input class="Data" type="text" placeholder="підрозділ">
+
+                    <label for="назва">Назва збору:</label>
+                    <input class="Data" type="text" placeholder="назва"><br>
+                </div>
+                <div>       
+                    <label for="сума">Потрібна сума:</label>
+                    <input class="Data" type="number" placeholder="сума">
+                        
+                    <label for="тип">Тип збору:</label>
+                    <select>
+                        <option value="варіант 1">Авто</option>
+                        <option value="варіант 2">Авто ремонт</option>
+                        <option value="варіант 3">Дрони</option>
+                        <option value="варіант 4">Гуманітарка</option>
+                    </select><br>
+                </div>
+                <div>      
+                    <label for="картка">Номер картки:</label>
+                    <input class="Data" type="password" ><br>
+                </div>    
+                  
+                <div>
+                    <label for="опис">Опис збору:</label> 
+                    <input class="Data2" type="text" >
+                </div>
+                <div>
+                    <label for="myfile">Додайте зображення:</label>
+                    <input class="Data2"type="file" id="myfile" name="myfile">
+                </div>
+                
+                
+            </ul>
+            
+        </div>
+        
+        
+        <div> 
+            <button class="end">Створити збір</button>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+</html>
