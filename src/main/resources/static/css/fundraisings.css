@@ -1,0 +1,169 @@
+:root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:#6AA5FF;
+    --some-color: black;
+    --login-padding: 70px;
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+    background-color: #EFEFEE; 
+      
+}
+
+ul{
+    padding-inline-start: 0;
+    margin: 0;
+    
+}
+
+.field-req{
+    display: flex;
+}
+
+
+
+.all{
+    display: flex;
+    margin: 0px 30px;
+}
+
+.all-data{
+    margin: 0px 30px;
+    
+}
+
+.role-div, .row-data{
+    display: flex;
+}
+
+.request{
+    background-color: var(--main-color);
+    width: 700px;
+    height: 1000px;
+    margin: 100px auto;
+    padding: var(--request-padding);
+    border: 2px solid var(--second-color);
+    border-radius: 12px;
+    
+}
+
+
+
+.text-request{
+    text-align: center;
+    margin: 10px;
+    font-size: 32px;
+    font-weight: 500;
+    
+}
+
+.Data {
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 184px;
+    height: 30px;
+    margin: 20px;
+}
+.Data2 {
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 600px;
+    height: 200px;
+    margin: 20px;
+    
+}
+    
+.Data2{
+    padding-inline-start: 10px ;
+}
+    
+
+.Data{
+    padding-inline-start: 10px;
+}
+
+
+
+.end{
+    background-color: var(--third-color);
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 240px;
+    height: 50px;
+    margin: 30px 140px;
+    color: var( --main-color);
+    font-size: 20px;
+    font-weight: 600;
+    display: block; 
+    margin: 0 auto;
+    
+    
+   
+}
+
+
+/* .svg{
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+
+} */
+
+
+
+
+/* :root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:rgb(187, 142, 229);
+    --some-color: black;
+    --login-padding: 70px;
+}
+.request {
+    background-color: var(--main-color);
+    width: 700px;
+    height: 1000px;
+    margin: 100px auto;
+    padding: var(--registration-padding);
+    border: 2px solid var(--second-color);
+    border-radius: 12px;
+  }
+  
+  
+   .text-request {
+    text-align: center;
+    margin: 10px;
+    font-size: 32px;
+    font-weight: 500;
+    font: scada;
+  }
+  
+ 
+  .all{
+    display: flex;
+    margin: 0px 30px;
+}
+
+.all-data{
+    margin: 0px 30px;
+}
+
+.role-div, .row-data{
+    display: flex;
+}
+  
+   .end {
+    background-color: var(--third-color);
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 240px;
+    height: 70px;
+    margin: 30px 140px;
+    color: var( --main-color);
+    font-size: 20px;
+    font-weight: 600;
+  }  
+   */
