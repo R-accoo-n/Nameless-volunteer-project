@@ -11,11 +11,6 @@ import java.nio.file.Paths;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer{
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
-    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry

@@ -5,5 +5,9 @@ package com.nameless.volunteerproject.enums;
  */
 
 public enum UserRole {
-    VOLUNTEER, MILITARY, ADMINISTRATOR, USER
+    VOLUNTEER("VOLUNTEER"), MILITARY("MILITARY"), ADMINISTRATOR("ADMINISTRATOR"), USER("USER");
+    private final String value;
+    UserRole(String value) {
+        this.value=value;
+    }
 }
