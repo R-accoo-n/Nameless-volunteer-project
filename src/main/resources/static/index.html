@@ -4,163 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="./js/mainJS.js" defer></script>
     <link rel="stylesheet" href="./css/style.css">
     <title id="Main" role="main">Main page</title>
 </head>
 
-<body class="wrapper">
-    <!-- Header -->
-    <header id="header-container" >
-        <img src="./images/hj-tjmsteo4 1.png" id="header-img">
-        <p class="page-name">Volunteer.ua</p>
-        <nav class="row">
-            <!-- <p class="page-name">Volunteer.ua</p> -->
-            <a href="/main/" class="top-page">Головна</a>
-            <a href="/urgent/" class="top-page">Термінові збори</a>
-            <a href="/fundraising/" class="top-page" style="margin-right: 118px;">Звіти</a>
-            <button class="enter" role="button"><a href="/enter">Вхід</a></button>
-            <button class="register" role="button"><a href="/registration">Реєстрація</a></button>
-        </nav>
-
-        <div>
-            <h2 class="banner-text">Долучайся до підтримки Збройних Сил України</h2>
-        </div>
-        <!-- Search -->
-        <input type="text" class="type" placeholder="Пошук..">
-    </header>
-    <!-- Fundraising -->
-    <main>
-        <div class="nav-scroller py-1 mb-2" style="margin-top: 24px;">
-            <nav class="categories nav d-flex justify-content-between">
-                <a href="#">УСІ ЗБОРИ</a>
-                <a href="#">ЛІКИ</a>
-                <a href="#">АВТО</a>
-                <a href="#">ДРОНИ</a>
-                <a href="#">АМУНІЦІЯ</a>
-                <a href="#">ЗВ'ЯЗОК</a>
-                <a href="#">ЖИВЛЕННЯ</a>
-                <a href="#">ІНВЕНТАР</a>
-            </nav>
-        </div>
-
-        <!--  Cards  -->
-        <div class="all-funds-container">
-            <div class="categories-container">
-                <div class="card" style="margin-top: 40px;padding-right: 23px;margin-left: 86px;">
-                    <img class="card-img">
-                    <div class="card-container">
-                        <p class="card-name"> щось</p>
-                        <p clas="card-description">про щось </p>
-                        <p class="percentage"></p>
-                        <progress id="file" value="" max="100" class="bar" >  </progress>
-                        <button class="help" >ДОПОМОГТИ</button>
-                    </div>
+<body>
+    <div class="wrapper" style="font-family: 'Raleway';">
+        <header class="header">
+            <div class="header-container">
+                <span class="header-logo">Volunteer.ua</span>
+                <nav class="header-menu menu">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Головна</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Термінові збори</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Звіти</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-signup">
+                    <button class="menu-button" role="button"><a href="/enter">Вхід</a></button>
+                    <button class="menu-button" role="button"><a href="/registration">Реєстрація</a></button>
                 </div>
             </div>
-            <div class="funds-container"></div>
-        </div>
-        <!-- Fonds -->
-        <div class="space">
-            <h2 class="famous">Найвідоміші благодійні фонди України:</h2>
-        </div>
-        <div class="row-slider" style="text-align: center;">
-            <div class="column"   >
-              <a href="https://savelife.in.ua/"><img  src="./images/Повернисьживим.png" alt="Повернись живим" style="height: 200px; width: 200px;"></a>
+            <span>
+                <h2 class="header-banner-text">Долучайся до підтримки Збройних Сил України</h2>
+            </span>
+            <input type="text" class="type" placeholder="Пошук..">
+        </header>
+
+
+        <!-- Main -->
+        <main class="page">
+            <div>
+                <div class="main-block-top">
+                </div>
+                <div class="main-block-categories-container">
+                    <nav class="main-block-categories">
+                        <a href="">УСІ ЗБОРИ</a>
+                        <a href="">ЛІКИ</a>
+                        <a href="">АВТО</a>
+                        <a href="">ДРОНИ</a>
+                        <a href="">АМУНІЦІЯ</a>
+                        <a href="">ЗВ'ЯЗОК</a>
+                        <a href="">ЖИВЛЕННЯ</a>
+                        <a href="">ІНВЕНТАР</a>
+                    </nav>
+                </div>
+                <div class="main-block-funds">
+                    <div class="main-block-funds-container">
+                        <div class="row-3 justify-content-between">
+                            <div class="col-2">
+                                <div class="card">
+                                    <img class="card-img">
+                                    <div class="card-container">
+                                        <p class="card-name"> щось</p>
+                                        <p clas="card-description">про щось </p>
+                                        <progress id="file" value="" max="100" class="bar"> </progress>
+                                        <button class="help">ДОПОМОГТИ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <div class="carousel">
+                        <img src="images/армія.jpeg" alt="img" draggable="false">
+                        <img src="images/госп.jpeg" alt="img" draggable="false">
+                        <img src="images/коло.png" alt="img" draggable="false">
+                        <img src="images/Повернисьживим.png" alt="img" draggable="false">
+                        <img src="images/drones.png" alt="img" draggable="false">
+                        <img src="images/зграя2.png" alt="img" draggable="false">
+                        <img src="images/kse.jpeg" alt="img" draggable="false">
+                        <img src="images/Razom.png" alt="img" draggable="false">
+                        <img src="images/u.png" alt="img" draggable="false">
+                        <img src="images/SergPr.png" alt="img" draggable="false">
+                        <img src="images/км.png" alt="img" draggable="false">
+                    </div>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
+                </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-social-media">
+                    <h5>Соціальні мережі: </h5>
+                    <div class="footer-images">
+                        <img class="image" src="./images/facebook_icon.svg">
+                        <img class="image" src="./images/instagram-2016-5.svg">
+                        <img class="image" src="./images/telegram-1.svg">
+                    </div>
+                </div>
+
+                <nav class="footer-contacts">
+                    <div>
+                        <span>Телефон:</span>
+                        <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+                    </div>
+                    <div>
+                        <span>Email:</span>
+                        <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
+                    </div>
+                </nav>
+
+                <div>
+                    <nav class="footer-menu">
+                        <a href="">Політика приватності</a>
+                        <a href="">Надіслати відгук</a>
+                        <a href="">Служба підтримки</a>
+                        <a href="">Співпраця</a>
+                    </nav>
+                </div>
             </div>
-            <div class="column">
-              <a href="https://u24.gov.ua/uk"><img src="./images/u.png" alt="Юнайтед24" style="height: 200px; width: 200px;"></a>
-            </div>
-            <div class="column">
-              <a href="https://www.razomforukraine.org/ua/homeua/"><img src="./images/Razom.png" alt="Разом" style="height: 200px; width: 200px;"></a>
-            </div>
-            <div class="column">
-                <a href="https://prytulafoundation.org/"><img src="./images/SergPr.png" alt="Фонд Сергія Притули" style="height: 200px; width: 200px;"></a>
-            </div>
-          </div>
-    </main>
-    <footer class=" container row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
-        style="font-family: Raleway;font-weight: 500; font-size: 20px;">
-
-        <div style="margin: 72px 200px 71px 60px;">
-            <h5 style="font-family: Raleway;font-weight: 500; font-size: 20px">Соціальні мережі: </h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><img src="./images/facebook-3-2.svg" width="25px" height="25px"
-                        style="margin-right: 56px;"></li>
-                <li class="nav-item mb-2"><img src="./images/instagram-2016-5.svg" width="25px" height="25px"
-                        style="margin-right: 56px;"></li>
-                <li class="nav-item mb-2"><img src="./images/telegram-1.svg" width="25px" height="25px"></li>
-            </ul>
-        </div>
-
-        <div style="margin: 72px 0 80px 0;">
-            <ul>
-                <li class="contacts-container" style="margin-right: 228px;">
-                    <span class="phone-word">Телефон:</span>
-                    <a href="tel: +380888888888" class="contacts-number"
-                        style="font-family: Roboto; font-weight: 500;">+380888888888</a>
-                </li>
-                <li class="contacts-container">
-                    <span>Email:</span>
-                    <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
-                </li>
-            </ul>
-        </div>
-
-        <div>
-            <div style="margin-right: 239px;">
-                <ul>
-                    <li>
-                        <a href="#Privacy-policy">Політика приватності</a>
-                    </li>
-                    <li>
-                        <a href="#Send-reviews">Надіслати відгук</a>
-                    </li>
-                    <li>
-                        <a href="#Support">Служба підтримки</a>
-                    </li>
-                    <li>
-                        <a href="#Cooperation">Співпраця</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-    <script>
-        // var slideIndex = 1;
-        // showDivs(slideIndex);
-
-        // function plusDivs(n) {
-        //     showDivs(slideIndex += n);
-        // }
-
-        // function currentDiv(n) {
-        //     showDivs(slideIndex = n);
-        // }
-
-        // function showDivs(n) {
-        //     var i;
-        //     var x = document.getElementsByClassName("mySlides");
-        //     var dots = document.getElementsByClassName("demo");
-        //     if (n > x.length) { slideIndex = 1 }
-        //     if (n < 1) { slideIndex = x.length }
-        //     for (i = 0; i < x.length; i++) {
-        //         x[i].style.display = "none";
-        //     }
-        //     for (i = 0; i < dots.length; i++) {
-        //         dots[i].className = dots[i].className.replace(" w3-white", "");
-        //     }
-        //     x[slideIndex - 1].style.display = "block";
-        //     dots[slideIndex - 1].className += " w3-white";
-        // }
-    </script>
+        </footer>
+    </div>
 </body>
 
 </html>
