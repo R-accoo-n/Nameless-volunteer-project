@@ -1,27 +1,20 @@
 package com.nameless.volunteerproject.controllers;
 
+import com.nameless.volunteerproject.configuration.ApiResponse;
+import com.nameless.volunteerproject.dto.LoginDto;
 import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.enums.UserRole;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
-import java.net.PasswordAuthentication;
-import java.util.Optional;
 
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -38,12 +31,6 @@ public class AuthController {
     public String registrationForm(Model model){
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        List<UserRole> roles =
-                new ArrayList<UserRole>(EnumSet.allOf(UserRole.class));
-        for (UserRole role:roles) {
-            System.out.println(role);
-        }
-        model.addAttribute("roles", roles);
         return "registration";
     }
 
@@ -66,37 +53,61 @@ public class AuthController {
         return "redirect:/register?success";
     }
 
+//    @GetMapping("/login")
+//    public String login()
+//    {
+//        User user=getPrincipal();
+//        if (user!=null){
+//            return "authentication";
+//        }
+//        return "login";
+//    }
+//
+//    private User getPrincipal(){
+//        User user=null;
+//        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User){
+//            user=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        }
+//        return user;
+//    }
+//
+//    @PostMapping("/login/authorisation")
+//    public String userLogin(@RequestParam("email") String email,
+//                            @RequestParam("password") String password,
+//                            Model model) {
+//        Optional<User> existingUser = userService.findUserByEmail(email);
+//        System.out.println(email);
+//        System.out.println(password);
+//        if(existingUser.isEmpty()){
+//            throw new UsernameNotFoundException("User with this email doesn't exist");
+//        }else if(existingUser.get().getPassword() != password){
+//            throw new UsernameNotFoundException("Wrong password");
+//        }
+//        return "redirect:/home";
+//    }
+
     @GetMapping("/login")
-    public String login()
-    {
-        User user=getPrincipal();
-        if (user!=null){
-            return "authentication";
-        }
+    public String login(Model model){
+        LoginDto user = new LoginDto();
+        model.addAttribute("loginUser", user);
         return "login";
     }
 
-    private User getPrincipal(){
-        User user=null;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User){
-            user=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    @PostMapping("/login/in")
+    public String loginPost(@Valid @ModelAttribute("loginUser") LoginDto loginDto, Model model){
+        boolean userValue=userService.login(loginDto, model);
+        User user= (User) model.getAttribute("user");
+        System.out.println("ouruser "+user);
+        System.out.println(userValue);
+        if (userValue==true) {
+            if(user.getRole().name().equals("USER")){
+
+            }
+            return "redirect:/home";
+        }else{
+            return "redirect:/register";
         }
-        return user;
     }
 
-    @PostMapping("/login/authorisation")
-    public String userLogin(@RequestParam("email") String email,
-                            @RequestParam("password") String password,
-                            Model model) {
-        Optional<User> existingUser = userService.findUserByEmail(email);
-        System.out.println(email);
-        System.out.println(password);
-        if(existingUser.isEmpty()){
-            throw new UsernameNotFoundException("User with this email doesn't exist");
-        }else if(existingUser.get().getPassword() != password){
-            throw new UsernameNotFoundException("Wrong password");
-        }
-        return "redirect:/home";
-    }
 
 }

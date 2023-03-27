@@ -14,4 +14,9 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/military/home")
+    public String militaryHome(){
+        return "militaryHome";
+    }
+
 }
