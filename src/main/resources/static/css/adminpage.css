@@ -5,11 +5,23 @@
     --some-color: black;
     --registration-padding: 70px;
 }
+.all-data-about-admin {
+    /*position: relative;*/
+    background-color: #EFEFEE;
+}
+.main-block-top {
+    display: flex;
+    min-height: 150px;
+    max-height: 150px;
+    background-image: url("../images/slimheader.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: local;
+}
 .wrpper-for-all {
-    margin-top: 24px;
-    width: 1440px;
-    left: 0px;
-    top: 618px;
+    /*width: 1440px;*/
+    /*left: 0px;
+    top: 618px;*/
     background: #EFEFEE;
     padding: 100px;
     padding-top: 0px;
@@ -23,15 +35,19 @@ table{
 }
 thead{
     background-color: var(--second-color);
+    height: 70px;
 }
 
 td, th {
     text-align: left;
     padding: 5px;
-    width: 250px;
+    width: 350px;
     font-size: 16px;
     border-bottom: 1px solid #ddd;
 
+}
+th {
+    font-size: 20px;
 }
 tr{
     height: 20px;
@@ -40,7 +56,12 @@ tr{
 tbody tr:hover {
     background-color: rgb(202, 202, 202);
 }
-
+#wrapper-for-table{
+    position: relative;
+    max-width: 1800px;
+    margin: 0px auto;
+    padding: 23px;
+}
 
 
 #button-confirmation-yes, #button-confirmation-no{
@@ -55,6 +76,7 @@ tbody tr:hover {
 }
 #button-confirmation-yes{
     background-color: rgba(146, 214, 44, 0.185);
+    margin-right: 10px;
 }
 #button-confirmation-no{
     background-color: rgba(255, 0, 0, 0.199);
@@ -72,6 +94,7 @@ tbody tr:hover {
 
 .inscription-data{
     width: 150px;
+    
 }
 .inscription-data, .data-about-admin{
     margin: 0px;
@@ -80,21 +103,33 @@ tbody tr:hover {
 }
 
 .inscription{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
-
+    margin: 20px 5px;
 }
 #div-for-button-yesno{
     display: flex;
 }
 #button-more{
+    position: absolute;
     border-radius: 12px;
     font-size: 20px;
     font-weight: 600;
     height: 40px;
     width: 180px;
     margin: 10px;
-    margin-left: 1050px;
     color: var(--main-color);
     background-color: var(--third-color);
+    right: 20px;
+}
+
+#user-icon{
+    height: 60px;
+    width: 60px;
+}
+#button-user{
+    height: 60px;
+    width: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 30px;
 }

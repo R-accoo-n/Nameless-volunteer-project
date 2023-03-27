@@ -18,6 +18,17 @@ li{
     display: flex;
     margin: 10px;
 }
+
+.main-block-top {
+    display: flex;
+    min-height: 150px;
+    max-height: 150px;
+    background-image: url("../images/slimheader.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: local;
+}
+
 #data-about-user, #edit-data-about-user{
     padding: 50px;
 
@@ -25,19 +36,26 @@ li{
 #ul-data-about-user{
     width: 500px;
 }
-
+.wrpper-for-all {
+    /*left: 0px;
+    top: 618px;*/
+    background: #EFEFEE;
+    padding: 100px;
+    padding-top: 0px;
+}
 .all-data-in-main {
-    /*margin-top: 24px;*/
     padding: 20px;
-    width: 1440px;
-    left: 0px;
-    top: 618px;
+    max-width: 1800px;
     background: #EFEFEE;
     justify-content: center;
     align-items: center;
     padding-bottom: 200px;
+    margin: 0px auto;
 }
 
+#edit-data-about-user{
+    display: none;
+}
 
 .li-data-about-user{
     height: 30px;
@@ -48,8 +66,10 @@ li{
 .ul-data{
 }
 .wrapper-data{
+    min-width: 1200px;
     display: flex;
     position: relative;
+    margin-right: 200px;
 }
 #edit-foto{
     background-color: transparent;
@@ -100,6 +120,7 @@ li{
     position: absolute;
     height: 40px;
     width: 40px;
+    border: 2px solid black;
     border-radius: 12px;
     padding: 0px;
     margin: 0px;
@@ -151,12 +172,11 @@ li{
 }
 
 
-#create-fundraising{
+#create-fundraising, #create-request{
     height: 50px;
     width: 500px;
     border-radius: 12px;
-    display: flex;
-    margin: 0px auto;
+    margin: 0px 20px;
     justify-content: center;
     align-items: center;
     background-color: var(--third-color);
@@ -165,22 +185,32 @@ li{
     font-weight: 600;
 }
 
-#active-fundraising, #done-fundraising, .inscription-description{
+#active-fundraising, #done-fundraising,#fundraising-where-you-donate,#fundraising-what-you-liked, .inscription-description{
     font-size: 20px;
     font-weight: 600;
+    margin: 20px;
+    padding-inline-start: 30px;
 
 }
 .inscription-description{
-    padding-inline-start: 150px;
+    padding-inline-start: 0px;
+    margin-left: 0px;
 }
 .your-description{
     display: block;
+    width: 1300px;
     min-width: 1000px;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 0px auto;
     border-radius: 12px;
     min-height: 76px;
-    padding: 0px 5px;
+    padding: 10px;
+}
+.div-for-description{
+    margin-left: 150px;
+    width: 1300px;
+    min-width: 1000px;
+    max-width: 1300px;
 }
 #social-Networks-list{
     /*max-height: 136px;*/
@@ -188,4 +218,23 @@ li{
 
 .container-for-fundraising{
     padding: 0px 200px;
+}
+
+.container-for-cart-in-user{
+    padding: 30px;
+}
+.main-block-funds{
+    margin: 0px;
+    padding: 0px 23px;
+    height: 100%;
+}
+.main-block-funds-container{
+    margin: 0px;
+    padding: 0px 23px;
+}
+#div-for-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 150px;
 }

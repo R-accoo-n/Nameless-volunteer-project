@@ -229,3 +229,221 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="./js/mainJS.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/userpage.css">
+    <title id="Main" role="main">@militarypage</title>
+</head>
+
+<body>
+    <div class="wrapper" style="font-family: 'Raleway';">
+        <header class="header">
+            <div class="header-container">
+                <span class="header-logo">Volunteer.ua</span>
+                <nav class="header-menu menu">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Головна</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Мої запити</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Звіти</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Волонтери</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-signup">
+                    <button class="menu-button" role="button"><a href="#">Вихід</a></button>
+                </div>
+            </div>
+        </header>
+
+
+<!-- Main -->
+        <main class="page">
+            <div >
+                <div class="main-block-top">
+            </div>
+
+            <div class="wrpper-for-all">
+                
+                <div class="all-data-in-main">
+                
+                
+                    <div id="data-about-user">
+                        <div class="wrapper-data">
+                            <button id="edit-button" ><img src="./images/326602_create_edit_pencil_write_icon.svg" width="20px" height="20px" alt="icon"></button>
+                            <div class="avatar">
+                                <img class="avatar-foto" src="#" alt="avatar">
+                            </div>
+                            <div class="ul-data-about-user">
+                                <ul class="ul-data">
+                                    <li class="li-data-about-user"><span class="initialization">nickname:</span><span class="init-from-database" id="nickname">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" id="secondName">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім*я:</span><span class="init-from-database" id="firstName">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" id="phoneNumber">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" id="mail">111</span></li>
+                                    <li><ul id="social-Networks-list" >
+                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" src="./images/telegram-1.svg" width="30px" height="30px" alt="icon"></a></li>
+                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" src="./images/telegram-1.svg" width="30px" height="30px" alt="icon"></a></li>
+                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" src="./images/telegram-1.svg" width="30px" height="30px" alt="icon"></a></li>
+                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" src="./images/telegram-1.svg" width="30px" height="30px" alt="icon"></a></li>
+                                    </ul></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="div-for-description">
+                            <p class="inscription-description">Ваш опис:</p>
+                            <p class="your-description">з БД</p>
+                        </div>
+                    </div>
+                
+<!--Editing profile-->
+                
+                    <div id="edit-data-about-user">
+                        <div class="wrapper-data">
+                            <button id="end-edit-button"><img src="./images/326572_check_icon.svg" width="20px" height="20px" alt="icon"></button>
+                            <div class="avatar">
+                                <img class="avatar-foto" src="#" alt="avatar">
+                                <button id="edit-foto" >Редагувати фото</button>
+                            </div>
+                            <div class="ul-data-about-user">
+                                <ul class="ul-data" >
+                                    <li class="li-data-about-user"><span class="initialization">nickname:</span><input class="edit-Database" type="text" value="111"></li> <!--value витягуватиметься з БД-->
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім*я:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li><ul id="social-Networks-list" style="list-style: none;display: flex; flex-direction: column;">
+                                        <div id="container-for-socials">
+                                            <div class="item-add-socials">
+                                                <select class="item-socials" id="Social-Networks" name="Social-Networks">
+                                                    <option value="Twitter">Twitter</option>
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Telegram">Telegram</option>
+                                                    <option value="Instagram">Instagram</option>
+                                                  </select>
+                                                <input class="one-Of-The-Social-Networks" type="text" placeholder="Посилання на соціальну мережу">
+                                                <button class="add-another-social-network" >+</button>
+                                            </div>
+                                        </div>
+                                    </ul></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="div-for-description">
+                            <p class="inscription-description">Ваш опис:</p>
+                            <textarea class="your-description" name="" id=""  placeholder="Ваш опис" value="111"></textarea>
+                        </div>
+                    </div>
+                
+<!--ending Editing profile-->
+                    <div id="div-for-buttons">
+                        <button id="create-fundraising">Створити збір</button>
+                        <button id="create-request">Створити запит</button>
+                    </div>
+                    <div class="container-for-cart-in-user">
+                        <p id="fundraising-what-you-liked">Активні збори(за вашоЇ портеби чи створені вами):</p>
+                        
+                        <div class="main-block-funds">
+                            <div class="main-block-funds-container">
+                                <div class="row-3 justify-content-between">
+                                    <div class="col-2">
+                                        <div class="card">
+                                            <img class="card-img">
+                                            <div class="card-container">
+                                                <p class="card-name"> щось</p>
+                                                <p clas="card-description">про щось </p>
+                                                <progress id="file" value="" max="100" class="bar"> </progress>
+                                                <button class="help">ДОПОМОГТИ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-for-cart-in-user">
+                        <p id="fundraising-where-you-donate">Завершені збори(за вашоЇ портеби чи створені вами):</p>
+                        
+                        <div class="main-block-funds">
+                            <div class="main-block-funds-container">
+                                <div class="row-3 justify-content-between">
+                                    <div class="col-2">
+                                        <div class="card">
+                                            <img class="card-img">
+                                            <div class="card-container">
+                                                <p class="card-name"> щось</p>
+                                                <p clas="card-description">про щось </p>
+                                                <progress id="file" value="" max="100" class="bar"> </progress>
+                                                <button class="help">ДОПОМОГТИ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-social-media">
+                    <h5>Соціальні мережі: </h5>
+                    <div class="footer-images">
+                        <img class="image" src="./images/facebook_icon.svg">
+                        <img class="image" src="./images/instagram-2016-5.svg">
+                        <img class="image"src="./images/telegram-1.svg">
+                    </div>
+                </div>
+
+                <nav class="footer-contacts">
+                    <div>
+                        <span>Телефон:</span>
+                        <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+                    </div>
+                    <div>
+                        <span>Email:</span>
+                        <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
+                    </div>
+                </nav>
+
+                <div>
+                    <nav class="footer-menu">
+                        <a href="">Політика приватності</a>
+                        <a href="">Надіслати відгук</a>
+                        <a href="">Служба підтримки</a>
+                        <a href="">Співпраця</a>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+        <script src="./js/volunteerpage.js"></script>
+    </div>
+</body>
+
+</html>
