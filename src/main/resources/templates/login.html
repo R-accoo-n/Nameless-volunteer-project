@@ -19,13 +19,14 @@
 <body>
     <div class="login">
         <p class="text-login">Вхід</p>
-        <form method="post" role="form" th:action="@{/login}">
+        <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
+        <form method="post" role="form" th:object="${loginUser}" th:action="@{/login/in}">
             <div class="field-login" >
                 <ul class="all-data">
-                    <input class="Data" type="text" placeholder="Пошта"><br>
-                    <input class="Data" type="password" placeholder="Пароль">
+                    <input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"><br>
+                    <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
                 </ul>
-                <div th:if="${param.error}"><p>Email or Password is invalid.</p></div><br />
+<!--                <div th:if="${param.error}"><p>Email or Password is invalid.</p></div><br />-->
                 <ul class="countinue">
                     <div>
                         <button class="countinue-button">
@@ -47,22 +48,22 @@
                 </ul>
             </div>
             <div>
-                <button class="end-login">Увійти</button>
+                <button type="submit" class="end-login">Увійти</button>
             </div>
         </form>
         </div>
-        <script>
-            // Get HTML elements
-            const emailInput = document.querySelector('input[type="text"]');
-            const passwordInput = document.querySelector('input[type="password"]');
-            const loginButton = document.querySelector('.end-login');
+<!--        <script>-->
+<!--            // Get HTML elements-->
+<!--            const emailInput = document.querySelector('input[type="text"]');-->
+<!--            const passwordInput = document.querySelector('input[type="password"]');-->
+<!--            const loginButton = document.querySelector('.end-login');-->
 
-            // Add event listener to login button
-            loginButton.addEventListener('click', () => {
-                // Get user input
-                const email = emailInput.value;
-                const password = passwordInput.value;
-            });
-        </script>
+<!--            // Add event listener to login button-->
+<!--            loginButton.addEventListener('click', () => {-->
+<!--                // Get user input-->
+<!--                const email = emailInput.value;-->
+<!--                const password = passwordInput.value;-->
+<!--            });-->
+<!--        </script>-->
     </body>
     </html>
