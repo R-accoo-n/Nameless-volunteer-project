@@ -19,16 +19,10 @@
                 <ul class="all">
                     <ul class="role">
                         <div class="role-div">
-                            <select th:field="*{role}">
+                            <select th:field="*{role}" id="selectBox">
                                 <option th:field="*{role}" th:each="choose:${T(com.nameless.volunteerproject.enums.UserRolesForHtml).values()}" th:id="${choose}" th:value="${choose}" th:text="${choose}"></option><br>
                             </select>
                         </div>
-<!--                        <div class="role-div">-->
-<!--                            <option class= "role-button" id="${T(com.nameless.volunteerproject.enums.UserRolesForHtml).VOLUNTEER}" th:field="*{role}" th:value="${T(com.nameless.volunteerproject.enums.UserRolesForHtml).VOLUNTEER}" name="VOLUNTEER" >Волонтер</option>-->
-<!--                        </div>-->
-<!--                        <div class="role-div" >-->
-<!--                            <option class="role-button" id="show-for-military" name="show-for-military">Військовий</option>-->
-<!--                        </div>-->
                     </ul>
                     <ul class="countinue">
                         <button class="countinue-button">
@@ -72,6 +66,7 @@
         const hidden = document.getElementById("hidden");
         const hiddenForVolunteer = document.getElementById("hiddenForVolunteer");
         const hiddenForMilitary = document.getElementById("hiddenForMilitary");
+
 
 
         showFields.addEventListener("click", function() {

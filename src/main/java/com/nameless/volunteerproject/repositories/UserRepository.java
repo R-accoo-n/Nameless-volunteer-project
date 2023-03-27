@@ -14,13 +14,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-//    List<User> findByRole(UserRole role);
-//
     Optional<User> findByEmail(String email);
+
+    Optional<User>findUserByEmailAndPassword(String email, String password);
+
+    User findByEmailAndPassword(String email, String password);
 
     User findByName(String username);
 
-
-//
-//    Optional<User> findById(UUID id);
 }
