@@ -93,19 +93,33 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/waiting")
+    public String waiting(Model model){
+        User user= (User) model.getAttribute("user");
+        return "waiting";
+    }
+
     @PostMapping("/login/in")
     public String loginPost(@Valid @ModelAttribute("loginUser") LoginDto loginDto, Model model){
         boolean userValue=userService.login(loginDto, model);
         User user= (User) model.getAttribute("user");
         System.out.println("ouruser "+user);
         System.out.println(userValue);
+        System.out.println(user.getRole().name().equals("MILITARY"));
         if (userValue==true) {
-            if(user.getRole().name().equals("USER")){
-
+            if(user.getRole().name().equals("MILITARY")&&user.isApproved()){
+                return "redirect:/military/home";
+            }else if (user.getRole().name().equals("VOLUNTEER")&&user.isApproved()){
+                return "redirect:/volunteer/home";
             }
-            return "redirect:/home";
+            else if((user.getRole().name().equals("MILITARY")&&!user.isApproved())||user.getRole().name().equals("VOLUNTEER")&&!user.isApproved()){
+                return "redirect:/waiting";
+            }
+            else{
+                return "redirect:/user/home";
+            }
         }else{
-            return "redirect:/register";
+            return "redirect:/login";
         }
     }
 

@@ -16,4 +16,16 @@ public class PersonalController {
     public String userPage(){
         return "userPersonalPage";
     }
+
+    @GetMapping("/military")
+    public String militaryPage(){
+        return "militaryPersonalPage";
+    }
+
+    @GetMapping("/volunteer")
+    public String volunteerPage(){
+        return "volunteerPersonalPage";
+    }
+
+
 }

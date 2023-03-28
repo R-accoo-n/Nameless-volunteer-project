@@ -1,0 +1,89 @@
+:root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:rgb(187, 142, 229);
+    --some-color: black;
+    --registration-padding: 70px;
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    padding-inline-start: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+textarea{
+    /*overflow: hidden;*/
+}
+.prob{
+    background-color: var(--main-color);
+    width: 500px;
+    margin: 100px auto;
+    padding: var(--registration-padding);
+    border: 2px solid var(--second-color);
+    border-radius: 12px;
+    box-shadow: 0px 0px 13px 5px rgba(0,0,0,0.13);
+}
+
+
+.text-create-res{
+    text-align: center;
+    margin: 10px;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.all-characteristics-of-the-problem{
+    margin: 0px 30px;
+}
+.sup-textarea{
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 184px;
+    height: 20px;
+    margin: 10px;
+    padding-inline-start: 10px;
+}
+.sup-textarea{
+    padding: 5px 10px;
+    min-width: 398px;
+    max-width: 398px;
+    min-height: 80px;
+}
+.button-send{
+    background-color: var(--third-color);
+    border: 1px solid var(--second-color);
+    border-radius: 12px;
+    width: 240px;
+    height: 40px;
+    margin: 30px 140px;
+    color: var(--main-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+.score{
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+.text-your-score, .inscription-your-res-important, .inscription-thank-you{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin: 5px;
+}
+.select-problem{
+    border-radius: 12px;
+    margin: 10px;
+    width: 198px;
+    height: 30px;
+}
