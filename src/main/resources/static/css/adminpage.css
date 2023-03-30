@@ -133,3 +133,20 @@ tbody tr:hover {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 30px;
 }
+
+
+
+
+#type-search{
+    width: 402px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    /*color: #BBBBBB;*/
+    margin-bottom: 25px;
+    padding-inline-start: 20px;
+}
