@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/support.css">
+    <link rel="stylesheet" th:href="@{/css/support.css}">
     <title>Document</title>
 </head>
 <body>
     <div class="prob">
         <p class="text-create-res">Виникла проблема?</p>
-        
+        <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.SupportTicket"*/-->
+        <form method="post" th:object="${supportRequest}" enctype="multipart/form-data" th:action="@{/support/save}">
         <div class="all-characteristics-of-the-problem" >
-            <select class="select-problem">
+            <select class="select-problem" th:field="*{problemType}">
                 <option disabled selected>Тип проблеми</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
+                <option th:value="1111">1111111</option>
+                <option th:value="2222" value="">1111111</option>
             </select>
-            <select class="select-problem">
+            <select class="select-problem" th:field="*{problemSubtype}">
                 <option disabled selected>Підтип проблеми</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
-                <option value="">1111111</option>
+                <option th:value="sub1">1111111</option>
+                <option th:value="sub2">1111111</option>
             </select>
-            <textarea class="sup-textarea textarea" placeholder="Опис проблеми"></textarea>
+            <textarea class="sup-textarea textarea" th:field="*{description}" placeholder="Опис проблеми"></textarea>
         </div>
-        <button class="button-send">Відправити</button>
+        <button type="submit" class="button-send">Відправити</button>
+        </form>
     </div>
-    <script src="./js/textareafix.js"></script>
+    <script th:src="@{/js/textareafix.js}"></script>
     
 </body>
 </html>

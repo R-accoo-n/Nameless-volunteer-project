@@ -14,9 +14,18 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/user/home")
+    public String userHome(){
+        return "userHome";
+    }
+
     @GetMapping("/military/home")
     public String militaryHome(){
         return "militaryHome";
     }
 
+    @GetMapping("/volunteer/home")
+    public String volunteerHome(){
+        return "volunteerHome";
+    }
 }

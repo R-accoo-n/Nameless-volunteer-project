@@ -19,26 +19,12 @@ class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
-//    @Bean
-//    public DaoAuthenticationProvider authenticationProvider() {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userDetailsService());
-//        authProvider.setPasswordEncoder(passwordEncoder());
-//
-//        return authProvider;
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/login/**", "/register", "/home","/admin","/military/**", "/admin/approve/**", "/admin/block/**", "/registration", "/user","/register/save", "/save", "/request", "/request/save", "/fundraising", "/fundraising/save", "/statusFundraising","/user/**").permitAll()
+                .antMatchers("/", "/login/**", "/support/**","/feedback/**","/volunteer/**", "/register", "/user/**", "/waiting/**","/home","/admin","/military/**", "/admin/approve/**", "/admin/block/**", "/registration", "/user","/register/save", "/save", "/request", "/request/save", "/fundraising", "/fundraising/save", "/statusFundraising","/user/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMINISTRATOR")
                 .antMatchers("/user/**").hasAnyAuthority("USER")
