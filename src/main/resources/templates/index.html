@@ -11,7 +11,36 @@
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}">
     <script th:src="@{/js/mainJS.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link
+            th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
+            rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css}">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js}"></script>
     <title id="Main" role="main">Home</title>
+    <style>
+        .type{
+            padding-left: 21px;
+        }
+        .section{
+            width: 1480px;
+            position: center;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        a{
+            color: black;
+        }
+        /*.fundraising-main{*/
+        /*    width: 1200px;*/
+        /*    position: center;*/
+        /*    margin: auto;*/
+        /*    display: flex;*/
+        /*    flex-wrap: wrap;*/
+        /*}*/
+    </style>
 </head>
 
 <body>
@@ -42,11 +71,9 @@
             </span>
             <input type="text" class="type" placeholder="Пошук..">
         </header>
-
-
         <!-- Main -->
         <main class="page">
-            <div >
+            <div>
                 <div class="main-block-top">
                 </div>
                 <div class="main-block-categories-container">
@@ -61,22 +88,30 @@
                         <a href="">ІНВЕНТАР</a>
                     </nav>
                 </div>
-                <div class="main-block-funds">
-                    <div class="main-block-funds-container">
-                        <div class="row-3 justify-content-between">
-                            <div class="col-2">
-                                <div class="card">
-                                    <img class="card-img">
-                                    <div class="card-container">
-                                        <p class="card-name"> щось</p>
-                                        <p clas="card-description">про щось </p>
-                                        <progress id="file" value="" max="100" class="bar"> </progress>
-                                        <button class="help">ДОПОМОГТИ</button>
+                <section class="section">
+                    <div class="row pb-5 mb-4 pt-5 mt-4 ml-5 pl-4">
+                        <div class="col-lg-3 col-md-6 mb-4 pr-5" th:each="fundraising : ${allActiveFundraising}">
+                            <a href="">
+                                <div class="card rounded">
+                                    <div class="card-body p-6">
+                                        <img class="card-img">
+                                        <div class="card-container">
+                                            <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
+                                            <p th:text="${fundraising.description}"></p>
+                                            <p th:text="${fundraising.sum}"> грн</p>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar">
+                                                    <!-- <span class="my-centered">60% Complete</span> -->
+                                                </div>
+                                            </div>
+                                            <button class="help">ДОПОМОГТИ</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
+                </section>
                 </div>
                 <div class="wrapper">
                     <i id="left" class="fa-solid fa-angle-left"></i>
@@ -95,7 +130,6 @@
                     </div>
                     <i id="right" class="fa-solid fa-angle-right"></i>
                   </div>
-            </div>
         </main>
 
     <!-- Footer -->
