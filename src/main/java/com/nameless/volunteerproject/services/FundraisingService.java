@@ -5,9 +5,11 @@ import com.nameless.volunteerproject.dto.RequestDto;
 import com.nameless.volunteerproject.enums.FundraisingType;
 import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.FundraisingRequest;
+import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.repositories.FundraisingRequestRepository;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.util.FuzzyBoolean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,6 +22,8 @@ public class FundraisingService {
 
     private final FundraisingRepository fundraisingRepository;
     private final FundraisingRequestRepository fundraisingRequestRepository;
+
+    public List<Fundraising>findAllByActiveIsTrue(){return fundraisingRepository.findAllByIsActiveTrue();}
 
     public List<Fundraising> getActiveFundraisingsByType(FundraisingType type) {
         return fundraisingRepository.findBySocialTypeAndIsActive(type, true);

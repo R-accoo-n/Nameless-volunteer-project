@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface AdminRepository extends JpaRepository<User, UUID> {
     List<User> findUsersByIsApprovedIsFalse();
+
+    List<User>findAll();
 }

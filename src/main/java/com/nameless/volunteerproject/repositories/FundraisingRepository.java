@@ -16,7 +16,7 @@ import java.util.UUID;
 @Repository
 public interface FundraisingRepository extends JpaRepository<Fundraising, UUID> {
     List<Fundraising> findBySocialTypeAndIsActive(FundraisingType type, boolean isActive);
-
+    List<Fundraising>findAllByIsActiveTrue();
     List<Fundraising> findByUserIdAndIsActiveFalse(UUID userId);
 
     List<Fundraising> findByIsActive(boolean isActive);

@@ -28,4 +28,8 @@ public class PersonalController {
     }
 
 
+    @GetMapping("/donation/history")
+    public String donationHistory(){
+        return "donationHistory";
+    }
 }
