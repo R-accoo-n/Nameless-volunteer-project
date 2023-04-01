@@ -36,8 +36,8 @@ public class AuthController {
 
     @PostMapping("/register/save")
     public String userRegistration(@Valid @ModelAttribute("user") UserDto userDto, @RequestParam("image")MultipartFile multipartFile, BindingResult result, Model model){
-//        User existingUser = userService.findUserByEmail(userDto.getEmail()).get();
-//
+ //       User existingUser = userService.findUserByEmail(userDto.getEmail()).get();
+
 //        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
 //            result.rejectValue("email", null,
 //                    "There is already an account registered with the same email");
@@ -48,43 +48,10 @@ public class AuthController {
 //                    "There is already an account registered with the same email");
 ////            model.addAttribute("user", userDto);
 ////            return "/register";
-//        }
+ //       }
         userService.saveUser(multipartFile, userDto);
         return "redirect:/register?success";
     }
-
-//    @GetMapping("/login")
-//    public String login()
-//    {
-//        User user=getPrincipal();
-//        if (user!=null){
-//            return "authentication";
-//        }
-//        return "login";
-//    }
-//
-//    private User getPrincipal(){
-//        User user=null;
-//        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User){
-//            user=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        }
-//        return user;
-//    }
-//
-//    @PostMapping("/login/authorisation")
-//    public String userLogin(@RequestParam("email") String email,
-//                            @RequestParam("password") String password,
-//                            Model model) {
-//        Optional<User> existingUser = userService.findUserByEmail(email);
-//        System.out.println(email);
-//        System.out.println(password);
-//        if(existingUser.isEmpty()){
-//            throw new UsernameNotFoundException("User with this email doesn't exist");
-//        }else if(existingUser.get().getPassword() != password){
-//            throw new UsernameNotFoundException("Wrong password");
-//        }
-//        return "redirect:/home";
-//    }
 
     @GetMapping("/login")
     public String login(Model model){
@@ -99,6 +66,12 @@ public class AuthController {
         return "waiting";
     }
 
+    @GetMapping("/blocked")
+    public String blocked(Model model){
+        User user= (User) model.getAttribute("user");
+        return "pageForBlockedUser";
+    }
+
     @PostMapping("/login/in")
     public String loginPost(@Valid @ModelAttribute("loginUser") LoginDto loginDto, Model model){
         boolean userValue=userService.login(loginDto, model);
@@ -107,7 +80,10 @@ public class AuthController {
         System.out.println(userValue);
         System.out.println(user.getRole().name().equals("MILITARY"));
         if (userValue==true) {
-            if(user.getRole().name().equals("MILITARY")&&user.isApproved()){
+            if (user.isBlocked()){
+                return "redirect:/blocked";
+            }
+            else if(user.getRole().name().equals("MILITARY")&&user.isApproved()){
                 return "redirect:/military/home";
             }else if (user.getRole().name().equals("VOLUNTEER")&&user.isApproved()){
                 return "redirect:/volunteer/home";

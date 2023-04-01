@@ -13,6 +13,7 @@ import com.nameless.volunteerproject.services.UserService;
 import org.springframework.http.ResponseEntity;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     private final UserService userService;
     private final AdminService adminService;
@@ -23,7 +24,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/admin")
+    @GetMapping
     public String admin(Model model){
         List<User> notApprovedUsers=adminService.findUsersByIsApprovedIsFalse();
         model.addAttribute("notApprovedUsers", notApprovedUsers);
@@ -33,18 +34,15 @@ public class AdminController {
         return "adminPage";
     }
 
-//    @PostMapping("/admin/{userId}/approve")
-//    public ResponseEntity<String> verifyUser(@PathVariable UUID userId, @RequestParam UserRole role) {
-//        boolean success = userService.verifyUser(userId, role);
-//        if (success) {
-//            return ResponseEntity.ok("User verified successfully.");
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//
-//    }
+    @GetMapping("/users")
+    public String usersForAdmin(Model model){
+        List<User>users=adminService.findAll();
+        model.addAttribute("usersForAdmin", users);
+        return "adminpage_allusers";
+    }
 
-    @PostMapping("/admin/approve/{userId}")
+
+    @PostMapping("/approve/{userId}")
     public ResponseEntity<String> approveUser(@PathVariable UUID userId) {
         boolean success = userService.approveUser(userId);
         if (success) {
@@ -54,7 +52,7 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/admin/block/{userId}")
+    @PostMapping("/block/{userId}")
     public ResponseEntity<String> blockUser(@PathVariable UUID userId) {
         boolean success = userService.blockUser(userId);
         if (success) {
@@ -63,7 +61,6 @@ public class AdminController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
 
 

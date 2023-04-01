@@ -24,16 +24,18 @@
             <nav class="header-menu menu">
                 <ul class="menu-list">
                     <li class="menu-item">
-                        <a href="" class="menu-link">Скарги</a>
+                        <a th:href="@{/admin}" class="menu-link">Користувачі які чекають підтвердження</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Всі користувачі</a>
+                        <a th:href="@{/admin/users}" class="menu-link">Всі користувачі</a>
                     </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Скарги</a>
+                </li>
                 </ul>
             </nav>
             <div class="header-signup">
                 <button class="menu-button" role="button"><a href="#">Вихід</a></button>
-                <!--<button id="button-user"><img id="user-icon"src="./images/user_circle_icon.svg"></button>-->
             </div>
         </div>
     </header>
@@ -77,10 +79,10 @@
                             <td>
                                 <div id="div-for-button-yesno">
                                     <form th:action="@{admin/approve/{userId}(userId=${user.id})}" method="post">
-                                        <button  type="submit"><img th:src="@{/images/326572_check_icon.svg}" width="20px" height="20px" alt=""></button>
+                                        <button id="button-confirmation-yes" type="submit"><img th:src="@{/images/326572_check_icon.svg}" width="20px" height="20px" alt=""></button>
                                     </form>
                                     <form th:action="@{admin/block/{userId}(userId=${user.id})}" method="post">
-                                        <button type="submit"><img th:src="@{/images/4781812_bin_delete_file_garbage_recycle_icon.svg}" width="25px" height="25px" alt=""></button>
+                                        <button id="button-confirmation-no" type="submit"><img th:src="@{/images/4781812_bin_delete_file_garbage_recycle_icon.svg}" width="25px" height="25px" alt=""></button>
                                     </form>
                                 </div>
                             </td>
