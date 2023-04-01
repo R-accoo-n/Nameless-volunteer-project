@@ -20,4 +20,8 @@ public class AdminService {
     public List<User>findUsersByIsApprovedIsFalse(){
         return adminRepository.findUsersByIsApprovedIsFalse();
     }
+
+    public List<User>findAll(){return adminRepository.findAll();}
+
+
 }
