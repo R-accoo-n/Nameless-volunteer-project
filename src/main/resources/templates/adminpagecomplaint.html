@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
+          rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./adminpage.css">
+    <!--<link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/adminpage.css}">-->
+    <title id="Main" role="main">Admin</title>
+</head>
+<body>
+    <div class="wrapper" style="font-family: 'Raleway';">
+        <header class="header">
+            <div class="header-container">
+                <span class="header-logo">Volunteer.ua</span>
+                <nav class="header-menu menu">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <a th:href="@{/admin}" class="menu-link">Користувачі які чекають підтвердження</a>
+                        </li>
+                        <li class="menu-item">
+                            <a th:href="@{/admin/users}" class="menu-link">Всі користувачі</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Скарги</a>
+                    </li>
+                    </ul>
+                </nav>
+                <div class="header-signup">
+                    <button class="menu-button" role="button"><a href="#">Вихід</a></button>
+                </div>
+            </div>
+        </header>
+        <!-- Main -->
+        <main class="page">
+            <div >
+                <div class="main-block-top">
+                </div>
+            
+                <div class="wrpper-for-all">
+                    <div class="all-data-about-admin">
+                        <div class="container-for-pib-or-mail">
+                            <p class="inscription-data">П.І.Б.:</p>
+                            <p class="data-about-admin">1111111111111111111111</p>
+                        </div>
+                        <div class="container-for-pib-or-mail">
+                            <p class="inscription-data">Пошта:</p>
+                            <p class="data-about-admin">111111111111111111111</p>
+                        </div>
+                    </div>
+                    <div id="wrapper-for-table">
+                        <p class="inscription">Всі скарги:</p>
+                        <input type="text" id="type-search" placeholder="Пошук..">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="th-id">id</th>
+                                <th>Прізвище</th>
+                                <th>Ім'я</th>
+                                <th>Пошта</th>
+                                <th class="th-complaint">Скарга</th>
+                                <th>Підтвердження</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="user : ${notApprovedUsers}">
+                                <td class="td-id" th:text="${user.}"></td>                <!--ДОПОВНИТИ-->
+                                <td th:text="${user.surname}"></td>
+                                <td th:text="${user.name}"></td>
+                                <td th:text="${user.email}"></td>
+                                <td class="td-complaint">
+                                    <ul>
+                                        <li class="li-description">
+                                            <p class="type-and-subtype">
+                                                #
+                                                <span class="types">тип</span>
+                                                :
+                                                <span class="subtypes">підтип</span>
+                                            </p>
+                                            <p>Опис Опис Опис </p></li>
+                                        <li class="li-description">
+                                            <p class="type-and-subtype">
+                                                #
+                                                <span class="types">тип</span>
+                                                :
+                                                <span class="subtypes">підтип</span>
+                                            </p>
+                                            <p>Опис Опис Опис </p>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div id="div-for-button-yesno">
+                                        <button id="button-confirmation-no"><p>Ban</p></button> 
+                                        <button id="button-confirmation-no"><p>Mute</p></button> 
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button id="button-more">Більше></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-social-media">
+                    <h5>Соціальні мережі: </h5>
+                    <div class="footer-images">
+                        <img class="image" th:src="@{/images/facebook_icon.svg}">
+                        <img class="image" th:src="@{/images/instagram-2016-5.svg}">
+                        <img class="image" th:src="@{/images/telegram-1.svg}">
+                    </div>
+                </div>
+            
+                <nav class="footer-contacts">
+                    <div>
+                        <span>Телефон:</span>
+                        <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+                    </div>
+                    <div>
+                        <span>Email:</span>
+                        <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
+                    </div>
+                </nav>
+            
+                <div>
+                    <nav class="footer-menu">
+                        <a href="">Політика приватності</a>
+                        <a href="">Надіслати відгук</a>
+                        <a href="">Служба підтримки</a>
+                        <a href="">Співпраця</a>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

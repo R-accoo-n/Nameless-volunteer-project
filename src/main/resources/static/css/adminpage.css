@@ -80,6 +80,7 @@ tbody tr:hover {
 }
 #button-confirmation-no{
     background-color: rgba(255, 0, 0, 0.199);
+    margin-right: 10px;     
 }
 .all-data-about-admin{
     width: 600px;
@@ -149,4 +150,25 @@ tbody tr:hover {
     /*color: #BBBBBB;*/
     margin-bottom: 25px;
     padding-inline-start: 20px;
+}
+
+
+
+
+.type-and-subtype{
+    background-color: red;
+    color: aliceblue;
+    display: inline-block;
+    border-radius: 12px;
+    padding: 3px 10px;
+}
+.th-id, .td-id{
+    width: 200px;
+}
+
+.td-complaint,.td-complaint{
+    width: 400px;
+}
+.li-description{
+    padding: 5px 0px;
 }
