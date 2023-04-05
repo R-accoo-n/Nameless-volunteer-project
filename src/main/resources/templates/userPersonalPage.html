@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk"
       xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,16 +38,12 @@
                 </div>
             </div>
         </header>
-
-
-<!-- Main -->
+        <!-- Main -->
         <main class="page">
             <div >
                 <div class="main-block-top">
             </div>
-
             <div class="wrpper-for-all">
-                
                 <div class="all-data-in-main">
                     <div id="data-about-user">
                         <div class="wrapper-data">
@@ -56,18 +52,21 @@
                                 <img class="avatar-foto" src="#" alt="avatar">
                             </div>
                             <div class="ul-data-about-user">
-                                <ul class="ul-data">
-                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" id="secondName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім*я:</span><span class="init-from-database" id="firstName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" id="phoneNumber">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" id="mail">111</span></li>
+                                <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
+<!--                                <form method="post" th:object="${verifiedUser}" enctype="multipart/form-data">-->
+                                <ul class="ul-data" th:object="${user}">
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span>
+                                        <p class="init-from-database" th:text="*{surname}" id="surname"></p>
+                                    </li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><p sec:authentication="name" class="init-from-database" th:text="*{name}" id="name"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><p class="init-from-database" th:text="*{phoneNumber}" id="phoneNumber"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><p class="init-from-database" th:text="*{email}" id="email"></p></li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>
-                
-<!--Editing profile-->
-                
+                    <!--Editing profile-->
                     <div id="edit-data-about-user">
                         <div class="wrapper-data">
                             <button id="end-edit-button"><img th:src="@{/images/326572_check_icon.svg}" width="20px" height="20px" alt="icon"></button>
@@ -76,9 +75,9 @@
                                 <button id="edit-foto" >Редагувати фото</button>
                             </div>
                             <div class="ul-data-about-user">
-                                <ul class="ul-data" > 
+                                <ul class="ul-data">
                                     <li class="li-data-about-user"><span class="initialization">Прізвище:</span><input class="edit-Database" type="text" value="111"></li> <!--value витягуватиметься з БД-->
-                                    <li class="li-data-about-user"><span class="initialization">Ім*я:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><input class="edit-Database" type="text" value="111"></li>
                                     <li class="li-data-about-user"><span class="initialization">Номер:</span><input class="edit-Database" type="text" value="111"></li>
                                     <li class="li-data-about-user"><span class="initialization">Пошта:</span><input class="edit-Database" type="text" value="111"></li>
                                 </ul>
@@ -86,7 +85,7 @@
                         </div>
                     </div>
                 
-<!--ending Editing profile-->
+                    <!--ending Editing profile-->
                     <div class="container-for-cart-in-user">
                         <p id="fundraising-what-you-liked">Збори, які ви вподобали:</p>
                         
@@ -141,8 +140,8 @@
                     <h5>Соціальні мережі: </h5>
                     <div class="footer-images">
                         <img class="image" th:src="@{/images/facebook_icon.svg}">
-                        <img class="image" th:src="@{/images/instagram-2016-5.svg}">
-                        <img class="image" th:src="@{/images/telegram-1.svg}">
+                        <img class="image" th:src="@{/images/instagram-icon.svg}">
+                        <img class="image" th:src="@{/images/telegram-icon.svg}">
                     </div>
                 </div>
 

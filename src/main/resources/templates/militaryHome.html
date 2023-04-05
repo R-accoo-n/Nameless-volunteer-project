@@ -30,6 +30,15 @@
        a{
            color: black;
        }
+        .menu-list{
+            margin-left: 280px;
+        }
+        .menu-item{
+            margin-left: 37px;
+        }
+        .header-icon{
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -49,10 +58,10 @@
                     <li class="menu-item">
                         <a href="" class="menu-link">Звіти</a>
                     </li>
+                    <a th:href="@{/military}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                 </ul>
             </nav>
             <div class="header-profile">
-                <img th:src="@{/images/person.svg}" alt="img" draggable="false">
 <!--                <button class="menu-button" role="button"><a th:href="@{/login}">Вхід</a></button>-->
 <!--                <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>-->
             </div>

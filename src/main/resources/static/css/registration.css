@@ -85,6 +85,8 @@ ul{
 }
 .Data{
     padding-inline-start: 10px;
+    padding: 5px;
+    padding-left: 12px;
 }
 .Data-foto{
     width: 420px;
@@ -106,7 +108,7 @@ ul{
 .agreement{
     margin: 0px;
     line-height: 0px;
-    padding-inline-start: 60px;
+    padding-inline-start: 50px;       /**/
     font-size: 10px;
 }
 .svg{
@@ -114,4 +116,17 @@ ul{
     width: 20px;
     margin-right: 10px;
 
+}
+
+ul {
+    list-style: none;
+}
+.container-for-photo{
+    display: inline;
+    padding-left: 10px;
+}
+
+.hiddenForMilitary{
+    font-size: 12px;
+    display: inline;
 }

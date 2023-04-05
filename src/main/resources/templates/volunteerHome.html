@@ -30,6 +30,15 @@
             display: flex;
             flex-wrap: wrap;
         }
+        .menu-list{
+            margin-left: 280px;
+        }
+        .menu-item{
+            margin-left: 37px;
+        }
+        .header-icon{
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +57,7 @@
                     <li class="menu-item">
                         <a href="" class="menu-link">Звіти</a>
                     </li>
+                    <a th:href="@{/volunteer}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                 </ul>
             </nav>
             <div class="header-signup">
