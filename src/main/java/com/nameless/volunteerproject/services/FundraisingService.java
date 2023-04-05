@@ -68,7 +68,6 @@ public class FundraisingService {
         fundraising.setSum(fundraisingDto.getSum());
         fundraising.setSocialType(fundraisingDto.getSocialType());
         fundraising.setWhom(fundraisingDto.getWhom());
-        fundraising.setSelected(fundraisingDto.isSelected());
         return fundraising;
     }
 }

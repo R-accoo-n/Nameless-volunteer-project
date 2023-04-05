@@ -85,6 +85,8 @@ ul{
 }
 .Data{
     padding-inline-start: 10px;
+    padding: 5px;
+    padding-left: 12px;
 }
 .Data-foto{
     width: 420px;

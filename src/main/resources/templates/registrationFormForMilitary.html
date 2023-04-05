@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./registration.css">
+    <link rel="stylesheet" th:href="@{/css/registration.css}">
     <title>Registration</title>
+    <style>
+        .Data{
+            padding: 5px;
+            padding-left: 12px;
+        }
+    </style>
 </head>
 <body>
     <div class="registration">
         <p class="text-reg">Реєстрація</p>
         <div class="field-registration" >
-            <p class="you">Волонтер</p>
-            <form method="post" th:object="${user}" enctype="multipart/form-data" th:action="@{/register/save}">
+            <p class="you">Військовий</p>
+            <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
+            <form method="post" th:object="${user}" enctype="multipart/form-data" th:action="@{/register/save/military}">
                 <div id="hidden" >
                     <ul class="all-data">
                         <li><ul class="row-data">
@@ -21,7 +30,6 @@
                         </ul></li>
                         <li><input class="Data" id="email" name="email" th:field="*{email}" type="text" placeholder="Пошта"></li>
                         <li><input class="Data" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" type="text" placeholder="Номер телефону"></li>
-                        <li><div id="hiddenForVolunteer"><input class="Data" id="social" name="social" th:field="*{socialMedia}" type="text" placeholder="Посилання на соцмережі"></div></li> <!--для волонтера-->
                         <li><div class="container-for-photo">
                             <label class="hiddenForMilitary">Завантажити фото документів</label>
                             <input class="button-to-select-a-file hiddenForMilitary" type="file" name="image" placeholder="Завантажити фото документів" accept="image/png, image/jpeg"/>
@@ -39,7 +47,3 @@
     </div>
 </body>
 </html>
-
-
-
-
