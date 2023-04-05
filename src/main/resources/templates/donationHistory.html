@@ -16,6 +16,11 @@
     <link rel="stylesheet" th:href="@{/css/donationHistory.css}">
     <title id="Main" role="main">History of donations</title>
     <style>
+        .header-menu {
+            position: relative;
+            align-content: center;
+            left: 370px;
+        }
         .mb-4, .my-4 {
             margin-bottom: 1.5rem !important;
             width: 1439px;
@@ -34,14 +39,19 @@
                 <nav class="header-menu menu">
                     <ul class="menu-list">
                         <li class="menu-item">
-                            <a href="" class="menu-link">Головна</a>
+                            <a th:href="@{/home}" class="menu-link">Головна</a>
                         </li>
                         <li class="menu-item">
-                            <a href="" class="menu-link">Історія донатів</a>
+                            <a th:href="@{/donation/history}" class="menu-link">Історія донатів</a>
                         </li>
+                        <li class="menu-item">
+                            <a href="" class="menu-link">Обрані збори</a>
+                        </li>
+                        <a th:href="@{/user}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                     </ul>
                 </nav>
-                <a href=""><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
+                <div class="header-signup">
+                </div>
             </div>
         </header>
 

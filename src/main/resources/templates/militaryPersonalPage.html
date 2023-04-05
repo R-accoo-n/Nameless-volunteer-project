@@ -72,10 +72,10 @@
                             <div class="ul-data-about-user">
                                 <ul class="ul-data">
                                     <li class="li-data-about-user"><span class="initialization">nickname:</span><span class="init-from-database" id="nickname">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" id="secondName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><span class="init-from-database" id="firstName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" id="phoneNumber">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" id="mail">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" th:text="${user.surname}" id="secondName">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><span class="init-from-database" th:text="${user.name}" id="firstName">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" th:text="${user.phoneNumber}" id="phoneNumber">111</span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" th:text="${user.email}" id="mail">111</span></li>
                                     <li><ul id="social-Networks-list" >
                                         <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
                                         <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
@@ -104,7 +104,7 @@
                                 <ul class="ul-data" >
                                     <li class="li-data-about-user"><span class="initialization">nickname:</span><input class="edit-Database" type="text" value="111"></li> <!--value витягуватиметься з БД-->
                                     <li class="li-data-about-user"><span class="initialization">Прізвище:</span><input class="edit-Database" type="text" value="111"></li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім*я:</span><input class="edit-Database" type="text" value="111"></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><input class="edit-Database" type="text" value="111"></li>
                                     <li class="li-data-about-user"><span class="initialization">Номер:</span><input class="edit-Database" type="text" value="111"></li>
                                     <li class="li-data-about-user"><span class="initialization">Пошта:</span><input class="edit-Database" type="text" value="111"></li>
                                     <li><ul id="social-Networks-list" style="list-style: none;display: flex; flex-direction: column;">
@@ -132,8 +132,8 @@
                 
 <!--ending Editing profile-->
                     <div id="div-for-buttons">
-                        <button id="create-fundraising">Створити збір</button>
-                        <button id="create-request">Створити запит</button>
+                        <button id="create-fundraising"><a th:href="@{/fundraising/{userId}(userId=${user.id})}">Створити збір</a></button>
+                        <button id="create-request"><a th:href="@{/request/{userId}(userId=${user.id})}">Створити запит</a></button>
                     </div>
                     <div class="container-for-cart-in-user">
                         <p id="fundraising-what-you-liked">Активні збори(за вашоЇ портеби чи створені вами):</p>
@@ -189,8 +189,8 @@
                     <h5>Соціальні мережі: </h5>
                     <div class="footer-images">
                         <img class="image" th:src="@{/images/facebook_icon.svg}">
-                        <img class="image" th:src="@{/images/instagram-2016-5.svg}">
-                        <img class="image" th:src="@{/images/telegram-1.svg}">
+                        <img class="image" th:src="@{/images/instagram-icon.svg}">
+                        <img class="image" th:src="@{/images/telegram-icon.svg}">
                     </div>
                 </div>
 
