@@ -38,7 +38,6 @@ public class Fundraising {
     private String cardNumber;
     private String description;
     private boolean isActive;
-    private boolean isSelected;
     private FundraisingType socialType;
 
 }
