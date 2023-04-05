@@ -20,6 +20,9 @@
     <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js}"></script>
     <title id="Main" role="main">Home</title>
     <style>
+        a{
+            color: black;
+        }
         .section{
             width: 1480px;
             position: center;
@@ -27,8 +30,14 @@
             display: flex;
             flex-wrap: wrap;
         }
-        a{
-            color: black;
+        .menu-list {
+            margin-left: 267px;
+        }
+        .menu-item {
+            margin-left: 1px;
+        }
+        .header-icon{
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -44,16 +53,15 @@
                         <a th:href="@{/home}" class="menu-link">Головна</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Термінові збори</a>
+                        <a th:href="@{/donation/history}" class="menu-link">Історія донатів</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Звіти</a>
+                        <a href="" class="menu-link">Обрані збори</a>
                     </li>
+                    <a th:href="@{/user/{userId}(userId=${user.id})}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                 </ul>
             </nav>
             <div class="header-signup">
-<!--                <button class="menu-button" role="button"><a th:href="@{/login}">Вхід</a></button>-->
-<!--                <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>-->
             </div>
         </div>
         <span>

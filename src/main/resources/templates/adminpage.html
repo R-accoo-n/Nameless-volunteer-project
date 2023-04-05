@@ -75,7 +75,7 @@
                             <td th:text="${user.name}"></td>
                             <td th:text="${user.email}"></td>
                             <td th:text="${user.socialMedia}"></td>
-                            <td th:text="${user.photo}"></td>
+                            <td><img class="card-img" th:src="@{'/images/uploadedImagesUsers/' + ${user.photo}}"></td>
                             <td>
                                 <div id="div-for-button-yesno">
                                     <form th:action="@{admin/approve/{userId}(userId=${user.id})}" method="post">

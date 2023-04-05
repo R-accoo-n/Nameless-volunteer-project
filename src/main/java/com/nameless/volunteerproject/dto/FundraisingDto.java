@@ -30,5 +30,6 @@ public class FundraisingDto {
     private boolean isActive;
     private boolean isSelected;
     private FundraisingType socialType;
+    private String filename;
 
 }

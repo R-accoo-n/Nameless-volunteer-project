@@ -29,7 +29,6 @@ public class User {
     private UserRole role;
     private String surname;
     private String name;
-    private String fatherName;
     private String email;
     private String phoneNumber;
     private String userName;
@@ -59,18 +58,16 @@ public class User {
      * @param id user's id
      * @param surname user's surname
      * @param name user's name
-     * @param fatherName user's father's name
      * @param email user's email
      * @param userName user's username
      * @param role user's role
      */
 
-    public User(UUID id, String surname, String name, String fatherName, String email,
+    public User(UUID id, String surname, String name, String email,
                 String userName, UserRole role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.fatherName = fatherName;
         this.email = email;
         this.userName = userName;
         this.role = role;
@@ -82,16 +79,14 @@ public class User {
      * @param id user's id
      * @param surname user's surname
      * @param name user's name
-     * @param fatherName user's father's name
      * @param phoneNumber user's phone number
      * @param role = user's role
      */
 
-    public User(UUID id, String surname, String name, String fatherName, String phoneNumber, UserRole role) {
+    public User(UUID id, String surname, String name, String phoneNumber, UserRole role) {
         this.id = id;
         this.surname = surname;
         this.name = name;
-        this.fatherName = fatherName;
         this.phoneNumber = phoneNumber;
         this.role = role;
     }
@@ -102,15 +97,13 @@ public class User {
      * @param id administrator's id
      * @param surname administrator's surname
      * @param name administrator's name
-     * @param fatherName administrator's father name
      * @param email administrator's email
      */
 
-    public User(UUID id, String surname, String name, String fatherName, String email) {
+    public User(UUID id, String surname, String name, String email) {
         this.id = id;
         this.surname = surname;
         this.name = name;
-        this.fatherName = fatherName;
         this.email = email;
     }
 }

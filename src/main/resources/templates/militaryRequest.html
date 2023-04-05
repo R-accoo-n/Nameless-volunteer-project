@@ -7,6 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" th:href="@{/css/militaryRequest.css}">
+  <style>
+    .Data{
+      padding: 5px;
+      padding-left: 18px;
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -16,7 +22,7 @@
   <div class="req">
     <p class="text-create-req">Створити запит:</p>
     <!--/*@thymesVar id="militarysRequest" type="com.nameless.volunteerproject.models.FundraisingRequest"*/-->
-    <form method="post" th:object="${militarysRequest}" enctype="multipart/form-data" th:action="@{/request/save}">
+    <form method="post" th:object="${militarysRequest}" enctype="multipart/form-data" th:action="@{/request/save/{userId}(userId=${user.id})}">
       <div class="all-data" >
         <input class="Data" id="requestName" th:field="*{name}" name="requestName" type="text" placeholder="Назва збору"><br>
         <input class="Data" name="whom" th:field="*{whom}" id="whom" type="text" placeholder="Кому:"><br>
