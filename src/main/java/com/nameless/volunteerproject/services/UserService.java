@@ -1,6 +1,5 @@
 package com.nameless.volunteerproject.services;
 
-import com.nameless.volunteerproject.configuration.ApiResponse;
 import com.nameless.volunteerproject.dto.LoginDto;
 import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.models.Donations;
@@ -11,7 +10,6 @@ import com.nameless.volunteerproject.repositories.UserRepository;
 import java.util.Base64;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -70,7 +68,56 @@ public class UserService {
         return false;
     }
 
-    public void saveUser(MultipartFile multipartFile, UserDto userDto){
+    public void saveUser(UserDto userDto){
+        User user =new User();
+        user.setSurname(userDto.getSurname());
+        System.out.println(userDto.getSurname());
+        user.setName(userDto.getName());
+        user.setEmail(userDto.getEmail());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setPassword(userDto.getPassword());
+        user.setApproved(true);
+        user.setRole(UserRole.USER);
+//        System.out.println(userDto.getRole());
+//        user.setRole(userDto.getRole());
+//        if(user.getRole().name().equals("USER")){
+//            user.setApproved(true);
+//        }
+//        if(user.getRole().name().equals("VOLUNTEER")){
+//            user.setSocialMedia(userDto.getSocialMedia());
+//        }
+//        if (user.getRole().name().equals("VOLUNTEER")||user.getRole().name().equals("MILITARY")) {
+//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//            user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
+//        }
+//        System.out.println(user);
+        userRepository.save(user);
+    }
+
+    public void saveVolunteer(MultipartFile multipartFile, UserDto userDto){
+        User user =new User();
+        user.setSurname(userDto.getSurname());
+        System.out.println(userDto.getSurname());
+        user.setName(userDto.getName());
+        user.setEmail(userDto.getEmail());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setSocialMedia(userDto.getSocialMedia());
+        user.setPassword(userDto.getPassword());
+        user.setApproved(userDto.isApproved());
+        System.out.println(userDto.getRole());
+        user.setRole(UserRole.MILITARY);
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
+        System.out.println(user);
+        userRepository.save(user);
+    }
+
+    public boolean emailExists(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user != null;
+    }
+
+    public void saveMilitary(MultipartFile multipartFile, UserDto userDto){
         User user =new User();
         user.setSurname(userDto.getSurname());
         System.out.println(userDto.getSurname());
@@ -80,17 +127,9 @@ public class UserService {
         user.setPassword(userDto.getPassword());
         user.setApproved(userDto.isApproved());
         System.out.println(userDto.getRole());
-        user.setRole(userDto.getRole());
-        if(user.getRole().name().equals("USER")){
-            user.setApproved(true);
-        }
-        if(user.getRole().name().equals("VOLUNTEER")){
-            user.setSocialMedia(userDto.getSocialMedia());
-        }
-        if (user.getRole().name().equals("VOLUNTEER")||user.getRole().name().equals("MILITARY")) {
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
-        }
+        user.setRole(UserRole.MILITARY);
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
         System.out.println(user);
         userRepository.save(user);
     }
