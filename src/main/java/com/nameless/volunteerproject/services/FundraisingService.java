@@ -12,7 +12,13 @@ import lombok.RequiredArgsConstructor;
 import org.aspectj.util.FuzzyBoolean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +28,8 @@ public class FundraisingService {
 
     private final FundraisingRepository fundraisingRepository;
     private final FundraisingRequestRepository fundraisingRequestRepository;
+    private final static String UPLOADED_FOLDER = "C://Images//";
+
 
     public List<Fundraising>findAllByActiveIsTrue(){return fundraisingRepository.findAllByIsActiveTrue();}
 
@@ -69,5 +77,17 @@ public class FundraisingService {
         fundraising.setSocialType(fundraisingDto.getSocialType());
         fundraising.setWhom(fundraisingDto.getWhom());
         return fundraising;
+    }
+    // implement a method that saves an image file to a local directory and stores the file path in a database
+
+    public void saveImage(MultipartFile file) {
+        try {
+            Path copyLocation = Paths
+                    .get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+        }
     }
 }
