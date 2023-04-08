@@ -30,18 +30,24 @@
        a{
            color: black;
        }
-        .menu-list{
-            margin-left: 280px;
+        .menu-list {
+            margin-left: 105px;
         }
-        .menu-item{
-            margin-left: 37px;
+        .menu-item {
+            margin-left: -40px;
         }
         .header-icon{
             margin-left: 10px;
         }
+        .card-img {
+            border-radius: 12px 12px 0px 0px;
+            width: 298px;
+            height: 142px;
+            left: 21px;
+            top: 1px;
+        }
     </style>
 </head>
-
 <body>
 <div class="wrapper" style="font-family: 'Raleway';">
     <header class="header">
@@ -56,18 +62,15 @@
                         <a href="" class="menu-link">Мої запити</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Організувати запит</a>
+                        <a th:href="@{/request/{userId}(userId=${user.id})}" class="menu-link">Організувати запит</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Організувати збір</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">Звіти</a>
+                        <a th:href="@{/fundraising/{userId}(userId=${user.id})}" class="menu-link">Організувати збір</a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">Волонтери</a>
                     </li>
-                    <a th:href="@{/military}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
+                    <a th:href="@{/military/{userId}(userId=${user.id})}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                 </ul>
             </nav>
             <div class="header-profile">

@@ -39,5 +39,6 @@ public class Fundraising {
     private String description;
     private boolean isActive;
     private FundraisingType socialType;
+    private String photo;
 
 }

@@ -55,12 +55,10 @@
                                 <!--/*@thymesVar id="user" type="com.nameless.volunteerproject.models.User"*/-->
 <!--                                <form method="post" th:object="${verifiedUser}" enctype="multipart/form-data">-->
                                 <ul class="ul-data" th:object="${user}">
-                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span>
-                                        <p class="init-from-database" th:text="*{surname}" id="surname"></p>
-                                    </li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><p sec:authentication="name" class="init-from-database" th:text="*{name}" id="name"></p></li>
-                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><p class="init-from-database" th:text="*{phoneNumber}" id="phoneNumber"></p></li>
-                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><p class="init-from-database" th:text="*{email}" id="email"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><p class="init-from-database" th:text="${user.surname}" id="surname"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><p class="init-from-database" th:text="${user.name}" id="name"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><p class="init-from-database" th:text="${user.phoneNumber}" id="phoneNumber"></p></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><p class="init-from-database" th:text="${user.email}" id="email"></p></li>
                                 </ul>
 
                             </div>
