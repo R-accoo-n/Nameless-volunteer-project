@@ -165,14 +165,6 @@ body {
     color: #000000;
 }
 
-.header-menu {
-    position: relative;
-    align-content: center;
-    width: 429px;
-    left: 370px;
-}
-
-
 .menu-list {
     display: flex;
     flex-wrap: wrap;

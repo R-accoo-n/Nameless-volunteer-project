@@ -5,6 +5,7 @@ import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,37 +52,38 @@ public class AuthController {
 
     @PostMapping("/register/save/user")
     public String userRegistration(@Valid @ModelAttribute("user") UserDto userDto, BindingResult result, Model model){
-        if (userService.emailExists(userDto.getEmail())) {
-            result.rejectValue("email", null,
-                    "There is already an account registered with the same email");
-            return "redirect:/register";
-        }else {
+//        if (userService.emailExists(userDto.getEmail())) {
+//            result.rejectValue("email", null,
+//                    "There is already an account registered with the same email");
+//            return "redirect:/register";
+//        }else {
             userService.saveUser(userDto);
             return "redirect:/login";
-        }
+        //}
     }
     @PostMapping("/register/save/volunteer")
     public String volunteerRegistration(@Valid @ModelAttribute("user") UserDto userDto, @RequestParam("image")MultipartFile multipartFile, BindingResult result, Model model){
-        if (userService.emailExists(userDto.getEmail())) {
-            result.rejectValue("email", null,
-                    "There is already an account registered with the same email");
-            return "redirect:/register";
-        }else {
+//        if (userService.emailExists(userDto.getEmail())) {
+//            result.rejectValue("email", null,
+//                    "There is already an account registered with the same email");
+//            ResponseEntity.ok("There is already an account registered with the same email");
+//            return "redirect:/register";
+//        }else {
             userService.saveVolunteer(multipartFile, userDto);
             return "redirect:/login";
-        }
+        //}
     }
 
     @PostMapping("/register/save/military")
     public String militaryRegistration(@Valid @ModelAttribute("user") UserDto userDto, @RequestParam("image")MultipartFile multipartFile, BindingResult result, Model model){
-        if (userService.emailExists(userDto.getEmail())) {
-            result.rejectValue("email", null,
-                    "There is already an account registered with the same email");
-            return "redirect:/register";
-        }else {
+//        if (userService.emailExists(userDto.getEmail())) {
+//            result.rejectValue("email", null,
+//                    "There is already an account registered with the same email");
+//            return "redirect:/register";
+//        }else {
             userService.saveMilitary(multipartFile, userDto);
             return "redirect:/login";
-        }
+        //}
     }
 
     @GetMapping("/login")
@@ -117,15 +119,15 @@ public class AuthController {
                 return "redirect:/blocked";
             }
             else if(user.getRole().name().equals("MILITARY")&&user.isApproved()){
-                return "redirect:/military/home";
+                return "redirect:/military/home/"+user.getId();
             }else if (user.getRole().name().equals("VOLUNTEER")&&user.isApproved()){
-                return "redirect:/volunteer/home";
+                return "redirect:/volunteer/home/"+user.getId();
             }
             else if((user.getRole().name().equals("MILITARY")&&!user.isApproved())||user.getRole().name().equals("VOLUNTEER")&&!user.isApproved()){
                 return "redirect:/waiting";
             }
             else{
-                return "redirect:/user/home";
+                return "redirect:/user/home/"+user.getId();
             }
         }else{
             return "redirect:/login";

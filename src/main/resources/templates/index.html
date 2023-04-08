@@ -33,13 +33,6 @@
         a{
             color: black;
         }
-        /*.fundraising-main{*/
-        /*    width: 1200px;*/
-        /*    position: center;*/
-        /*    margin: auto;*/
-        /*    display: flex;*/
-        /*    flex-wrap: wrap;*/
-        /*}*/
     </style>
 </head>
 
@@ -94,7 +87,7 @@
                             <a href="">
                                 <div class="card rounded">
                                     <div class="card-body p-6">
-                                        <img class="card-img">
+                                        <img class="card-img" th:src="@{'/images/uploadedImagesFundraising/' + ${fundraising.photo}}">
                                         <div class="card-container">
                                             <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
                                             <p th:text="${fundraising.description}"></p>
@@ -113,7 +106,7 @@
                     </div>
                 </section>
                 </div>
-                <div class="wrapper">
+            <div class="wrapper">
                     <i id="left" class="fa-solid fa-angle-left"></i>
                     <div class="carousel">
                       <img th:src="@{/images/img1.jpg}" alt="img" draggable="false">

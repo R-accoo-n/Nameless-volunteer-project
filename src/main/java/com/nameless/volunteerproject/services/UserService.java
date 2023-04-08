@@ -7,6 +7,11 @@ import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.DonationsRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Base64;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +32,8 @@ public class UserService {
     private final UserRepository userRepository;
 
     private final DonationsRepository donationsRepository;
+
+    private final static String UPLOADED_FOLDER = "src/main/resources/static/images/uploadedImagesUsers/";
 
     @Autowired
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
@@ -105,9 +112,9 @@ public class UserService {
         user.setPassword(userDto.getPassword());
         user.setApproved(userDto.isApproved());
         System.out.println(userDto.getRole());
-        user.setRole(UserRole.MILITARY);
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
+        user.setRole(UserRole.VOLUNTEER);
+        saveImage(multipartFile);
+        user.setPhoto(StringUtils.cleanPath(multipartFile.getOriginalFilename()));
         System.out.println(user);
         userRepository.save(user);
     }
@@ -128,8 +135,8 @@ public class UserService {
         user.setApproved(userDto.isApproved());
         System.out.println(userDto.getRole());
         user.setRole(UserRole.MILITARY);
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        user.setPhoto(Base64.getEncoder().encodeToString(fileName.getBytes()));
+        saveImage(multipartFile);
+        user.setPhoto(StringUtils.cleanPath(multipartFile.getOriginalFilename()));
         System.out.println(user);
         userRepository.save(user);
     }
@@ -150,6 +157,10 @@ public class UserService {
         return false;
     }
 
+    public User findUserById(UUID id) {
+        return userRepository.findUserById(id);
+    }
+
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -157,5 +168,17 @@ public class UserService {
     public List<Donations> findDonationHistory(UUID userId){
         return donationsRepository.findAllByUserID(userId);
     }
+
+    public void saveImage(MultipartFile file) {
+        try {
+            Path copyLocation = Paths
+                    .get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+        }
+    }
+
 
 }

@@ -47,7 +47,8 @@
                         <div id="hiddenForVolunteer" style="display:none;"><input class="Data" id="social" name="social" th:field="*{socialMedia}" type="text" placeholder="Посилання на соцмережі"></div> <!--для волонтера-->
                         <div id="hiddenForMilitary" style="display:none;">
                             <label>Завантажити фото документів</label>
-                            <input type="file" name="image" placeholder="Завантажити фото документів" accept="image/png, image/jpeg"/></div><!--фото доків для волонтера та військового-->
+                            <input class="Data2" accept="image/png, image/jpeg, image/jpg" type="file" id="myfile" name="image">
+                        </div><!--фото доків для волонтера та військового-->
                         <ul class="row-data">
                             <input class="Data" id="password" name="password" th:field="*{password}" type="password" placeholder="Пароль">
                         </ul>
