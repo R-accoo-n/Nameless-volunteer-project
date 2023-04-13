@@ -1,0 +1,109 @@
+:root{
+    --main-color:white;
+    --second-color: #9F9D9D;
+    --third-color:rgb(187, 142, 229);
+    --some-color: black;
+    --registration-padding: 70px;
+}
+.all-data-about-admin {
+    /*position: relative;*/
+    background-color: #EFEFEE;
+}
+
+main{
+    height: calc(100% - 150px);
+}
+
+
+
+.div-photo-fundraising{
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: rgb(163, 106, 32);
+    margin-right: 200px;
+    margin-left: 120px;
+}
+
+
+.wrapper-for-fund{
+    width: 1920px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.photo-and-little-description{
+    display: flex;
+    margin: 30px;
+}
+
+
+.progress{     /*заглушка*/
+    width: 400px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: rgb(17, 153, 51);
+    margin: 20px 0px;
+
+}
+
+
+.inscription-and-data{
+    display: flex;
+}
+
+.inscription-in-fund, .data-in-fund{
+    width: 200px;
+    margin: 10px 0px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.container-for-description{
+    margin: 0px 150px;
+}
+.description-in-fund{
+    font-size:16px;
+}
+
+
+.button-for-donation{
+    height: 70px;
+    width: 300px;
+    position: absolute;
+    border: 1px solid black;
+    background-color: rgb(255, 0, 212);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 20px;
+    color: var(--main-color);
+    right: 150px;
+}
+
+
+
+
+.main-block-top {
+    display: flex;
+    min-height: 150px;
+    max-height: 150px;
+    background-image: url("../images/slimheader.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: local;
+}
+.wrpper-for-all {
+    height: calc(100% - 150px - 252px);
+    /*position: absolute;*/             /*works if in style.css in .footer:     position: absolute; width: 100%; bottom: 0px; */
+    min-height: 800px;
+    width: 100%;
+    /*width: 1440px;*/
+    /*left: 0px;
+    top: 618px;*/
+    background: #EFEFEE;
+    padding: 100px;
+    padding-top: 30px;
+}
+
+
