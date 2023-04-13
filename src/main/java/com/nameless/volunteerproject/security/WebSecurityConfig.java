@@ -27,7 +27,7 @@ class SecurityConfiguration {
                 .antMatchers("/", "/login/**","/register/**",  "/support/**","/feedback/**","/volunteer/**", "/donation/**",
                         "/volunteerRegistration/**", "/userRegistration/**","/militaryRegistration/**", "/register/save/**", "/user/**",
                         "/waiting/**","/home","/admin/**","/admin/block/**", "/admin/users/admin/block/**" ,"/military/**", "/admin/approve/**",
-                        "/admin/block/**", "/registration/**", "/user/**","/register/save/**", "/save/**", "/request/**", "/request/save/**", "/fundraising/**", "/fundraising/save/**", "/statusFundraising","/user/**").permitAll()
+                        "/admin/block/**","/fundraisingOverview/**", "/registration/**", "/user/**","/register/save/**", "/save/**", "/request/**", "/request/save/**", "/fundraising/**", "/fundraising/save/**", "/statusFundraising","/user/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMINISTRATOR")
                 .antMatchers("/user/**").hasAnyAuthority("USER")

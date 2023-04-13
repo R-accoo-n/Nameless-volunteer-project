@@ -113,7 +113,6 @@ public class AuthController {
         model.addAttribute("user", user);
         System.out.println("ver "+model.getAttribute("user"));
         System.out.println(userValue);
-        System.out.println(user.getRole().name().equals("MILITARY"));
         if (userValue==true) {
             if (user.isBlocked()){
                 return "redirect:/blocked";

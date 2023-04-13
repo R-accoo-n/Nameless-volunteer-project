@@ -30,6 +30,12 @@ public class FundraisingService {
     private final FundraisingRepository fundraisingRepository;
     private final FundraisingRequestRepository fundraisingRequestRepository;
 
+    public Fundraising findFundraisingById(UUID fundraisingId){
+        return fundraisingRepository.findFundraisingsById(fundraisingId);
+    }
+    public List<FundraisingRequest>findByMilitaryId(UUID militaryId){
+        return fundraisingRequestRepository.findByMilitaryId(militaryId);
+    }
     public List<Fundraising>findAllByActiveIsTrue(){return fundraisingRepository.findAllByIsActiveTrue();}
 
     public List<Fundraising> getActiveFundraisingsByType(FundraisingType type) {
@@ -39,6 +45,7 @@ public class FundraisingService {
     public List<Fundraising> getCompletedFundraisings(UUID userId) {
         return fundraisingRepository.findByUserIdAndIsActiveFalse(userId);
     }
+
 
     public void saveRequest(RequestDto requestDto, UUID userId) {
         FundraisingRequest fundraisingRequest = new FundraisingRequest();
