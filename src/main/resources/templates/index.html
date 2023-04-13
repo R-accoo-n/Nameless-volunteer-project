@@ -23,15 +23,88 @@
         .type{
             padding-left: 21px;
         }
-        .section{
-            width: 1480px;
+        .section {
+            width: 100%;
             position: center;
             margin: auto;
             display: flex;
             flex-wrap: wrap;
+            background-color: #F1F1F1;
+        }
+        .carousel{
+            margin-top: 38px;
         }
         a{
             color: black;
+        }
+        .footer{
+            width: 100%;
+        }
+        .header {
+            /* width: 100vw; */
+            right: 0;
+            width: unset;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* width: 100vw; */
+        }
+        .wrapper{
+            position: relative;
+        }
+        .wrapper> #left{
+            position: absolute;
+            top: 40%;
+            left: 25px;
+            z-index: 555;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper> #left:before, .wrapper> #right:before{
+            position: inherit;
+        }
+        .wrapper> #right{
+            position: absolute;
+            top: 40%;
+            right: 25px;
+            z-index: 555;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper i:active {
+             transform: unset!important;
+        }
+        .section{
+            background-color: #F1F1F1;
+        }
+        .main-block-categories-container{
+            background-color: #F1F1F1;
+            width: 100%;
+            padding: 0px 15px;
+            margin: 0;
+            max-width: inherit;
+            margin-top: 38px;
+        }
+        .image-carousel{
+            border-radius: 17px;
+            border: solid 2px;
+            margin-left: 15px;
+            border-color: #bfbfbf;
+        }
+        .carousel img{
+            margin-left: 25px;
         }
     </style>
 </head>
@@ -64,10 +137,28 @@
             </span>
             <input type="text" class="type" placeholder="Пошук..">
         </header>
+
         <!-- Main -->
         <main class="page">
             <div>
                 <div class="main-block-top">
+                </div>
+                <div class="wrapper">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <div class="carousel">
+                        <img th:src="@{/images/img1.jpg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img2.jpg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img3.jpeg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img4.jpg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img5 .jpg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img6.jpg}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img7.png}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img8.png}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img9.png}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img10.png}" alt="img" class="image-carousel" draggable="false">
+                        <img th:src="@{/images/img11.jpeg}" alt="img" class="image-carousel" draggable="false">
+                    </div>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
                 </div>
                 <div class="main-block-categories-container">
                     <nav class="main-block-categories">
@@ -84,7 +175,7 @@
                 <section class="section">
                     <div class="row pb-5 mb-4 pt-5 mt-4 ml-5 pl-4">
                         <div class="col-lg-3 col-md-6 mb-4 pr-5" th:each="fundraising : ${allActiveFundraising}">
-                            <a href="">
+                            <a th:href="@{/fundraisingOverview/{fundraisingId}(fundraisingId=${fundraising.id})}">
                                 <div class="card rounded">
                                     <div class="card-body p-6">
                                         <img class="card-img" th:src="@{'/images/uploadedImagesFundraising/' + ${fundraising.photo}}">
@@ -106,23 +197,6 @@
                     </div>
                 </section>
                 </div>
-            <div class="wrapper">
-                    <i id="left" class="fa-solid fa-angle-left"></i>
-                    <div class="carousel">
-                      <img th:src="@{/images/img1.jpg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img2.jpg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img3.jpeg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img4.jpg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img5 .jpg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img6.jpg}" alt="img" draggable="false">
-                      <img th:src="@{/images/img7.png}" alt="img" draggable="false">
-                      <img th:src="@{/images/img8.png}" alt="img" draggable="false">
-                      <img th:src="@{/images/img9.png}" alt="img" draggable="false">
-                      <img th:src="@{/images/img10.png}" alt="img" draggable="false">
-                      <img th:src="@{/images/img11.jpeg}" alt="img" draggable="false">
-                    </div>
-                    <i id="right" class="fa-solid fa-angle-right"></i>
-                  </div>
         </main>
 
     <!-- Footer -->
