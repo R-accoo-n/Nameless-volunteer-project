@@ -15,7 +15,30 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../static/js/mainJS.js" defer></script>
   <link rel="stylesheet" href="../static/css/myRequests.css">
-  <title id="Main" role="main">My requests</title>
+  <title id="Volunteers" >Volunteers</title>
+  <style>
+    .text-date {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    margin: 0;
+    color: black;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    min-height: 150px;
+    column-gap: 10px;
+    row-gap: 15px;
+    width: 1303px;
+    align-items: center;
+}
+
+  </style>
 </head>
 
 <body>
@@ -52,51 +75,20 @@
       <div>
         <div class="main-block-top">
         </div>
-        <div class="grey-bg container-fluid">
-          <!-- First row -->
+        <div class="grey-bg container-fluid pt-5">
+
           <section id="minimal-statistics">
-            <h2 class="request font-weight-bold mb-3 mt-2 ml-5">Мої запити</h2>
             <div class="row pb-5 mb-4 ml-3">
               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <div class="card rounded shadow-sm border-0">
+                <div class="card rounded shadow-sm border-0" style="border-radius: 12px;">
                   <div class="card-body p-4">
-                    <h5> <a href="#" class="text-date">until 232sdvk</a></h5>
-                    <p class="text-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <button onclick="location.href=''" class="button-change">РЕДАГУВАТИ</button>
+                    <img class="img-fluid " src="../static/images/img8.png" style="height: 142px;">
+                    <h5 class="text-date mt-mb-3">Волонтер</h5>
+                    <p class="text-description" style="height: 140px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                   </div>
                 </div>
-              </div>
-
-
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <div class="card rounded shadow-sm border-0" style="background-color: #E7F5D6;">
-                  <div class="card-body p-4">
-                    <h5> <a href="#" class="text-date">until 232sdvk</a></h5>
-                    <p class="text-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <button onclick="location.href=''" class="button-change-answered"> ВАМ ВІДПОВІЛИ</button>
-                  </div>
-                </div>
-              </div>
-
-
-
+              </div> 
           </section>
-          <!-- Second row -->
-          <section id="minimal-statistics">
-            <h2 class="request font-weight-bold mb-3 mt-2 ml-5">Завершені запити</h2>
-            <div class="row pb-5 mb-4 ml-3 mt-2">
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <div class="card rounded shadow-sm border-0" style="height: 248px">
-                  <div class="card-body p-4">
-                    <h5> <a href="#" class="text-date">until 232sdvk</a></h5>
-                    <p class="text-description-done text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
     </main>
 
     <!-- Footer -->
