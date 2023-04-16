@@ -19,7 +19,25 @@
             font-weight: 600;
             margin: 39px;
             padding-inline-start: 30px;
-
+        }
+        .menu-list {
+            margin-left: 105px;
+        }
+        .menu-item {
+            margin-left: -40px;
+        }
+        .header-icon{
+            margin-left: 10px;
+        }
+        .card-img {
+            border-radius: 12px 12px 0px 0px;
+            width: 298px;
+            height: 142px;
+            left: 21px;
+            top: 1px;
+        }
+        #div-for-buttons{
+            margin-top: 34px;
         }
     </style>
 </head>
@@ -30,15 +48,17 @@
             <div class="header-container">
                 <span class="header-logo">Volunteer.ua</span>
                 <nav class="header-menu menu">
-                    <ul class="menu-list">
+                    <ul class="menu-list"><li class="menu-item">
+                        <a th:href="@{/military/home/{userId}(userId=${user.id})}" class="menu-link">Головна</a>
+                    </li>
                         <li class="menu-item">
-                            <a href="" class="menu-link">Головна</a>
+                            <a th:href="@{/military/requests/{userId}(userId=${user.id})}" class="menu-link">Мої запити</a>
                         </li>
                         <li class="menu-item">
-                            <a href="" class="menu-link">Мої запити</a>
+                            <a th:href="@{/request/{userId}(userId=${user.id})}" class="menu-link">Організувати запит</a>
                         </li>
                         <li class="menu-item">
-                            <a href="" class="menu-link">Звіти</a>
+                            <a th:href="@{/fundraising/{userId}(userId=${user.id})}" class="menu-link">Організувати збір</a>
                         </li>
                         <li class="menu-item">
                             <a href="" class="menu-link">Волонтери</a>
@@ -85,11 +105,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="div-for-description">
-                            <p class="inscription-description">Ваш опис:</p>
-                            <p class="your-description">з БД</p>
-                        </div>
-                    </div>
                 
 <!--Editing profile-->
                 
@@ -123,10 +138,6 @@
                                     </ul></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="div-for-description">
-                            <p class="inscription-description">Ваш опис:</p>
-                            <textarea class="your-description" name="" id=""  placeholder="Ваш опис" value="111"></textarea>
                         </div>
                     </div>
                 

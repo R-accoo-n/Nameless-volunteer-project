@@ -57,4 +57,11 @@ public class FundraisingController {
         return fundraisingRepository.findByIsActive(true);
     }
 
+    @GetMapping("/fundraisingOverview/{fundraisingId}")
+    public String fundraisingOverviewPage(@PathVariable UUID fundraisingId, Model model){
+        Fundraising fundraising=fundraisingService.findFundraisingById(fundraisingId);
+        model.addAttribute("fundraising", fundraising);
+        return "Fundraisingoverviewpage";
+    }
+
 }
