@@ -106,6 +106,82 @@
         .carousel img{
             margin-left: 25px;
         }
+
+
+
+
+
+
+        
+
+
+
+        /*додана штука зміна*/
+        /* в css шукати за допомогою "зміна"*/
+
+        @media (max-width: 1420px) {
+            [class*="-container"] {
+                width: 100%;
+                min-width: 600px;
+            }
+        }
+        header{
+            width: 100%;
+            height: 550px;
+        }
+        .fix-for-header{
+            width: 1420px;
+            margin: 0px auto;
+            position: relative;
+            height: 400px;
+            /*padding: 0px 250px;*/
+            
+        }
+        @media (max-width: 1420px) {
+            [class*="-for-header"] {
+                width: 100%;
+                min-width: 600px;
+            }
+        }
+
+
+        .header-banner-text {
+            font-family: 'Philosopher';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 64px;
+            /*line-height: 72px;*/
+            text-align: right;
+            mix-blend-mode: luminosity;
+            width: 724px;
+            height: 144px;
+
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 69px;
+
+            margin: 0;
+        }
+        .type {
+            width: 402px;
+            height: 60px;
+            background: #FFFFFF;
+            border-radius: 24px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            color: #BBBBBB;
+            padding-left: 21px;
+            margin: 0px;
+
+            position: absolute;
+            left: 0px;
+            top: 262px;
+        }  
+        /*додана штука кінець*/ 
     </style>
 </head>
 
@@ -132,10 +208,25 @@
                     <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>
                 </div>
             </div>
+
+
+
+            <!--відредагована штука-->
+            <div class="fix-for-header">
+                <h2 class="header-banner-text">Долучайся до підтримки Збройних Сил України</h2>
+                <input type="text" class="type" placeholder="Пошук..">
+            </div>
+            <!--відредагована штука кінець-->
+
+
+
+
+            
+            <!-- зміна
             <span>
                 <h2 class="header-banner-text">Долучайся до підтримки Збройних Сил України</h2>
             </span>
-            <input type="text" class="type" placeholder="Пошук..">
+            <input type="text" class="type" placeholder="Пошук..">-->
         </header>
 
         <!-- Main -->
