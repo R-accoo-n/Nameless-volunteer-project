@@ -116,7 +116,6 @@
   .page {
     flex: 1 1 auto;
   }
-  /*                                зміна
   @media (max-width: 1199.98px) {
     [class*="-container"] {
       max-width: 970px;
@@ -134,7 +133,7 @@
       max-width: 320px;
       padding: 0px 15px;
     }
-  }/*
+  }
   
   /* Header */
   .header {
@@ -194,14 +193,13 @@
   }
   
   .menu-button {
-    height: 34x;
+    height: 34px;
     background: #d9d9d9;
     border-radius: 12px;
     font-size: 22px;
     font-weight: normal;
     padding: 7px 14px;
   }
-  /*                         зміна
   .header-banner-text {
     font-family: 'Philosopher';
     font-style: normal;
@@ -232,7 +230,7 @@
     line-height: 29px;
     color: #BBBBBB;
     padding-left: 21px;
-  }*/
+  }
   
   /* Main */
   /* .page-main {} */

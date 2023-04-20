@@ -51,4 +51,13 @@ public class RequestController {
         fundraisingService.saveRequest(requestDto, userId);
         return "redirect:/military/{userId}";
     }
+
+    @GetMapping("/volunteer/requests/{userId}")
+    public String requestsForVolunteer(@PathVariable UUID userId, Model model){
+        List<FundraisingRequest>fundraisingRequests=fundraisingService.findFundraisingRequestsByIsNotSatisfied();
+        model.addAttribute("fundraisingRequests", fundraisingRequests);
+        User user=userService.findUserById(userId);
+        model.addAttribute("user", user);
+        return "requestsForVolunteers";
+    }
 }
