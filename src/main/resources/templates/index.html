@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
-        rel="stylesheet">
+          rel="stylesheet">
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}">
     <script th:src="@{/js/mainJS.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -30,6 +30,9 @@
             display: flex;
             flex-wrap: wrap;
             background-color: #F1F1F1;
+        }
+        .menu-button{
+            height: 42px;
         }
         .carousel{
             margin-top: 38px;
@@ -84,7 +87,7 @@
             justify-content: center;
         }
         .wrapper i:active {
-             transform: unset!important;
+            transform: unset!important;
         }
         .section{
             background-color: #F1F1F1;
@@ -107,65 +110,27 @@
             margin-left: 25px;
         }
 
-
-
-
-
-
-        
-
-
-
-        /*додана штука зміна*/
-        /* в css шукати за допомогою "зміна"*/
-
-        @media (max-width: 1420px) {
-            [class*="-container"] {
-                width: 100%;
-                min-width: 600px;
-            }
-        }
-        header{
-            width: 100%;
-            height: 550px;
-        }
-        .fix-for-header{
-            width: 1420px;
-            margin: 0px auto;
-            position: relative;
-            height: 400px;
-            /*padding: 0px 250px;*/
-            
-        }
-        @media (max-width: 1420px) {
-            [class*="-for-header"] {
-                width: 100%;
-                min-width: 600px;
-            }
-        }
-
-
         .header-banner-text {
             font-family: 'Philosopher';
             font-style: normal;
             font-weight: 700;
             font-size: 64px;
-            /*line-height: 72px;*/
+            line-height: 72px;
             text-align: right;
             mix-blend-mode: luminosity;
-            width: 724px;
-            height: 144px;
-
-            display: inline-block;
             position: absolute;
-            right: 0px;
-            top: 69px;
-
-            margin: 0;
+            width: 824px;
+            height: 144px;
+            left: 560px;
+            top: 219px;
         }
+
         .type {
+            position: absolute;
             width: 402px;
             height: 60px;
+            left: 86px;
+            top: 392px;
             background: #FFFFFF;
             border-radius: 24px;
             font-family: 'Inter';
@@ -175,217 +140,196 @@
             line-height: 29px;
             color: #BBBBBB;
             padding-left: 21px;
-            margin: 0px;
-
-            position: absolute;
-            left: 0px;
-            top: 262px;
-        }  
-        /*додана штука кінець*/ 
+        }
     </style>
 </head>
 
 <body>
-    <div class="wrapper" style="font-family: 'Raleway';">
-        <header class="header">
-            <div class="header-container">
-                <span class="header-logo">Volunteer.ua</span>
-                <nav class="header-menu menu">
-                    <ul class="menu-list">
-                        <li class="menu-item">
-                            <a th:href="@{/home}" class="menu-link">Головна</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="" class="menu-link">Термінові збори</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="" class="menu-link">Звіти</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="header-signup">
-                    <button class="menu-button" role="button"><a th:href="@{/login}">Вхід</a></button>
-                    <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>
-                </div>
+<div class="wrapper" style="font-family: 'Raleway';">
+    <header class="header">
+        <div class="header-container">
+            <span class="header-logo">Volunteer.ua</span>
+            <nav class="header-menu menu">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a th:href="@{/home}" class="menu-link">Головна</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Термінові збори</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Звіти</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-signup">
+                <button class="menu-button" role="button"><a th:href="@{/login}">Вхід</a></button>
+                <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>
             </div>
-
-
-
-            <!--відредагована штука-->
-            <div class="fix-for-header">
-                <h2 class="header-banner-text">Долучайся до підтримки Збройних Сил України</h2>
-                <input type="text" class="type" placeholder="Пошук..">
-            </div>
-            <!--відредагована штука кінець-->
-
-
-
-
-            
-            <!-- зміна
-            <span>
+        </div>
+        <span>
                 <h2 class="header-banner-text">Долучайся до підтримки Збройних Сил України</h2>
             </span>
-            <input type="text" class="type" placeholder="Пошук..">-->
-        </header>
+        <input type="text" class="type" placeholder="Пошук..">
+    </header>
 
-        <!-- Main -->
-        <main class="page">
-            <div>
-                <div class="main-block-top">
+    <!-- Main -->
+    <main class="page">
+        <div>
+            <div class="main-block-top">
+            </div>
+            <div class="wrapper">
+                <i id="left" class="fa-solid fa-angle-left"></i>
+                <div class="carousel">
+                    <img th:src="@{/images/img1.jpg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img2.jpg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img3.jpeg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img4.jpg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img5 .jpg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img6.jpg}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img7.png}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img8.png}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img9.png}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img10.png}" alt="img" class="image-carousel" draggable="false">
+                    <img th:src="@{/images/img11.jpeg}" alt="img" class="image-carousel" draggable="false">
                 </div>
-                <div class="wrapper">
-                    <i id="left" class="fa-solid fa-angle-left"></i>
-                    <div class="carousel">
-                        <img th:src="@{/images/img1.jpg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img2.jpg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img3.jpeg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img4.jpg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img5 .jpg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img6.jpg}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img7.png}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img8.png}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img9.png}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img10.png}" alt="img" class="image-carousel" draggable="false">
-                        <img th:src="@{/images/img11.jpeg}" alt="img" class="image-carousel" draggable="false">
-                    </div>
-                    <i id="right" class="fa-solid fa-angle-right"></i>
-                </div>
-                <div class="main-block-categories-container">
-                    <nav class="main-block-categories">
-                        <a href="">УСІ ЗБОРИ</a>
-                        <a href="">ЛІКИ</a>
-                        <a href="">АВТО</a>
-                        <a href="">ДРОНИ</a>
-                        <a href="">АМУНІЦІЯ</a>
-                        <a href="">ЗВ'ЯЗОК</a>
-                        <a href="">ЖИВЛЕННЯ</a>
-                        <a href="">ІНВЕНТАР</a>
-                    </nav>
-                </div>
-                <section class="section">
-                    <div class="row pb-5 mb-4 pt-5 mt-4 ml-5 pl-4">
-                        <div class="col-lg-3 col-md-6 mb-4 pr-5" th:each="fundraising : ${allActiveFundraising}">
-                            <a th:href="@{/fundraisingOverview/{fundraisingId}(fundraisingId=${fundraising.id})}">
-                                <div class="card rounded">
-                                    <div class="card-body p-6">
-                                        <img class="card-img" th:src="@{'/images/uploadedImagesFundraising/' + ${fundraising.photo}}">
-                                        <div class="card-container">
-                                            <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
-                                            <p th:text="${fundraising.description}"></p>
-                                            <p th:text="${fundraising.sum}"> грн</p>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar">
-                                                    <!-- <span class="my-centered">60% Complete</span> -->
-                                                </div>
+                <i id="right" class="fa-solid fa-angle-right"></i>
+            </div>
+            <div class="main-block-categories-container">
+                <nav class="main-block-categories">
+                    <a href="">УСІ ЗБОРИ</a>
+                    <a href="">ЛІКИ</a>
+                    <a href="">АВТО</a>
+                    <a href="">ДРОНИ</a>
+                    <a href="">АМУНІЦІЯ</a>
+                    <a href="">ЗВ'ЯЗОК</a>
+                    <a href="">ЖИВЛЕННЯ</a>
+                    <a href="">ІНВЕНТАР</a>
+                </nav>
+            </div>
+            <section class="section">
+                <div class="row pb-5 mb-4 pt-5 mt-4 ml-5 pl-4">
+                    <div class="col-lg-3 col-md-6 mb-4 pr-5" th:each="fundraising : ${allActiveFundraising}">
+                        <a th:href="@{/fundraisingOverview/{fundraisingId}(fundraisingId=${fundraising.id})}">
+                            <div class="card rounded">
+                                <div class="card-body p-6">
+                                    <img class="card-img" th:src="@{'/images/uploadedImagesFundraising/' + ${fundraising.photo}}">
+                                    <div class="card-container">
+                                        <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
+                                        <p th:text="${fundraising.description}"></p>
+                                        <p th:text="${fundraising.sum}"> грн</p>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar">
+                                                <!-- <span class="my-centered">60% Complete</span> -->
                                             </div>
-                                            <button class="help">ДОПОМОГТИ</button>
                                         </div>
+                                        <button class="help">ДОПОМОГТИ</button>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                </section>
                 </div>
-        </main>
+            </section>
+        </div>
+    </main>
 
     <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-social-media">
-                    <h5>Соціальні мережі: </h5>
-                    <div class="footer-images">
-                        <img class="image" th:src="@{/images/facebook_icon.svg}">
-                        <img class="image" th:src="@{/images/instagram-icon.svg}">
-                        <img class="image" th:src="@{/images/telegram-icon.svg}">
-                    </div>
-                </div>
-
-                <nav class="footer-contacts">
-                    <div>
-                        <span>Телефон:</span>
-                        <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
-                    </div>
-                    <div>
-                        <span>Email:</span>
-                        <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
-                    </div>
-                </nav>
-
-                <div>
-                    <nav class="footer-menu">
-                        <a href="">Політика приватності</a>
-                        <a href="">Надіслати відгук</a>
-                        <a href="">Служба підтримки</a>
-                        <a href="">Співпраця</a>
-                    </nav>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-social-media">
+                <h5>Соціальні мережі: </h5>
+                <div class="footer-images">
+                    <img class="image" th:src="@{/images/facebook_icon.svg}">
+                    <img class="image" th:src="@{/images/instagram-icon.svg}">
+                    <img class="image" th:src="@{/images/telegram-icon.svg}">
                 </div>
             </div>
-        </footer>
-    </div>
-    <script>
-        const carousel = document.querySelector(".carousel"),
-            firstImg = carousel.querySelectorAll("img")[0],
-            arrowIcons = document.querySelectorAll(".wrapper i");
-        let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
-        const showHideIcons = () => {
-            // showing and hiding prev/next icon according to carousel scroll left value
-            let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // getting max scrollable width
-            arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
-            arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
-        }
-        arrowIcons.forEach(icon => {
-            icon.addEventListener("click", () => {
-                let firstImgWidth = firstImg.clientWidth + 14; // getting first img width & adding 14 margin value
-                // if clicked icon is left, reduce width value from the carousel scroll left else add to it
-                carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-                setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
-            });
+
+            <nav class="footer-contacts">
+                <div>
+                    <span>Телефон:</span>
+                    <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+                </div>
+                <div>
+                    <span>Email:</span>
+                    <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
+                </div>
+            </nav>
+
+            <div>
+                <nav class="footer-menu">
+                    <a href="">Політика приватності</a>
+                    <a href="">Надіслати відгук</a>
+                    <a href="">Служба підтримки</a>
+                    <a href="">Співпраця</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    const carousel = document.querySelector(".carousel"),
+        firstImg = carousel.querySelectorAll("img")[0],
+        arrowIcons = document.querySelectorAll(".wrapper i");
+    let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
+    const showHideIcons = () => {
+        // showing and hiding prev/next icon according to carousel scroll left value
+        let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // getting max scrollable width
+        arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
+        arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+    }
+    arrowIcons.forEach(icon => {
+        icon.addEventListener("click", () => {
+            let firstImgWidth = firstImg.clientWidth + 14; // getting first img width & adding 14 margin value
+            // if clicked icon is left, reduce width value from the carousel scroll left else add to it
+            carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+            setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
         });
-        const autoSlide = () => {
-            // if there is no image left to scroll then return from here
-            if(carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
-            positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
-            let firstImgWidth = firstImg.clientWidth + 14;
-            // getting difference value that needs to add or reduce from carousel left to take middle img center
-            let valDifference = firstImgWidth - positionDiff;
-            if(carousel.scrollLeft > prevScrollLeft) { // if user is scrolling to the right
-                return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
-            }
-            // if user is scrolling to the left
-            carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+    });
+    const autoSlide = () => {
+        // if there is no image left to scroll then return from here
+        if(carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
+        positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
+        let firstImgWidth = firstImg.clientWidth + 14;
+        // getting difference value that needs to add or reduce from carousel left to take middle img center
+        let valDifference = firstImgWidth - positionDiff;
+        if(carousel.scrollLeft > prevScrollLeft) { // if user is scrolling to the right
+            return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
         }
-        const dragStart = (e) => {
-            // updatating global variables value on mouse down event
-            isDragStart = true;
-            prevPageX = e.pageX || e.touches[0].pageX;
-            prevScrollLeft = carousel.scrollLeft;
-        }
-        const dragging = (e) => {
-            // scrolling images/carousel to left according to mouse pointer
-            if(!isDragStart) return;
-            e.preventDefault();
-            isDragging = true;
-            carousel.classList.add("dragging");
-            positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-            carousel.scrollLeft = prevScrollLeft - positionDiff;
-            showHideIcons();
-        }
-        const dragStop = () => {
-            isDragStart = false;
-            carousel.classList.remove("dragging");
-            if(!isDragging) return;
-            isDragging = false;
-            autoSlide();
-        }
-        carousel.addEventListener("mousedown", dragStart);
-        carousel.addEventListener("touchstart", dragStart);
-        document.addEventListener("mousemove", dragging);
-        carousel.addEventListener("touchmove", dragging);
-        document.addEventListener("mouseup", dragStop);
-        carousel.addEventListener("touchend", dragStop);
-    </script>
+        // if user is scrolling to the left
+        carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+    }
+    const dragStart = (e) => {
+        // updatating global variables value on mouse down event
+        isDragStart = true;
+        prevPageX = e.pageX || e.touches[0].pageX;
+        prevScrollLeft = carousel.scrollLeft;
+    }
+    const dragging = (e) => {
+        // scrolling images/carousel to left according to mouse pointer
+        if(!isDragStart) return;
+        e.preventDefault();
+        isDragging = true;
+        carousel.classList.add("dragging");
+        positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+        carousel.scrollLeft = prevScrollLeft - positionDiff;
+        showHideIcons();
+    }
+    const dragStop = () => {
+        isDragStart = false;
+        carousel.classList.remove("dragging");
+        if(!isDragging) return;
+        isDragging = false;
+        autoSlide();
+    }
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("touchstart", dragStart);
+    document.addEventListener("mousemove", dragging);
+    carousel.addEventListener("touchmove", dragging);
+    document.addEventListener("mouseup", dragStop);
+    carousel.addEventListener("touchend", dragStop);
+</script>
 </body>
 
 </html>

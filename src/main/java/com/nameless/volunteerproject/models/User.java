@@ -45,6 +45,8 @@ public class User {
 
     private String photo;
 
+    private String description;
+
     @OneToMany
     private List<Fundraising> fundraisings;
     @OneToMany
