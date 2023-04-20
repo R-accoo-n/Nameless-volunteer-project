@@ -19,5 +19,5 @@ public interface FundraisingRepository extends JpaRepository<Fundraising, UUID> 
     List<Fundraising>findAllByIsActiveTrue();
     List<Fundraising> findByUserIdAndIsActiveFalse(UUID userId);
     List<Fundraising> findByIsActive(boolean isActive);
-    Fundraising findFundraisingsById(UUID fundraisingId);
+    Fundraising findFundraisingById(UUID fundraisingId);
 }

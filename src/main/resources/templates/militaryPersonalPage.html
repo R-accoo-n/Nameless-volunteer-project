@@ -39,6 +39,55 @@
         #div-for-buttons{
             margin-top: 34px;
         }
+        .profile-user-img{
+  width: 125px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: auto;
+    margin-bottom: 20px;
+
+    .avatar-edit {
+        position: absolute;
+        right: 40px;
+        z-index: 1;
+        top: 90px;
+        input {
+            display: none;
+            + label {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: #FFFFFF;
+                border: 1px solid #d2d6de;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all .2s ease-in-out;
+                &:hover {
+                    background: #f1f1f1;
+                    border-color: #d6d6d6;
+                }
+                &:after {
+                    content: "\f030";
+                    font-family: 'FontAwesome';
+                    color: #337AB7;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    line-height: 34px;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}
     </style>
 </head>
 
@@ -61,7 +110,7 @@
                             <a th:href="@{/fundraising/{userId}(userId=${user.id})}" class="menu-link">Організувати збір</a>
                         </li>
                         <li class="menu-item">
-                            <a href="" class="menu-link">Волонтери</a>
+                            <a th:href="@{/military/volunteers/{userId}(userId=${user.id})}" class="menu-link">Волонтери</a>
                         </li>
                     </ul>
                 </nav>
@@ -81,8 +130,8 @@
             <div class="wrpper-for-all">
                 
                 <div class="all-data-in-main">
-                
-                
+
+
                     <div id="data-about-user">
                         <div class="wrapper-data">
                             <button id="edit-button" ><img th:src="@{/images/326602_create_edit_pencil_write_icon.svg}" width="20px" height="20px" alt="icon"></button>
@@ -226,7 +275,24 @@
                 </div>
             </div>
         </footer>
-        <script th:src="@{/js/volunteerpage.js}"></script>
+        <script th:src="@{/js/volunteerpage.js}">
+            $(document).ready(function(){
+
+                $("#imageUpload").change(function(data){
+
+                    var imageFile = data.target.files[0];
+                    var reader = new FileReader();
+                    reader.readAsDataURL(imageFile);
+
+                    reader.onload = function(evt){
+                        $('#imagePreview').attr('src', evt.target.result);
+                        $('#imagePreview').hide();
+                        $('#imagePreview').fadeIn(650);
+                    }
+
+                });
+            });
+        </script>
     </div>
 </body>
 

@@ -24,18 +24,22 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class FundraisingService {
-
     private final static String UPLOADED_FOLDER = "src/main/resources/static/images/uploadedImagesFundraising/";
 
     private final FundraisingRepository fundraisingRepository;
     private final FundraisingRequestRepository fundraisingRequestRepository;
+    public List<FundraisingRequest>findFundraisingRequestsByIsNotSatisfied(){
+        return fundraisingRequestRepository.findFundraisingRequestsByIsSatisfiedIsFalse();
+    }
 
     public Fundraising findFundraisingById(UUID fundraisingId){
-        return fundraisingRepository.findFundraisingsById(fundraisingId);
+        return fundraisingRepository.findFundraisingById(fundraisingId);
     }
+
     public List<FundraisingRequest>findByMilitaryId(UUID militaryId){
         return fundraisingRequestRepository.findByMilitaryId(militaryId);
     }
+
     public List<Fundraising>findAllByActiveIsTrue(){return fundraisingRepository.findAllByIsActiveTrue();}
 
     public List<Fundraising> getActiveFundraisingsByType(FundraisingType type) {
@@ -57,10 +61,6 @@ public class FundraisingService {
         fundraisingRequestRepository.save(fundraisingRequest);
     }
 
-//    @GetMapping("/statusFundraisings(")
-//    public List<Fundraising> getStatusFundraisings() {
-//        return fundraisingRepository.findByIsActive(true);
-//    }
 
     public List<Fundraising> getActiveFundraisings() {
         return fundraisingRepository.findByIsActive(true);

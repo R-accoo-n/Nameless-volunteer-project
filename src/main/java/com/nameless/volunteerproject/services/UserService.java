@@ -42,6 +42,10 @@ public class UserService {
         this.donationsRepository = donationsRepository;
     }
 
+    public List<User>findAllVolunteers(){
+        return userRepository.findUserByRole(UserRole.VOLUNTEER);
+    }
+
     public boolean verifyUser(UUID userId, UserRole role) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {

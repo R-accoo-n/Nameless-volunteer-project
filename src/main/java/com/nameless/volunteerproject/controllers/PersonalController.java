@@ -22,7 +22,7 @@ public class PersonalController {
     public String userPage(@PathVariable UUID userId, Model model){
         User user=userService.findUserById(userId);
         model.addAttribute("user", user);
-    return "userPersonalPage";
+        return "userPersonalPage";
     }
 
     @GetMapping("/military/{userId}")

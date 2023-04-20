@@ -24,8 +24,8 @@ class SecurityConfiguration {
 
         http.authorizeHttpRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/login/**","/register/**",  "/support/**","/feedback/**","/volunteer/**", "/donation/**",
-                        "/volunteerRegistration/**", "/userRegistration/**","/militaryRegistration/**", "/register/save/**", "/user/**",
+                .antMatchers("/", "/login/**","/register/**","/favourite/**", "/volunteers/**", "/support/**","/feedback/**","/volunteer/**", "/donation/**",
+                        "/volunteerRegistration/**","/addToWishlist/**","/removeWishListItem/**", "/userRegistration/**","/militaryRegistration/**", "/register/save/**", "/user/**",
                         "/waiting/**","/home","/admin/**","/admin/block/**", "/admin/users/admin/block/**" ,"/military/**", "/admin/approve/**",
                         "/admin/block/**","/fundraisingOverview/**", "/registration/**", "/user/**","/register/save/**", "/save/**", "/request/**", "/request/save/**", "/fundraising/**", "/fundraising/save/**", "/statusFundraising","/user/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/bootstrap/**", "/static/**", "/mixins/**", "/utilities/**").permitAll()
