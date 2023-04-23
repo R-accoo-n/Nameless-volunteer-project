@@ -1,22 +1,50 @@
 <!DOCTYPE html>
-<html lang="uk">
-
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap"
+    th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
     rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/js/mainJS.js" defer></script>
-  <link rel="stylesheet" href="../static/css/myRequests.css">
+  <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css}">
+  <script th:src="@{https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js}"></script>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js}"></script>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/js/mainJS.js}" defer></script>
+  <link rel="stylesheet" th:href="@{/css/myRequests.css}">
   <title id="Volunteers" >Volunteers</title>
   <style>
+    .menu-list {
+      margin-left: 36px;
+      width: 1009px;
+    }
+    .menu-item {
+      margin-left: -7px;
+      margin-top: 13px;
+    }
+    .header-icon{
+      margin-left: 10px;
+    }
+    .type{
+      padding-left: 21px;
+    }
+    .header-logo {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 48px;
+      color: #000;
+    }
+    .section {
+       width: 100%;
+       position: center;
+       margin: auto;
+       display: flex;
+       flex-wrap: wrap;
+       background-color: #F1F1F1;
+     }
     .text-date {
     font-family: 'Montserrat';
     font-style: normal;
@@ -36,38 +64,39 @@
     row-gap: 15px;
     width: 1303px;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
   </style>
 </head>
 
 <body>
-  <div class="wrapper" style="font-family: 'Raleway';">
-    <header class="header">
-      <div class="header-container">
-        <span class="header-logo">Volunteer.ua</span>
-        <nav class="header-menu menu">
-          <ul class="menu-list">
-            <li class="menu-item">
-              <a href="" class="menu-link">Головна</a>
-            </li>
-            <li class="menu-item">
-              <a href="" class="menu-link">Мої запити</a>
-            </li>
-            <li class="menu-item">
-              <a href="" class="menu-link">Організувати запит/збір</a>
-            </li>
-            <li class="menu-item">
-              <a href="" class="menu-link">Звіти</a>
-            </li>
-            <li class="menu-item">
-              <a href="" class="menu-link">Волонтери</a>
-            </li>
-          </ul>
-        </nav>
-        <a href=""><img src="../static/images/Group 37.png" class="header-icon"></a>
-      </div>
-    </header>
+<div class="wrapper" style="font-family: 'Raleway';">
+  <header class="header">
+    <div class="header-container">
+      <span class="header-logo">Volunteer.ua</span>
+      <nav class="header-menu menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a th:href="@{/military/home/{userId}(userId=${user.id})}" class="menu-link">Головна</a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/military/requests/{userId}(userId=${user.id})}" class="menu-link">Мої запити</a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/request/{userId}(userId=${user.id})}" class="menu-link">Організувати запит</a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/fundraising/{userId}(userId=${user.id})}" class="menu-link">Організувати збір</a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/volunteers/{userId}(userId=${user.id})}" class="menu-link">Волонтери</a>
+          </li>
+          <a th:href="@{/military/{userId}(userId=${user.id})}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
 
     <!-- Main -->
@@ -76,19 +105,21 @@
         <div class="main-block-top">
         </div>
         <div class="grey-bg container-fluid pt-5">
-
           <section id="minimal-statistics">
             <div class="row pb-5 mb-4 ml-3">
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" th:each="volunteer:${volunteers}">
                 <div class="card rounded shadow-sm border-0" style="border-radius: 12px;">
                   <div class="card-body p-4">
-                    <img class="img-fluid " src="../static/images/img8.png" style="height: 142px;">
-                    <h5 class="text-date mt-mb-3">Волонтер</h5>
-                    <p class="text-description" style="height: 140px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <img class="img-fluid " th:src="@{/images/img8.png}" style="height: 142px;">
+                    <h5 class="text-date mt-mb-3" th:text="${volunteer.surname}+' '+${volunteer.name}"></h5>
+                    <p class="text-description" style="height: 140px;" th:text="${volunteer.description}"></p>
                   </div>
                 </div>
-              </div> 
+              </div>
+            </div>
           </section>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -97,9 +128,9 @@
         <div class="footer-social-media">
           <h5>Соціальні мережі: </h5>
           <div class="footer-images">
-            <img class="image" src="../static/images/facebook_icon.svg">
-            <img class="image" src="../static/images/instagram-icon.svg">
-            <img class="image" src="../static/images/telegram-icon.svg">
+            <img class="image" th:src="@{/images/facebook_icon.svg}">
+            <img class="image" th:src="@{/images/instagram-icon.svg}">
+            <img class="image" th:src="@{/images/telegram-icon.svg}">
           </div>
         </div>
 

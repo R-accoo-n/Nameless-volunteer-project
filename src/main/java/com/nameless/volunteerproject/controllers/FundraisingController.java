@@ -5,6 +5,7 @@ import com.nameless.volunteerproject.enums.FundraisingType;
 import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.FundraisingRepository;
+import com.nameless.volunteerproject.repositories.UserRepository;
 import com.nameless.volunteerproject.services.FundraisingService;
 import com.nameless.volunteerproject.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +28,8 @@ public class FundraisingController {
     private final FundraisingService fundraisingService;
     private final FundraisingRepository fundraisingRepository;
     private final UserService userService;
+
+    private final UserRepository userRepository;
 
     @GetMapping("/activeFundraising")
     public List<Fundraising> getActiveFundraisingsByType(@PathVariable FundraisingType type) {
@@ -63,5 +67,20 @@ public class FundraisingController {
         model.addAttribute("fundraising", fundraising);
         return "Fundraisingoverviewpage";
     }
+
+//    @GetMapping("/user/home/{userId}")
+//    public String addToFavourite(@PathVariable UUID userId, @RequestParam("fundraisingId") UUID fundraisingId){
+//        User user=userService.findUserById(userId);
+//        List<Fundraising>selectedFundraisings=user.getSelected();
+//        if (selectedFundraisings == null) {
+//            selectedFundraisings = new ArrayList<>();
+//        }
+//        Fundraising fundraising=fundraisingService.findFundraisingById(fundraisingId);
+//        selectedFundraisings.add(fundraising);
+//        user.setSelected(selectedFundraisings);
+//        userRepository.save(user);
+//        return "redirect:/user/home/{userId}";
+//    }
+
 
 }

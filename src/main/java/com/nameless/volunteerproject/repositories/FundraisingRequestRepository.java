@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FundraisingRequestRepository extends JpaRepository<FundraisingRequest, UUID> {
     List<FundraisingRequest>findByMilitaryId(UUID militaryId);
+    List<FundraisingRequest>findFundraisingRequestsByIsSatisfiedIsFalse();
+
 }

@@ -1,5 +1,6 @@
 package com.nameless.volunteerproject.repositories;
 
+import com.nameless.volunteerproject.enums.UserRole;
 import com.nameless.volunteerproject.models.User;
 
 import java.util.List;
@@ -23,5 +24,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     User findByEmailAndPassword(String email, String password);
 
     User findByName(String username);
+    List<User>findUserByRole(UserRole role);
 
 }
