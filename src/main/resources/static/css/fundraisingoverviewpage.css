@@ -107,3 +107,86 @@ main{
 }
 
 
+
+
+
+.div-photo-vol-in-fundraising{
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: rgb(255, 127, 180);
+    position: absolute;
+    bottom: 14px;
+    right: 125px;
+}
+
+
+
+
+.div-for-all-photo-in-fundraising{
+    width: calc(4000px+120px+200px);
+    position: relative;
+}
+
+
+#hidden{
+    display: none;
+}
+
+.hidden-info-about-vol{
+    display: flex;
+    margin: 0px 150px;
+    padding: 0px 100px;
+    margin-bottom: 30px;
+    border-top: 2px solid var(--second-color);
+    border-bottom: 2px solid var(--second-color);
+}
+
+
+.vol-photo{
+    border-radius: 12px;
+    background-color: bisque;
+    height: 250px;
+    width: 250px;
+    margin: 10px;
+}
+.text-info-about-vol{
+    margin: 10px;
+}
+
+.text-info{
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+#hidden{
+    position: absolute;
+    bottom: -11px;
+    left: 260px;
+}
+
+.hidden-div-photo-vol-in-fundraising{
+    width: 350px;
+    height: 200px;
+    border-radius: 12px 100px 100px 12px;
+    background-color: var(--main-color);
+
+    display: flex;
+    border: 1px solid var(--second-color);
+}
+
+.hidden-photo-vol-in-fundraising{
+    min-width: 199px;
+    min-height: 199px;
+    background-color:  rgb(255, 127, 180);
+    border-radius: 100px;
+    position: absolute;
+    right: 0px;
+}

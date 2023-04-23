@@ -50,8 +50,31 @@
             <div class="wrpper-for-all">
                 <div class="wrapper-for-fund">
                     <div class="photo-and-little-description">
-                        <div class="div-photo-fundraising">
-                            <img class="photo-fundraising" src="#" alt="photo fundraising">
+                        <div class="div-for-all-photo-in-fundraising">
+                            <div class="div-photo-fundraising">
+                                <img class="photo-fundraising" src="#" alt="photo fundraising">
+                            </div>
+
+                            <button>
+                                <a href="#">
+                                    <div class="div-photo-vol-in-fundraising" id="trigger">
+                                        <img class="photo-vol-in-fundraising" id="trigger" src="#" alt="photo volonteer in fundraising">
+                                    </div>
+                                </a>
+                            </button>
+
+                            <div id="hidden">
+                                <div class="hidden-div-photo-vol-in-fundraising">
+                                    <div>
+                                        <img class="hidden-photo-vol-in-fundraising" id="trigger" src="#" alt="photo volonteer in fundraising">
+                                    </div>
+                                    <div class="text-info-about-vol">
+                                        <p class="text-info">Ім’я</p>
+                                        <p class="text-info">прізвище</p>
+                                        <p class="text-info">роль</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <p class="inscription-and-data"><span class="inscription-in-fund">Назва збору: </span><span class="data-in-fund">з БД</span></p>
@@ -138,6 +161,22 @@
         x[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " w3-white";
     }
+
+    var trigger = document.getElementById('trigger');
+    var hidden = document.getElementById('hidden');
+    
+    trigger.addEventListener('mouseover', function() {
+        hidden.style.display = 'block';
+    });
+    
+    hidden.addEventListener('mouseover', function() {
+        hidden.style.display = 'block';
+    });
+    
+    hidden.addEventListener('mouseout', function() {
+        hidden.style.display = 'none';
+    });
+
 </script>
 </body>
 </html>
