@@ -27,23 +27,31 @@
                 </ul>
 <!--                <div th:if="${param.error}"><p>Email or Password is invalid.</p></div><br />-->
                 <ul class="countinue">
+
                     <div>
-                        <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
-                        </button>
+                        <a  th:href="./oauth2/authorization/google">
+                            <button class="countinue-button">
+                                <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
+                            </button>
+                        </a>
                     </div>
+
                     <div>
-                    </button>
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}" alt="facebook_icon">Продовжити з Facebook</span>
-                    </button>
+                        <a th:href="./oauth2/authorization/facebook">
+                            <button class="countinue-button">
+                                <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}" alt="facebook_icon">Продовжити з Facebook</span>
+                            </button>
+                        </a>
                     </div>
+
                     <div>
-                    </button>
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
-                    </button>
+                        <a th:href="#">
+                            <button class="countinue-button">
+                                <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
+                            </button>
+                        </a>
                     </div>
+
                 </ul>
             </div>
             <div>
