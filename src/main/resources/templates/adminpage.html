@@ -15,6 +15,15 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/adminpage.css}">
     <title id="Main" role="main">Admin</title>
+    <style>
+        .header-signup{
+            margin-left: 40px;
+        }
+        .menu-list{
+            margin-left: 170px;
+            width: 835px;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper" style="font-family: 'Raleway';">
@@ -48,12 +57,12 @@
             <div class="wrpper-for-all">
                 <div class="all-data-about-admin">
                     <div class="container-for-pib-or-mail">
-                        <p class="inscription-data">П.І.Б.:</p>
-                        <p class="data-about-admin">1111111111111111111111</p>
+                        <p class="inscription-data">Прізвище Ім'я</p>
+                        <p class="data-about-admin">Орленко Сергій</p>
                     </div>
                     <div class="container-for-pib-or-mail">
                         <p class="inscription-data">Пошта:</p>
-                        <p class="data-about-admin">111111111111111111111</p>
+                        <p class="data-about-admin">orlenkos@gmail.com</p>
                     </div>
                 </div>
                 <div id="wrapper-for-table">
@@ -64,8 +73,7 @@
                             <th>Прізвище</th>
                             <th>Ім'я</th>
                             <th>Пошта</th>
-                            <th>Посилання на соц.мережі</th>
-                            <th>Фото</th>
+                            <th>Посилання на профіль</th>
                             <th>Підтвердження</th>
                         </tr>
                         </thead>
@@ -74,8 +82,7 @@
                             <td th:text="${user.surname}"></td>
                             <td th:text="${user.name}"></td>
                             <td th:text="${user.email}"></td>
-                            <td th:text="${user.socialMedia}"></td>
-                            <td><img class="card-img" th:src="@{'/images/uploadedImagesUsers/' + ${user.photo}}"></td>
+                            <td><a th:href="@{/admin/view/{userId}(userId=${user.id})}">View User</a></td>
                             <td>
                                 <div id="div-for-button-yesno">
                                     <form th:action="@{admin/approve/{userId}(userId=${user.id})}" method="post">
@@ -104,8 +111,8 @@
                 <h5>Соціальні мережі: </h5>
                 <div class="footer-images">
                     <img class="image" th:src="@{/images/facebook_icon.svg}">
-                    <img class="image" th:src="@{/images/instagram-2016-5.svg}">
-                    <img class="image" th:src="@{/images/telegram-1.svg}">
+                    <img class="image" th:src="@{/images/instagram-icon.svg}">
+                    <img class="image" th:src="@{/images/telegram-icon.svg}">
                 </div>
             </div>
 

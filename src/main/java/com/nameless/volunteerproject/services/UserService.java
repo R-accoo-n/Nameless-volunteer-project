@@ -3,8 +3,10 @@ package com.nameless.volunteerproject.services;
 import com.nameless.volunteerproject.dto.LoginDto;
 import com.nameless.volunteerproject.dto.UserDto;
 import com.nameless.volunteerproject.models.Donations;
+import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.DonationsRepository;
+import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
 
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Base64;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,19 +31,19 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
 
+    private final FundraisingRepository fundraisingRepository;
     private final DonationsRepository donationsRepository;
 
     private final static String UPLOADED_FOLDER = "src/main/resources/static/images/uploadedImagesUsers/";
 
-    @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                       DonationsRepository donationsRepository) {
-        this.userRepository = userRepository;
-        this.donationsRepository = donationsRepository;
+    public List<Fundraising>fundraisingsCreatedByVolunteer(User user){
+        System.out.println(user.getId());
+         return fundraisingRepository.findFundraisingByUserId(user.getId());
     }
 
     public List<User>findAllVolunteers(){
@@ -173,6 +177,13 @@ public class UserService {
         return donationsRepository.findAllByUserID(userId);
     }
 
+    public User updateUser(UUID userId, MultipartFile multipartFile){
+        User userPresentedInDB = userRepository.findUserById(userId);
+        userPresentedInDB.setId(userId);
+        saveImage(multipartFile);
+        userPresentedInDB.setPhoto(StringUtils.cleanPath(multipartFile.getOriginalFilename()));
+        return userRepository.save(userPresentedInDB);
+    }
     public void saveImage(MultipartFile file) {
         try {
             Path copyLocation = Paths

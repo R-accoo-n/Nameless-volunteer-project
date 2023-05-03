@@ -1,6 +1,7 @@
 package com.nameless.volunteerproject.repositories;
 
 import com.nameless.volunteerproject.enums.UserRole;
+import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.User;
 
 import java.util.List;
@@ -15,8 +16,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-    Optional<User> findByEmail(String email);
 
+    Optional<User> findByEmail(String email);
+    
     User findUserById(UUID id);
 
     Optional<User>findUserByEmailAndPassword(String email, String password);

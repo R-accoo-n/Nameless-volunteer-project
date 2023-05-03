@@ -2,9 +2,7 @@ package com.nameless.volunteerproject.models;
 
 import com.nameless.volunteerproject.enums.FundraisingType;
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -31,7 +29,10 @@ public class Fundraising {
     )
 
     private UUID id;
-    private UUID userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     private String whom;
     private Double sum;
     private String fundraisingName;

@@ -27,6 +27,8 @@ public class AdminController {
     @GetMapping
     public String admin(Model model){
         List<User> notApprovedUsers=adminService.findUsersByIsApprovedIsFalse();
+        User admin=userService.findUserById(UUID.fromString("db5ecc62-faed-4eea-b6df-f75212d159e7"));
+        model.addAttribute("admin", admin);
         model.addAttribute("notApprovedUsers", notApprovedUsers);
         for (User user:notApprovedUsers){
             System.out.println(user);
@@ -37,6 +39,8 @@ public class AdminController {
     @GetMapping("/users")
     public String usersForAdmin(Model model){
         List<User>users=adminService.findAll();
+        User admin=userService.findUserById(UUID.fromString("db5ecc62-faed-4eea-b6df-f75212d159e7"));
+        model.addAttribute("admin", admin);
         model.addAttribute("usersForAdmin", users);
         return "adminpage_allusers";
     }
@@ -60,6 +64,13 @@ public class AdminController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/view/{userId}")
+    public String overviewVolunteer(@PathVariable UUID userId, Model model){
+        User user=userService.findUserById(userId);
+        model.addAttribute("user", user);
+        return "volunteerPersonalPageOverview";
     }
 
 

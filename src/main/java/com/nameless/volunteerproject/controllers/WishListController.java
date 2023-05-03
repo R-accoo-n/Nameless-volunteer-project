@@ -1,15 +1,15 @@
 package com.nameless.volunteerproject.controllers;
 
-import com.nameless.volunteerproject.models.WishList;
-import com.nameless.volunteerproject.services.WishListService;
+import com.nameless.volunteerproject.services.ItemForWishListService;
 import lombok.AllArgsConstructor;
-import org.apache.juli.WebappProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
@@ -18,43 +18,34 @@ import java.util.UUID;
 @AllArgsConstructor
 public class WishListController {
     @Autowired
-    private final WishListService wishListService;
+    private final ItemForWishListService itemForWishListService;
 
-//    @ModelAttribute
-//    public void populateModel(Model model, HttpServletRequest request) {
-//        String sessionToken = (String) request.getSession(true).getAttribute("sessiontToken");
-//        String sessionTokenwishList = (String) request.getSession(true).getAttribute("sessiontTokenWishList");
-//        if(sessionTokenwishList == null) {
-//            model.addAttribute("whishList", new WishList());
-//
+    @PostMapping("/addToWishlist/{userId}/{fundraisingId}")
+    public String addToWishList(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId) throws ChangeSetPersister.NotFoundException {
+//        String sessionToken = (String) request.getSession(true).getAttribute("sessiontTokenWishList");
+//        if (sessionToken == null) {
+//            sessionToken = UUID.randomUUID().toString();
+//            request.getSession().setAttribute("sessiontTokenWishList", sessionToken);
+//            wishListService.addToWishFirstTime(fundraisingId, sessionToken);
+//        } else {
+//            wishListService.addToExistingWishList(fundraisingId, sessionToken);
 //        }
-//        else {
-//            model.addAttribute("whishList", wishlistService.getWishListBySessionTokent(sessionTokenwishList));
-//        }
-//        model.addAttribute("categories",productService.getAllCategories());
-//
-//        model.addAttribute("brands",productService.getAllBrands());
-//        model.addAttribute("featured",productService.getProductWithBigestDiscount());
-//    }
-
-    @GetMapping("/addToWishlist/{userId}/{fundraisingId}")
-    public String addToWishList(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId, HttpServletRequest request){
-        String sessionToken = (String) request.getSession(true).getAttribute("sessiontTokenWishList");
-        if (sessionToken == null) {
-            sessionToken = UUID.randomUUID().toString();
-            request.getSession().setAttribute("sessiontTokenWishList", sessionToken);
-            wishListService.addToWishFirstTime(fundraisingId, sessionToken);
-        } else {
-            wishListService.addToExistingWishList(fundraisingId, sessionToken);
-        }
+        System.out.println("user Id= "+userId);
+        System.out.println("fundraising Id= "+fundraisingId);
+        itemForWishListService.addToWishlist(userId, fundraisingId);
         return "redirect:/user/home/{userId}";
     }
 
-    @GetMapping("/removeWishListItem/{userId}/{fundraisingId}")
-    public String removeItem(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId, HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontTokenWishList");
-        System.out.println("got here ");
-        wishListService.removeItemWishList(fundraisingId, sessionToken);
+    @PostMapping("/checkWishListItem/{userId}/{fundraisingId}")
+    @ResponseBody
+    public boolean checkWishListItem(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId) {
+        return itemForWishListService.checkExistingItemInWishList(userId, fundraisingId);
+    }
+
+
+    @PostMapping("/removeWishListItem/{userId}/{fundraisingId}")
+    public String removeItem(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId) {
+        itemForWishListService.removeFromWishlist(userId, fundraisingId);
         return "redirect:/user/home/{userId}";
     }
 
@@ -62,7 +53,7 @@ public class WishListController {
     public String clearShoopiString(@PathVariable("userId")UUID userId, @PathVariable("fundraisingId")UUID fundraisingId, HttpServletRequest request) {
         String sessionToken = (String) request.getSession(false).getAttribute("sessiontTokenWishList");
         request.getSession(false).removeAttribute("sessiontTokenWishList");
-        wishListService.clearWishList(sessionToken);
+        itemForWishListService.clearWishList(sessionToken);
         return "redirect:/user/home/{userId}";
     }
 

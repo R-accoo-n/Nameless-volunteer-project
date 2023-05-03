@@ -176,6 +176,8 @@
     column-gap: 94px;
     row-gap: 5px;
     align-items: center;
+    width: 586px;
+
   }
   
   .menu-item {
@@ -324,7 +326,6 @@
   
   .card-img {
     border-radius: 12px 12px 0px 0px;
-    width: 298px;
     height: 142px;
     left: 21px;
     top: 1px;

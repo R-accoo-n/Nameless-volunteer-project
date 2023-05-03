@@ -23,6 +23,9 @@
         .type{
             padding-left: 21px;
         }
+        .menu-list{
+            width: 980px;
+        }
         .section {
             width: 100%;
             position: center;
@@ -156,10 +159,10 @@
                         <a th:href="@{/volunteer/requests/{userId}(userId=${user.id})}" class="menu-link">Запити</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Організовані збори</a>
+                        <a th:href="@{/volunteer/choosed/requests/{userId}(userId=${user.id})}" class="menu-link">Обрані запити</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Звіти</a>
+                        <a href="" class="menu-link">Організовані збори</a>
                     </li>
                     <a th:href="@{/volunteer/{userId}(userId=${user.id})}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
                 </ul>
@@ -220,10 +223,10 @@
                                         <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
                                         <p th:text="${fundraising.description}"></p>
                                         <p th:text="${fundraising.sum}"> грн</p>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar">
-                                                <!-- <span class="my-centered">60% Complete</span> -->
-                                            </div>
+<!--                                        <div class="progress">-->
+<!--&lt;!&ndash;                                            <div class="progress-bar" role="progressbar">&ndash;&gt;-->
+<!--                                                &lt;!&ndash; <span class="my-centered">60% Complete</span> &ndash;&gt;-->
+<!--                                            </div>-->
                                         </div>
                                         <button class="help">ДОПОМОГТИ</button>
                                     </div>

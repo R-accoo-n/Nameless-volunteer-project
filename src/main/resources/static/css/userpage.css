@@ -198,7 +198,6 @@ li{
 }
 .your-description{
     display: block;
-    width: 1300px;
     min-width: 1000px;
     max-width: 1300px;
     margin: 0px auto;
@@ -207,7 +206,6 @@ li{
     padding: 10px;
 }
 .div-for-description{
-    margin-left: 150px;
     width: 1300px;
     min-width: 1000px;
     max-width: 1300px;

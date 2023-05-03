@@ -2,6 +2,7 @@ package com.nameless.volunteerproject.controllers;
 
 import com.nameless.volunteerproject.dto.LoginDto;
 import com.nameless.volunteerproject.dto.UserDto;
+import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.services.UserService;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AuthController {
@@ -90,6 +92,7 @@ public class AuthController {
     public String login(Model model){
         LoginDto user = new LoginDto();
         model.addAttribute("loginUser", user);
+
         return "login";
     }
 

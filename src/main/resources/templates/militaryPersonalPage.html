@@ -8,12 +8,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
         rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}">
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}">
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
     <script th:src="@{/js/mainJS.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/userpage.css}">
     <title id="Main" role="main">Military</title>
     <style>
+        .profile-pic-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 300px;
+        }
+        .ul-data-about-user{
+            margin-left: 200px;
+        }
+        .pic-holder {
+            text-align: center;
+            position: relative;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        a{color: black}
+        .pic-holder .pic {
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            -o-object-position: center;
+            object-position: center;
+        }
+
+        .pic-holder .upload-file-block,
+        .pic-holder .upload-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(90, 92, 105, 0.7);
+            color: #f8f9fc;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .pic-holder .upload-file-block {
+            cursor: pointer;
+        }
+
+        .pic-holder:hover .upload-file-block,
+        .uploadProfileInput:focus ~ .upload-file-block {
+            opacity: 1;
+        }
+
+        .pic-holder.uploadInProgress .upload-file-block {
+            display: none;
+        }
+
+        .pic-holder.uploadInProgress .upload-loader {
+            opacity: 1;
+        }
         #active-fundraising, #done-fundraising,#fundraising-where-you-donate,#fundraising-what-you-liked, .inscription-description{
             font-size: 20px;
             font-weight: 600;
@@ -21,6 +90,7 @@
             padding-inline-start: 30px;
         }
         .menu-list {
+            width: 940px;
             margin-left: 105px;
         }
         .menu-item {
@@ -31,7 +101,6 @@
         }
         .card-img {
             border-radius: 12px 12px 0px 0px;
-            width: 298px;
             height: 142px;
             left: 21px;
             top: 1px;
@@ -42,51 +111,6 @@
         .profile-user-img{
   width: 125px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-}
-
-.avatar-upload {
-    position: relative;
-    max-width: 205px;
-    margin: auto;
-    margin-bottom: 20px;
-
-    .avatar-edit {
-        position: absolute;
-        right: 40px;
-        z-index: 1;
-        top: 90px;
-        input {
-            display: none;
-            + label {
-                display: inline-block;
-                width: 34px;
-                height: 34px;
-                margin-bottom: 0;
-                border-radius: 100%;
-                background: #FFFFFF;
-                border: 1px solid #d2d6de;
-                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                cursor: pointer;
-                font-weight: normal;
-                transition: all .2s ease-in-out;
-                &:hover {
-                    background: #f1f1f1;
-                    border-color: #d6d6d6;
-                }
-                &:after {
-                    content: "\f030";
-                    font-family: 'FontAwesome';
-                    color: #337AB7;
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    text-align: center;
-                    line-height: 34px;
-                    margin: auto;
-                }
-            }
-        }
-    }
 }
     </style>
 </head>
@@ -128,69 +152,89 @@
             </div>
 
             <div class="wrpper-for-all">
-                
                 <div class="all-data-in-main">
-
-
                     <div id="data-about-user">
                         <div class="wrapper-data">
-                            <button id="edit-button" ><img th:src="@{/images/326602_create_edit_pencil_write_icon.svg}" width="20px" height="20px" alt="icon"></button>
-                            <div class="avatar">
-                                <img class="avatar-foto" src="#" alt="avatar">
+                            <div class="profile-pic-wrapper">
+                                <form enctype="multipart/form-data" th:action="@{/military/photo/{userId}(userId=${user.id})}" method="post">
+                                    <div class="pic-holder">
+                                        <!-- uploaded pic shown here -->
+                                        <img id="profilePic" class="pic" th:src="@{'/images/uploadedImagesUsers/' + ${user.photo}}">
+                                        <input class="uploadProfileInput" th:href="@{/military/photo/{userId}(userId=${user.id})}" type="file" name="image" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
+                                        <label for="newProfilePhoto" class="upload-file-block">
+                                            <div class="text-center">
+                                                <div class="mb-2">
+                                                    <i class="fa fa-camera fa-2x"></i>
+                                                </div>
+                                                <div class="text-uppercase">
+                                                    Update <br /> Profile Photo
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="form-submit-button">Зберегти фото</button>
+                                </form>
                             </div>
                             <div class="ul-data-about-user">
                                 <ul class="ul-data">
-                                    <li class="li-data-about-user"><span class="initialization">nickname:</span><span class="init-from-database" id="nickname">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" th:text="${user.surname}" id="secondName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><span class="init-from-database" th:text="${user.name}" id="firstName">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" th:text="${user.phoneNumber}" id="phoneNumber">111</span></li>
-                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" th:text="${user.email}" id="mail">111</span></li>
-                                    <li><ul id="social-Networks-list" >
-                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
-                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
-                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
-                                        <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
-                                    </ul></li>
+                                    <li class="li-data-about-user"><span class="initialization">nickname:</span><span class="init-from-database" th:text="${user.userName}" id="nickname"></span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" th:text="${user.surname}" id="secondName"></span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><span class="init-from-database" th:text="${user.name}" id="firstName"></span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" th:text="${user.phoneNumber}" id="phoneNumber"></span></li>
+                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" th:text="${user.email}" id="mail"></span></li>
                                 </ul>
                             </div>
-                        </div>
-                
-<!--Editing profile-->
-                
-                    <div id="edit-data-about-user">
-                        <div class="wrapper-data">
-                            <button id="end-edit-button"><img th:src="@{/images/326572_check_icon.svg}" width="20px" height="20px" alt="icon"></button>
-                            <div class="avatar">
-                                <img class="avatar-foto" src="#" alt="avatar">
-                                <button id="edit-foto" >Редагувати фото</button>
+                            <div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><img th:src="@{/images/326602_create_edit_pencil_write_icon.svg}" width="20px" height="20px" alt="icon"></button>
                             </div>
-                            <div class="ul-data-about-user">
-                                <ul class="ul-data" >
-                                    <li class="li-data-about-user"><span class="initialization">nickname:</span><input class="edit-Database" type="text" value="111"></li> <!--value витягуватиметься з БД-->
-                                    <li class="li-data-about-user"><span class="initialization">Прізвище:</span><input class="edit-Database" type="text" value="111"></li>
-                                    <li class="li-data-about-user"><span class="initialization">Ім'я:</span><input class="edit-Database" type="text" value="111"></li>
-                                    <li class="li-data-about-user"><span class="initialization">Номер:</span><input class="edit-Database" type="text" value="111"></li>
-                                    <li class="li-data-about-user"><span class="initialization">Пошта:</span><input class="edit-Database" type="text" value="111"></li>
-                                    <li><ul id="social-Networks-list" style="list-style: none;display: flex; flex-direction: column;">
-                                        <div id="container-for-socials">
-                                            <div class="item-add-socials">
-                                                <select class="item-socials" id="Social-Networks" name="Social-Networks">
-                                                    <option value="Twitter">Twitter</option>
-                                                    <option value="Facebook">Facebook</option>
-                                                    <option value="Telegram">Telegram</option>
-                                                    <option value="Instagram">Instagram</option>
-                                                  </select>
-                                                <input class="one-Of-The-Social-Networks" type="text" placeholder="Посилання на соціальну мережу">
-                                                <button class="add-another-social-network" >+</button>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Редагувати профіль</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form th:object="${user}" th:action="@{/military/edit/{userId}(userId=${user.id})}" method="post">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="recipient-nickname" class="col-form-label">nickname:</label>
+                                                <input type="text" class="form-control" name="recipient-surname" th:field="*{userName}" id="recipient-nickname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-surname" class="col-form-label">Прізвище:</label>
+                                                <input type="text" class="form-control" name="recipient-surname" th:field="*{surname}" id="recipient-surname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Ім'я:</label>
+                                                <input type="text" class="form-control" th:field="*{name}" name="recipient-name" id="recipient-name" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-email" class="col-form-label">Email</label>
+                                                <input type="text" class="form-control" th:field="*{email}" name ="recipient-email" id="recipient-email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-phone" class="col-form-label">Номер телефону</label>
+                                                <input type="text" class="form-control" th:field="*{phoneNumber}" name="recipient-phone" id="recipient-phone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-description" class="col-form-label">Про себе</label>
+                                                <textarea type="text" class="form-control" th:field="*{description}" name="recipient-phone" id="recipient-description" required></textarea>
                                             </div>
                                         </div>
-                                    </ul></li>
-                                </ul>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                                            <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+                                        </div>
+                                    </form>
+                                    <div th:if="${param.success}">
+                                        <p class="alert alert-success">User updated successfully.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-<!--ending Editing profile-->
                     <div id="div-for-buttons">
                         <button id="create-fundraising"><a th:href="@{/fundraising/{userId}(userId=${user.id})}">Створити збір</a></button>
                         <button id="create-request"><a th:href="@{/request/{userId}(userId=${user.id})}">Створити запит</a></button>
@@ -240,6 +284,7 @@
                 </div>
             </div>
             </div>
+            </div>
         </main>
 
     <!-- Footer -->
@@ -275,22 +320,17 @@
                 </div>
             </div>
         </footer>
-        <script th:src="@{/js/volunteerpage.js}">
-            $(document).ready(function(){
-
-                $("#imageUpload").change(function(data){
-
-                    var imageFile = data.target.files[0];
-                    var reader = new FileReader();
-                    reader.readAsDataURL(imageFile);
-
-                    reader.onload = function(evt){
-                        $('#imagePreview').attr('src', evt.target.result);
-                        $('#imagePreview').hide();
-                        $('#imagePreview').fadeIn(650);
-                    }
-
-                });
+        <!-- JavaScript code for the modal -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var recipient = button.data('whatever'); // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this);
+                modal.find('.modal-title').text('New message to ' + recipient);
+                modal.find('.modal-body input').val(recipient);
             });
         </script>
     </div>

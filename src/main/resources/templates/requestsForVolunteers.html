@@ -17,7 +17,7 @@
   <script th:src="@{/js/mainJS.js}" defer></script>
   <link rel="stylesheet" th:href="@{/css/requestsForVolunteers.css}">
 <!--  <link rel="stylesheet" th:href="@{/css/style.css}">-->
-  <title id="Volunteers">Volunteers</title>
+  <title id="Volunteers">Requests</title>
   <style>
     .header-logo {
       font-family: 'Poppins', sans-serif;
@@ -90,11 +90,18 @@
       column-gap: 94px;
       row-gap: 5px;
       align-items: center;
-      width: 1000px;
+      width: 925px;
       font-family: 'Poppins', sans-serif;
+    }
+    .header-menu{
+      margin-left: 15px;
     }
     .wrapper{
       width: 1520px;
+    }
+    .pb-5, .py-5 {
+      padding-bottom: 3rem !important;
+      margin-top: 27px;
     }
   </style>
 </head>
@@ -113,17 +120,15 @@
               <a th:href="@{/volunteer/requests/{userId}(userId=${user.id})}" class="menu-link">Запити</a>
             </li>
             <li class="menu-item">
-              <a href="" class="menu-link">Організовані збори</a>
+              <a th:href="@{/volunteer/choosed/requests/{userId}(userId=${user.id})}" class="menu-link">Обрані запити</a>
             </li>
             <li class="menu-item">
-              <a href="" class="menu-link">Звіти</a>
+              <a href="" class="menu-link">Організовані збори</a>
             </li>
             <a th:href="@{/volunteer/{userId}(userId=${user.id})}"><img th:src="@{/images/Group 37.png}" class="header-icon"></a>
           </ul>
         </nav>
         <div class="header-signup">
-          <!--                <button class="menu-button" role="button"><a th:href="@{/login}">Вхід</a></button>-->
-          <!--                <button class="menu-button" role="button"><a th:href="@{/register}">Реєстрація</a></button>-->
         </div>
       </div>
     </header>
@@ -136,20 +141,21 @@
         <div class="grey-bg container-fluid">
           <!-- First row -->
           <section id="minimal-statistics">
-            <p class="request font-weight-bold mb-2 mt-2 ml-4">Мої запити</p>
-
-            <div class="row pb-5 mb-4 ml-3" th:each="request:${fundraisingRequests}">
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <p class="request font-weight-bold mb-2 mt-2 ml-4">Запити</p>
+            <div class="row pb-5 mb-4 ml-3">
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" th:each="request:${fundraisingRequests}">
                 <div class="card rounded shadow-sm border-0">
                   <div class="card-body p-4">
-                    <h5> <a href="#" class="text-date" th:text="${request.whom}"></a></h5>
+                    <h5> Збір для <a href="#" class="text-date" th:text="${request.whom}"></a></h5>
                     <p class="text-description" th:text="${request.requestName}"></p>
                     <p th:text="${request.description}"></p>
-                    <button onclick="location.href=''" class="button-change mt-4">ВІДГУКНУТИСЯ НА ЗАПИТ</button>
+                    <form th:action="@{/volunteer/request/{requestId}/choose/{userId}(requestId=${request.id}, userId=${user.id})}" method="post">
+                      <button onclick="location.href=''" type="submit" class="button-change mt-4">ВІДГУКНУТИСЯ НА ЗАПИТ</button>
+                    </form>
+
                   </div>
                 </div>
               </div>
-
             </div>
           </section>
         </div>

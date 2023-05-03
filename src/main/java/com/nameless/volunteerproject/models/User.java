@@ -1,3 +1,117 @@
+//package com.nameless.volunteerproject.models;
+//import com.nameless.volunteerproject.enums.UserRole;
+//import com.nameless.volunteerproject.models.Fundraising;
+//import com.nameless.volunteerproject.models.FundraisingRequest;
+//import lombok.*;
+//import org.hibernate.annotations.GenericGenerator;
+//
+//import javax.persistence.*;
+//import java.util.List;
+//import java.util.UUID;
+//
+//@Entity
+//@AllArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+//@NoArgsConstructor
+//@Builder
+//@EqualsAndHashCode
+//@Table(name = "users")
+//public class User {
+//    @Id
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator(
+//            name = "UUID",
+//            strategy = "org.hibernate.id.UUIDGenerator"
+//    )
+//    private UUID id;
+//    @Enumerated(EnumType.STRING)
+//    private UserRole role;
+//    private String surname;
+//    private String name;
+//    private String email;
+//    private String phoneNumber;
+//    private String userName;
+//
+//    private String password;
+//
+//    private String socialMedia;
+//
+//    private boolean showRealName;
+//
+//    private boolean isApproved;
+//
+//    private boolean isBlocked;
+//
+//    private String photo;
+//
+//    private String description;
+//
+//    @OneToMany
+//    private List<Fundraising> fundraisings;
+//    @OneToMany
+//    private List<FundraisingRequest> requests;
+//    @OneToMany
+//    private List<Fundraising>selected;
+//
+//    /**
+//     *User constructor for military and volunteer roles
+//     *
+//     * @param id user's id
+//     * @param surname user's surname
+//     * @param name user's name
+//     * @param email user's email
+//     * @param userName user's username
+//     * @param role user's role
+//     */
+//
+//    public User(UUID id, String surname, String name, String email,
+//                String userName, UserRole role) {
+//        this.id = id;
+//        this.name = name;
+//        this.surname = surname;
+//        this.email = email;
+//        this.userName = userName;
+//        this.role = role;
+//    }
+//
+//    /**
+//     * Constructor for user role
+//     *
+//     * @param id user's id
+//     * @param surname user's surname
+//     * @param name user's name
+//     * @param phoneNumber user's phone number
+//     * @param role = user's role
+//     */
+//
+//    public User(UUID id, String surname, String name, String phoneNumber, UserRole role) {
+//        this.id = id;
+//        this.surname = surname;
+//        this.name = name;
+//        this.phoneNumber = phoneNumber;
+//        this.role = role;
+//    }
+//
+//    /**
+//     * Constructor for administrator role
+//     *
+//     * @param id administrator's id
+//     * @param surname administrator's surname
+//     * @param name administrator's name
+//     * @param email administrator's email
+//     */
+//
+//    public User(UUID id, String surname, String name, String email) {
+//        this.id = id;
+//        this.surname = surname;
+//        this.name = name;
+//        this.email = email;
+//    }
+//
+//}
+
 package com.nameless.volunteerproject.models;
 
 import com.nameless.volunteerproject.enums.UserRole;
@@ -21,8 +135,8 @@ public class User {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator"
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
     @Enumerated(EnumType.STRING)
@@ -47,22 +161,24 @@ public class User {
 
     private String description;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<SocialMedia> socialMedias;
     @OneToMany
     private List<Fundraising> fundraisings;
     @OneToMany
     private List<FundraisingRequest> requests;
     @OneToMany
-    private List<Fundraising>selected;
+    private List<Fundraising> selected;
 
     /**
-     *User constructor for military and volunteer roles
+     * User constructor for military and volunteer roles
      *
-     * @param id user's id
-     * @param surname user's surname
-     * @param name user's name
-     * @param email user's email
+     * @param id       user's id
+     * @param surname  user's surname
+     * @param name     user's name
+     * @param email    user's email
      * @param userName user's username
-     * @param role user's role
+     * @param role     user's role
      */
 
     public User(UUID id, String surname, String name, String email,
@@ -78,11 +194,11 @@ public class User {
     /**
      * Constructor for user role
      *
-     * @param id user's id
-     * @param surname user's surname
-     * @param name user's name
+     * @param id          user's id
+     * @param surname     user's surname
+     * @param name        user's name
      * @param phoneNumber user's phone number
-     * @param role = user's role
+     * @param role        = user's role
      */
 
     public User(UUID id, String surname, String name, String phoneNumber, UserRole role) {
@@ -96,10 +212,10 @@ public class User {
     /**
      * Constructor for administrator role
      *
-     * @param id administrator's id
+     * @param id      administrator's id
      * @param surname administrator's surname
-     * @param name administrator's name
-     * @param email administrator's email
+     * @param name    administrator's name
+     * @param email   administrator's email
      */
 
     public User(UUID id, String surname, String name, String email) {

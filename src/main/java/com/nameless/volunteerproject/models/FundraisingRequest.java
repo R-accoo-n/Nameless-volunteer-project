@@ -2,9 +2,7 @@ package com.nameless.volunteerproject.models;
 
 
 import java.util.UUID;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -35,5 +33,7 @@ public class FundraisingRequest {
     private boolean greyZone;
     private String description;
     private boolean isSatisfied;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

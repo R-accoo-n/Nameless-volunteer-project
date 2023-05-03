@@ -28,23 +28,12 @@
     .header-icon{
       margin-left: 10px;
     }
-    .type{
-      padding-left: 21px;
-    }
     .header-logo {
       font-style: normal;
       font-weight: 500;
       font-size: 48px;
       color: #000;
     }
-    .section {
-       width: 100%;
-       position: center;
-       margin: auto;
-       display: flex;
-       flex-wrap: wrap;
-       background-color: #F1F1F1;
-     }
     .text-date {
     font-family: 'Montserrat';
     font-style: normal;
@@ -110,9 +99,10 @@
               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" th:each="volunteer:${volunteers}">
                 <div class="card rounded shadow-sm border-0" style="border-radius: 12px;">
                   <div class="card-body p-4">
-                    <img class="img-fluid " th:src="@{/images/img8.png}" style="height: 142px;">
+                    <img class="img-fluid " th:src="@{'/images/uploadedImagesUsers/' + ${volunteer.photo}}" style="height: 142px;">
                     <h5 class="text-date mt-mb-3" th:text="${volunteer.surname}+' '+${volunteer.name}"></h5>
-                    <p class="text-description" style="height: 140px;" th:text="${volunteer.description}"></p>
+                    <p style="font-family: 'Montserrat';font-weight: 500;font-size: 18px;" th:text="${volunteer.socialMedia}"></p>
+                    <p style="font-family: 'Montserrat';font-weight: 500;font-size: 18px;" th:text="${volunteer.phoneNumber}"></p>
                   </div>
                 </div>
               </div>

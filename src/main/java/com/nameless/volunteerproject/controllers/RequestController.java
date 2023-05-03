@@ -3,6 +3,7 @@ package com.nameless.volunteerproject.controllers;
 import com.nameless.volunteerproject.dto.RequestDto;
 import com.nameless.volunteerproject.models.FundraisingRequest;
 import com.nameless.volunteerproject.models.User;
+import com.nameless.volunteerproject.repositories.FundraisingRequestRepository;
 import com.nameless.volunteerproject.services.FundraisingService;
 import com.nameless.volunteerproject.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -20,16 +22,11 @@ import java.util.UUID;
 public class RequestController {
     private FundraisingService fundraisingService;
     private final UserService userService;
-
-    @Autowired
-    public RequestController(FundraisingService fundraisingService, UserService userService) {
-        this.fundraisingService = fundraisingService;
-        this.userService = userService;
-    }
+    private final FundraisingRequestRepository fundraisingRequestRepository;
 
     @GetMapping("/military/requests/{userId}")
     public  String request(@PathVariable UUID userId, Model model){
-        List<FundraisingRequest>militaryRequests=fundraisingService.findByMilitaryId(userId);
+        List<FundraisingRequest>militaryRequests=fundraisingRequestRepository.findByMilitaryId(userId);
         model.addAttribute("militaryRequests", militaryRequests);
         User user=userService.findUserById(userId);
         model.addAttribute("user", user);
@@ -54,10 +51,32 @@ public class RequestController {
 
     @GetMapping("/volunteer/requests/{userId}")
     public String requestsForVolunteer(@PathVariable UUID userId, Model model){
-        List<FundraisingRequest>fundraisingRequests=fundraisingService.findFundraisingRequestsByIsNotSatisfied();
+        List<FundraisingRequest>fundraisingRequests=fundraisingRequestRepository.findFundraisingRequestsByIsSatisfiedIsFalse();
         model.addAttribute("fundraisingRequests", fundraisingRequests);
         User user=userService.findUserById(userId);
         model.addAttribute("user", user);
         return "requestsForVolunteers";
     }
+
+    @PostMapping("/volunteer/request/{requestId}/choose/{userId}")
+    public String chooseRequestFromMilitary(@PathVariable UUID userId, @PathVariable UUID requestId){
+        FundraisingRequest request=fundraisingRequestRepository.findFundraisingRequestById(requestId);
+        if (request!=null) {
+            request.setSatisfied(true);
+            request.setUser(userService.findUserById(userId));
+            fundraisingRequestRepository.save(request);
+        }
+        return "/volunteer/request/{requestId}/choose/{userId}?success";
+    }
+
+    @GetMapping("/volunteer/choosed/requests/{userId}")
+    public String choosedRequestByVolunteer(@PathVariable UUID userId, Model model){
+        List<FundraisingRequest>fundraisingRequests=fundraisingRequestRepository.findFundraisingRequestsByUserId(userId);
+        model.addAttribute("fundraisingRequestsChoosedByVolunteer", fundraisingRequests);
+        User user=userService.findUserById(userId);
+        model.addAttribute("user", user);
+        return "choosedRequestsForVolunteer";
+    }
+
+
 }

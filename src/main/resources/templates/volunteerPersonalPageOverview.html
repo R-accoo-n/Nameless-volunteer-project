@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="uk"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Inter&family=Philosopher:wght@700&family=Raleway:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Scada:wght@700&display=swap}"
+        rel="stylesheet">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}">
+  <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+  <script th:src="@{/js/mainJS.js}" defer></script>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/userpage.css}">
+  <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}">
+  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/adminpage.css}">
+  <title id="Main" role="main">Volunteer</title>
+  <style>
+    .header-signup{
+      margin-left: 40px;
+    }
+    .menu-list{
+      margin-left: 115px;
+      width: 890px;
+    }
+    .profile-pic-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left: 300px;
+    }
+    .ul-data-about-user{
+      margin-left: 200px;
+    }
+    .pic-holder {
+      text-align: center;
+      position: relative;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    a{color: black}
+    .pic-holder .pic {
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center;
+    }
+
+    .pic-holder .upload-file-block,
+    .pic-holder .upload-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(90, 92, 105, 0.7);
+      color: #f8f9fc;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .pic-holder .upload-file-block {
+      cursor: pointer;
+    }
+
+    .pic-holder:hover .upload-file-block,
+    .uploadProfileInput:focus ~ .upload-file-block {
+      opacity: 1;
+    }
+
+    .pic-holder.uploadInProgress .upload-file-block {
+      display: none;
+    }
+
+    .pic-holder.uploadInProgress .upload-loader {
+      opacity: 1;
+    }
+
+    @-webkit-keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+    .header-signup{
+      margin-left: 30px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="wrapper" style="font-family: 'Raleway';">
+  <header class="header">
+    <div class="header-container">
+      <span class="header-logo">Volunteer.ua</span>
+      <nav class="header-menu menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a th:href="@{/admin}" class="menu-link">Користувачі які чекають підтвердження</a>
+          </li>
+          <li class="menu-item">
+            <a th:href="@{/admin/users}" class="menu-link">Всі користувачі</a>
+          </li>
+          <li class="menu-item">
+            <a href="" class="menu-link">Скарги</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-signup">
+        <button class="menu-button" role="button"><a href="#">Вихід</a></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="page">
+    <div>
+      <div class="main-block-top">
+      </div>
+      <div class="wrpper-for-all">
+        <div class="all-data-in-main">
+          <div id="data-about-user">
+            <div id="div-for-button-yesno">
+              <form th:action="@{admin/approve/{userId}(userId=${user.id})}" method="post">
+                <button id="button-confirmation-yes" type="submit"><img th:src="@{/images/326572_check_icon.svg}" width="20px" height="20px" alt=""></button>
+              </form>
+              <form th:action="@{admin/block/{userId}(userId=${user.id})}" method="post">
+                <button id="button-confirmation-no" type="submit"><img th:src="@{/images/4781812_bin_delete_file_garbage_recycle_icon.svg}" width="25px" height="25px" alt=""></button>
+              </form>
+            </div>
+            <div class="wrapper-data">
+              <div class="profile-pic-wrapper">
+                  <div class="pic-holder">
+                    <img id="profilePic" class="pic" th:src="@{'/images/uploadedImagesUsers/' + ${user.photo}}">
+                  </div>
+              </div>
+              <div class="ul-data-about-user">
+                <ul class="ul-data">
+                  <li class="li-data-about-user"><span class="initialization">nickname:</span><span class="init-from-database" th:text="${user.userName}" id="nickname"></span></li>
+                  <li class="li-data-about-user"><span class="initialization">Прізвище:</span><span class="init-from-database" th:text="${user.surname}" id="secondName"></span></li>
+                  <li class="li-data-about-user"><span class="initialization">Ім'я:</span><span class="init-from-database" th:text="${user.name}" id="firstName"></span></li>
+                  <li class="li-data-about-user"><span class="initialization">Номер:</span><span class="init-from-database" th:text="${user.phoneNumber}" id="phoneNumber"></span></li>
+                  <li class="li-data-about-user"><span class="initialization">Пошта:</span><span class="init-from-database" th:text="${user.email}" id="mail"></span></li>
+                  <li><ul id="social-Networks-list" >
+                    <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
+                    <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
+                    <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
+                    <li class="li-social-Networks-list"><a href="#"><img class="svg-social-Networks-list" th:src="@{/images/telegram-1.svg}" width="30px" height="30px" alt="icon"></a></li>
+                  </ul></li>
+                </ul>
+              </div>
+            </div>
+            <div class="div-for-description">
+              <p class="inscription-description">Ваш опис:</p>
+              <p class="your-description" name="" placeholder="Ваш опис" th:value="${user.description}"></p>
+            </div>
+          </div>
+          <div class="container-for-cart-in-user">
+            <p id="fundraising-what-you-liked">Активні збори:</p>
+
+            <div class="main-block-funds">
+              <div class="main-block-funds-container">
+                <div class="row-3 justify-content-between">
+                  <div class="col-2">
+                    <div class="card">
+                      <img class="card-img">
+                      <div class="card-container">
+                        <p class="card-name"> щось</p>
+                        <p clas="card-description">про щось </p>
+                        <progress id="file" value="" max="100" class="bar"> </progress>
+                        <button class="help">ДОПОМОГТИ</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-for-cart-in-user">
+            <p id="fundraising-where-you-donate">Завершені збори:</p>
+
+            <div class="main-block-funds">
+              <div class="main-block-funds-container">
+                <div class="row-3 justify-content-between">
+                  <div class="col-2">
+                    <div class="card">
+                      <img class="card-img">
+                      <div class="card-container">
+                        <p class="card-name"> щось</p>
+                        <p clas="card-description">про щось </p>
+                        <progress id="file" value="" max="100" class="bar"> </progress>
+                        <button class="help">ДОПОМОГТИ</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-social-media">
+        <h5>Соціальні мережі: </h5>
+        <div class="footer-images">
+          <img class="image" th:src="@{/images/facebook_icon.svg}">
+          <img class="image" th:src="@{/images/instagram-icon.svg}">
+          <img class="image" th:src="@{/images/telegram-icon.svg}">
+        </div>
+      </div>
+
+      <nav class="footer-contacts">
+        <div>
+          <span>Телефон:</span>
+          <a href="tel: +380888888888" class="contacts-number">+380888888888</a>
+        </div>
+        <div>
+          <span>Email:</span>
+          <a href="mailto:volunteerua@gmail.com" class="mails">volunteerua@gmail.com</a>
+        </div>
+      </nav>
+
+      <div>
+        <nav class="footer-menu">
+          <a href="">Політика приватності</a>
+          <a href="">Надіслати відгук</a>
+          <a href="">Служба підтримки</a>
+          <a href="">Співпраця</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+
+</html>

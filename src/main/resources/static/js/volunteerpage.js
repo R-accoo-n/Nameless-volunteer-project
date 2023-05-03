@@ -21,9 +21,7 @@ editButton.addEventListener("click", function() {
     editDataField.style.display = "block";
 });
 
-
-
-/*const containerForSocials = document.getElementById('container-for-socials')
+const containerForSocials = document.getElementById('container-for-socials')
 // Додавання обробників подій на елементи
 containerForSocials.addEventListener('click', function(event) {
     // Якщо була натиснута кнопка "+"
@@ -54,5 +52,5 @@ containerForSocials.addEventListener('click', function(event) {
         // Видалення відповідного елементу div
         event.target.parentNode.remove();
   }
-});*/
+});
 

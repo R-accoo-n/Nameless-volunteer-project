@@ -13,7 +13,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FundraisingRequestRepository extends JpaRepository<FundraisingRequest, UUID> {
+    FundraisingRequest findFundraisingRequestById(UUID uuid);
     List<FundraisingRequest>findByMilitaryId(UUID militaryId);
     List<FundraisingRequest>findFundraisingRequestsByIsSatisfiedIsFalse();
-
+    List<FundraisingRequest>findFundraisingRequestsByUserId(UUID userId);
 }

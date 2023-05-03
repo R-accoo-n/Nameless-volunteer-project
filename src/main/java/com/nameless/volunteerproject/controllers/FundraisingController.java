@@ -9,16 +9,12 @@ import com.nameless.volunteerproject.repositories.UserRepository;
 import com.nameless.volunteerproject.services.FundraisingService;
 import com.nameless.volunteerproject.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,9 +27,16 @@ public class FundraisingController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/activeFundraising")
-    public List<Fundraising> getActiveFundraisingsByType(@PathVariable FundraisingType type) {
-        return fundraisingService.getActiveFundraisingsByType(type);
+    @GetMapping("/fundraising/selected")
+    public String selectedFudraising() {
+        return "selectedFundraising";
+    }
+
+    @GetMapping("/activeFundraisingByType/{fundraisingType}")
+    public String getActiveFundraisingsByType(@PathVariable FundraisingType type, Model model) {
+        List<Fundraising> fundraisings = fundraisingService.getActiveFundraisingsByType(type);
+        model.addAttribute("sortedFundraisings", fundraisings);
+        return "redirect:/home";
     }
 
     @GetMapping("/profile")
@@ -42,10 +45,10 @@ public class FundraisingController {
     }
 
     @GetMapping("/fundraising/{userId}")
-    public String fundraisingForm(@PathVariable UUID userId, Model model){
-        FundraisingDto fundraisingDto=new FundraisingDto();
+    public String fundraisingForm(@PathVariable UUID userId, Model model) {
+        FundraisingDto fundraisingDto = new FundraisingDto();
         model.addAttribute("fundraisingRequest", fundraisingDto);
-        User user=userService.findUserById(userId);
+        User user = userService.findUserById(userId);
         model.addAttribute("user", user);
         return "fundraisingOfTheVolunteerOrMilitary";
     }
@@ -53,7 +56,12 @@ public class FundraisingController {
     @PostMapping("/fundraising/save/{userId}")
     public String createFundraising(@Valid @ModelAttribute("fundraisingRequest") FundraisingDto fundraisingDto, @PathVariable UUID userId, @RequestParam("image") MultipartFile multipartFile) {
         Fundraising fundraising = fundraisingService.createFundraising(fundraisingDto, multipartFile, userId);
-        return "redirect:/military/{userId}";
+        User user = userService.findUserById(userId);
+        if (user.getRole().name().equals("MILITARY")) {
+            return "redirect:/military/{userId}";
+        } else {
+            return "redirect:/volunteer/{userId}";
+        }
     }
 
     @GetMapping("/statusFundraising")
@@ -62,25 +70,14 @@ public class FundraisingController {
     }
 
     @GetMapping("/fundraisingOverview/{fundraisingId}")
-    public String fundraisingOverviewPage(@PathVariable UUID fundraisingId, Model model){
-        Fundraising fundraising=fundraisingService.findFundraisingById(fundraisingId);
+    public String fundraisingOverviewPage(@PathVariable UUID fundraisingId, Model model) {
+        Fundraising fundraising = fundraisingService.findFundraisingById(fundraisingId);
         model.addAttribute("fundraising", fundraising);
         return "Fundraisingoverviewpage";
     }
 
-//    @GetMapping("/user/home/{userId}")
-//    public String addToFavourite(@PathVariable UUID userId, @RequestParam("fundraisingId") UUID fundraisingId){
-//        User user=userService.findUserById(userId);
-//        List<Fundraising>selectedFundraisings=user.getSelected();
-//        if (selectedFundraisings == null) {
-//            selectedFundraisings = new ArrayList<>();
-//        }
-//        Fundraising fundraising=fundraisingService.findFundraisingById(fundraisingId);
-//        selectedFundraisings.add(fundraising);
-//        user.setSelected(selectedFundraisings);
-//        userRepository.save(user);
-//        return "redirect:/user/home/{userId}";
-//    }
-
-
+    @GetMapping("/selected/fundraising/{userId}")
+    public String selectedFundraising(@PathVariable UUID userId, Model model){
+        return "selectedFundraising";
+    }
 }

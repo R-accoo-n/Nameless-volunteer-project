@@ -5,6 +5,7 @@ import com.nameless.volunteerproject.dto.RequestDto;
 import com.nameless.volunteerproject.enums.FundraisingType;
 import com.nameless.volunteerproject.models.Fundraising;
 import com.nameless.volunteerproject.models.FundraisingRequest;
+import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.repositories.FundraisingRequestRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,11 +28,15 @@ public class FundraisingService {
     private final static String UPLOADED_FOLDER = "src/main/resources/static/images/uploadedImagesFundraising/";
 
     private final FundraisingRepository fundraisingRepository;
+    private final UserService userService;
     private final FundraisingRequestRepository fundraisingRequestRepository;
+
+    public FundraisingRequest findFundraisingRequestById(UUID uuid){
+        return fundraisingRequestRepository.findFundraisingRequestById(uuid);
+    }
     public List<FundraisingRequest>findFundraisingRequestsByIsNotSatisfied(){
         return fundraisingRequestRepository.findFundraisingRequestsByIsSatisfiedIsFalse();
     }
-
     public Fundraising findFundraisingById(UUID fundraisingId){
         return fundraisingRepository.findFundraisingById(fundraisingId);
     }
@@ -75,10 +80,12 @@ public class FundraisingService {
 
     private Fundraising mapFundraisingDtoToFundraising(FundraisingDto fundraisingDto, MultipartFile multipartFile, UUID userId) {
         Fundraising fundraising = new Fundraising();
+        User user=userService.findUserById(userId);
         fundraising.setId(fundraisingDto.getId());
         fundraising.setCardNumber(fundraisingDto.getCardNumber());
         fundraising.setDescription(fundraisingDto.getDescription());
-        fundraising.setUserId(userId);
+        System.out.println(user.getId());
+        fundraising.setUser(user);
         saveImage(multipartFile);
         fundraising.setPhoto(StringUtils.cleanPath(multipartFile.getOriginalFilename()));
         fundraising.setFundraisingName(fundraisingDto.getFundraisingName());

@@ -31,6 +31,9 @@
             flex-wrap: wrap;
             background-color: #F1F1F1;
         }
+        .menu-list{
+            width: 586px;
+        }
         .menu-button{
             height: 42px;
         }
@@ -158,7 +161,7 @@
                         <a href="" class="menu-link">Термінові збори</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Звіти</a>
+                        <a th:href="@{/login}" class="menu-link">Обрані збори</a>
                     </li>
                 </ul>
             </nav>
@@ -195,11 +198,12 @@
                 </div>
                 <i id="right" class="fa-solid fa-angle-right"></i>
             </div>
+            <form th:action="@{activeFundraisingByType}" method="get">
             <div class="main-block-categories-container">
                 <nav class="main-block-categories">
-                    <a href="">УСІ ЗБОРИ</a>
-                    <a href="">ЛІКИ</a>
-                    <a href="">АВТО</a>
+                    <a href="" id="sort-type" name="type" value="">УСІ ЗБОРИ</a>
+                    <a href="" id="sort-type" name="type" value="">ЛІКИ</a>
+                    <a href="" id="sort-type" name="type" value="АВТО">АВТО</a>
                     <a href="">ДРОНИ</a>
                     <a href="">АМУНІЦІЯ</a>
                     <a href="">ЗВ'ЯЗОК</a>
@@ -207,6 +211,7 @@
                     <a href="">ІНВЕНТАР</a>
                 </nav>
             </div>
+            </form>
             <section class="section">
                 <div class="row pb-5 mb-4 pt-5 mt-4 ml-5 pl-4">
                     <div class="col-lg-3 col-md-6 mb-4 pr-5" th:each="fundraising : ${allActiveFundraising}">
@@ -218,15 +223,14 @@
                                         <p class="card-name" th:text="${fundraising.fundraisingName}"></p>
                                         <p th:text="${fundraising.description}"></p>
                                         <p th:text="${fundraising.sum}"> грн</p>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar">
-                                                <!-- <span class="my-centered">60% Complete</span> -->
-                                            </div>
+<!--                                        <div class="progress">-->
+<!--&lt;!&ndash;                                            <div class="progress-bar" role="progressbar">&ndash;&gt;-->
+<!--                                                &lt;!&ndash; <span class="my-centered">60% Complete</span> &ndash;&gt;-->
+<!--                                            </div>-->
                                         </div>
                                         <button class="help">ДОПОМОГТИ</button>
                                     </div>
                                 </div>
-                            </div>
                         </a>
                     </div>
                 </div>
