@@ -60,11 +60,14 @@ class SecurityConfiguration {
 
         if (client.equals("google")) {
             return CommonOAuth2Provider.GOOGLE.getBuilder(client)
-                    .clientId(clientId).clientSecret(clientSecret).build();
+                    .clientId(clientId)
+                    .clientSecret(clientSecret).redirectUriTemplate("http://localhost:8080/home").build();
         }
         if (client.equals("facebook")) {
             return CommonOAuth2Provider.FACEBOOK.getBuilder(client)
-                    .clientId(clientId).clientSecret(clientSecret).build();
+                    .clientId(clientId)
+                    .clientSecret(clientSecret)
+                    .build();
         }
         return null;
     }
@@ -79,7 +82,7 @@ class SecurityConfiguration {
 
         http.authorizeHttpRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/home", "/login/**", "/register/**", "/registration/**", "/register/save/**", "/oauth/login/**",
+                .antMatchers("/", "/home", "/login/**", "/register/**", "/registration/**", "/register/save/**", "/oauth/**",
                         "/support/**", "/feedback/**", "/donation/**",
                         "/volunteerRegistration/**", "/userRegistration/**", "/militaryRegistration/**",
                         "/user/**", "/volunteer/**", "/military/**",
@@ -104,11 +107,11 @@ class SecurityConfiguration {
                 .accessDeniedPage("/access-denied")
                 .and()
                 .oauth2Login()
-    //            .loginPage("/login")
-                .redirectionEndpoint().baseUri("http://localhost:8080/home")
-                .and()
-                .clientRegistrationRepository(clientRegistrationRepository())
-                .authorizedClientService(authorizedClientService());
+                .loginPage("/login");
+//                .redirectionEndpoint().baseUri("http://localhost:8080/home")
+//                .and()
+//                .clientRegistrationRepository(clientRegistrationRepository())
+//                .authorizedClientService(authorizedClientService());
         return http.build();
     }
 
