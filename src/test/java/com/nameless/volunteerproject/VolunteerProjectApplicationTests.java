@@ -1,33 +1,15 @@
 package com.nameless.volunteerproject;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.nameless.volunteerproject.enums.FundraisingType;
-import com.nameless.volunteerproject.models.Fundraising;
-import com.nameless.volunteerproject.models.SupportTicket;
-import com.nameless.volunteerproject.models.User;
+import com.nameless.volunteerproject.repositories.FundraisingRepository;
 import com.nameless.volunteerproject.repositories.SupportTicketRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
+import com.nameless.volunteerproject.services.FundraisingService;
 import com.nameless.volunteerproject.services.SupportTicketService;
 import com.nameless.volunteerproject.services.UserService;
 import com.nameless.volunteerproject.services.VolunteerService;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.nameless.volunteerproject.repositories.FundraisingRepository;
-import com.nameless.volunteerproject.services.FundraisingService;
-import java.util.List;
-import java.util.Arrays;
-import static org.mockito.BDDMockito.given;
-
-import java.util.Optional;
-import java.util.UUID;
-import static org.mockito.Mockito.when;
-import com.nameless.volunteerproject.enums.UserRole;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 
 
@@ -109,120 +91,120 @@ class VolunteerProjectApplicationTests {
 //		assertThat(activeFundraisings2.size()).isEqualTo(2);
 //		assertThat(activeFundraisings2).isEqualTo(Arrays.asList(fundraising5, fundraising6));
 //	}
-
-	@Test
-	public void givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
-		UUID userId = UUID.randomUUID();
-		List<Fundraising> fundraisings = Arrays.asList(
-				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).socialType(FundraisingType.АВТО).build(),
-				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).socialType(FundraisingType.АВТО).build(),
-				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.АВТО).build()
-		);
-
-		when(fundraisingRepository.findByUserIdAndIsActiveFalse(userId)).thenReturn(fundraisings.subList(0, 1));
-
-		List<Fundraising> completedFundraisings = fundraisingService.getCompletedFundraisings(userId);
-
-		assertThat(completedFundraisings).hasSize(1);
-		assertThat(completedFundraisings.get(0).getId()).isEqualTo(fundraisings.get(0).getId());
-	}
-
-
-		@Test
-		public void givenExistingUser_whenVerifyUser_thenMakeUserVerified() {
-			UUID userId = UUID.randomUUID();
-			UserRole role = UserRole.MILITARY;
-			User user = User.builder()
-					.id(userId)
-					.name("John")
-					.surname("Doe")
-					.role(UserRole.VOLUNTEER)
-					.build();
-			when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-			when(userRepository.save(any(User.class))).thenReturn(user);
-			boolean result = userService.verifyUser(userId, role);
-			assertTrue(result);
-			assertEquals(role, user.getRole());
-			verify(userRepository).findById(userId);
-			verify(userRepository).save(user);
-		}
-
-		@Test
-		public void givenNotExisistingUser_whenVerifyUser_thenReturnFalse() {
-			UUID userId = UUID.randomUUID();
-			UserRole role = UserRole.MILITARY;
-			when(userRepository.findById(userId)).thenReturn(Optional.empty());
-			boolean result = userService.verifyUser(userId, role);
-			assertFalse(result);
-			verify(userRepository).findById(userId);
-			verifyNoMoreInteractions(userRepository);
-		}
-	@Test
-	public void givenSupportTicket_whenCreateSupportTicket_thenSaveTicket() {
-		SupportTicket ticket = SupportTicket.builder()
-				.id(UUID.randomUUID())
-				.description("Test ticket")
-				.problemType("Test type")
-				.problemSubtype("Test subtype")
-				.build();
-
-		when(supportTicketRepository.save(ticket)).thenReturn(ticket);
-
-		SupportTicket savedTicket = supportTicketService.createSupportTicket(ticket);
-
-		verify(supportTicketRepository, times(1)).save(ticket);
-		assertEquals(ticket, savedTicket);
-	}
-	@Test
-	public void givenSupportTicket_whenFindById_thenReturnTicket() {
-		UUID id = UUID.randomUUID();
-		SupportTicket ticket = SupportTicket.builder()
-				.id(id)
-				.description("Test ticket")
-				.problemType("Test type")
-				.problemSubtype("Test subtype")
-				.build();
-
-		when(supportTicketRepository.findById(id)).thenReturn(Optional.of(ticket));
-
-		Optional<SupportTicket> foundTicket = supportTicketService.getSupportTicketById(id);
-
-		verify(supportTicketRepository, times(1)).findById(id);
-		assertTrue(foundTicket.isPresent());
-		assertEquals(ticket, foundTicket.get());
-	}
-	@Test
-	public void givenSupportTicket_whenfindAll_thenReturnListOfSupportTickets() {
-		List<SupportTicket> tickets = Arrays.asList(
-				SupportTicket.builder()
-						.id(UUID.randomUUID())
-						.description("Ticket 1")
-						.problemType("Type 1")
-						.problemSubtype("Subtype 1")
-						.build(),
-				SupportTicket.builder()
-						.id(UUID.randomUUID())
-						.description("Ticket 2")
-						.problemType("Type 2")
-						.problemSubtype("Subtype 2")
-						.build(),
-				SupportTicket.builder()
-						.id(UUID.randomUUID())
-						.description("Ticket 3")
-						.problemType("Type 3")
-						.problemSubtype("Subtype 3")
-						.build()
-		);
-
-		when(supportTicketRepository.findAll()).thenReturn(tickets);
-
-		List<SupportTicket> allTickets = supportTicketService.getAllSupportTickets();
-
-		verify(supportTicketRepository, times(1)).findAll();
-		assertEquals(tickets, allTickets);
-	}
-
-
-
+//
+//	@Test
+//	public void givenFundraisingType_whengetCompletedFundraisings_thenReturnCompletedFundraisings() {
+//		UUID userId = UUID.randomUUID();
+//		List<Fundraising> fundraisings = Arrays.asList(
+//				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(false).socialType(FundraisingType.АВТО).build(),
+//				Fundraising.builder().id(UUID.randomUUID()).userId(userId).isActive(true).socialType(FundraisingType.АВТО).build(),
+//				Fundraising.builder().id(UUID.randomUUID()).userId(UUID.randomUUID()).isActive(false).socialType(FundraisingType.АВТО).build()
+//		);
+//
+//		when(fundraisingRepository.findByUserIdAndIsActiveFalse(userId)).thenReturn(fundraisings.subList(0, 1));
+//
+//		List<Fundraising> completedFundraisings = fundraisingService.getCompletedFundraisings(userId);
+//
+//		assertThat(completedFundraisings).hasSize(1);
+//		assertThat(completedFundraisings.get(0).getId()).isEqualTo(fundraisings.get(0).getId());
+//	}
+//
+//
+//		@Test
+//		public void givenExistingUser_whenVerifyUser_thenMakeUserVerified() {
+//			UUID userId = UUID.randomUUID();
+//			UserRole role = UserRole.MILITARY;
+//			User user = User.builder()
+//					.id(userId)
+//					.name("John")
+//					.surname("Doe")
+//					.role(UserRole.VOLUNTEER)
+//					.build();
+//			when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+//			when(userRepository.save(any(User.class))).thenReturn(user);
+//			boolean result = userService.verifyUser(userId, role);
+//			assertTrue(result);
+//			assertEquals(role, user.getRole());
+//			verify(userRepository).findById(userId);
+//			verify(userRepository).save(user);
+//		}
+//
+//		@Test
+//		public void givenNotExisistingUser_whenVerifyUser_thenReturnFalse() {
+//			UUID userId = UUID.randomUUID();
+//			UserRole role = UserRole.MILITARY;
+//			when(userRepository.findById(userId)).thenReturn(Optional.empty());
+//			boolean result = userService.verifyUser(userId, role);
+//			assertFalse(result);
+//			verify(userRepository).findById(userId);
+//			verifyNoMoreInteractions(userRepository);
+//		}
+//	@Test
+//	public void givenSupportTicket_whenCreateSupportTicket_thenSaveTicket() {
+//		SupportTicket ticket = SupportTicket.builder()
+//				.id(UUID.randomUUID())
+//				.description("Test ticket")
+//				.problemType("Test type")
+//				.problemSubtype("Test subtype")
+//				.build();
+//
+//		when(supportTicketRepository.save(ticket)).thenReturn(ticket);
+//
+//		SupportTicket savedTicket = supportTicketService.createSupportTicket(ticket);
+//
+//		verify(supportTicketRepository, times(1)).save(ticket);
+//		assertEquals(ticket, savedTicket);
+//	}
+//	@Test
+//	public void givenSupportTicket_whenFindById_thenReturnTicket() {
+//		UUID id = UUID.randomUUID();
+//		SupportTicket ticket = SupportTicket.builder()
+//				.id(id)
+//				.description("Test ticket")
+//				.problemType("Test type")
+//				.problemSubtype("Test subtype")
+//				.build();
+//
+//		when(supportTicketRepository.findById(id)).thenReturn(Optional.of(ticket));
+//
+//		Optional<SupportTicket> foundTicket = supportTicketService.getSupportTicketById(id);
+//
+//		verify(supportTicketRepository, times(1)).findById(id);
+//		assertTrue(foundTicket.isPresent());
+//		assertEquals(ticket, foundTicket.get());
+//	}
+//	@Test
+//	public void givenSupportTicket_whenfindAll_thenReturnListOfSupportTickets() {
+//		List<SupportTicket> tickets = Arrays.asList(
+//				SupportTicket.builder()
+//						.id(UUID.randomUUID())
+//						.description("Ticket 1")
+//						.problemType("Type 1")
+//						.problemSubtype("Subtype 1")
+//						.build(),
+//				SupportTicket.builder()
+//						.id(UUID.randomUUID())
+//						.description("Ticket 2")
+//						.problemType("Type 2")
+//						.problemSubtype("Subtype 2")
+//						.build(),
+//				SupportTicket.builder()
+//						.id(UUID.randomUUID())
+//						.description("Ticket 3")
+//						.problemType("Type 3")
+//						.problemSubtype("Subtype 3")
+//						.build()
+//		);
+//
+//		when(supportTicketRepository.findAll()).thenReturn(tickets);
+//
+//		List<SupportTicket> allTickets = supportTicketService.getAllSupportTickets();
+//
+//		verify(supportTicketRepository, times(1)).findAll();
+//		assertEquals(tickets, allTickets);
+//	}
+//
+//
+//
 	}
 

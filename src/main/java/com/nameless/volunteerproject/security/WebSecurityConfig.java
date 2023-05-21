@@ -1,6 +1,10 @@
 package com.nameless.volunteerproject.security;
 
 
+import com.nameless.volunteerproject.controllers.OAuth2AuthenticationFailureHandler;
+import com.nameless.volunteerproject.controllers.OAuth2AuthenticationSuccessHandler;
+import com.nameless.volunteerproject.repositories.HttpCookieOAuth2AuthorizationRequestRepository;
+import com.nameless.volunteerproject.services.CustomOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +30,17 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @PropertySource("classpath:application.properties")
 class SecurityConfiguration {
+
+    @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
+    @Autowired
+    private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
+
+    @Autowired
+    private OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
+
+    @Autowired
+    private HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
     @Autowired
     private Environment env;
     private static List<String> clients = Arrays.asList("google", "facebook");
@@ -34,6 +49,10 @@ class SecurityConfiguration {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    @Bean
+    public HttpCookieOAuth2AuthorizationRequestRepository cookieAuthorizationRequestRepository() {
+        return new HttpCookieOAuth2AuthorizationRequestRepository();
     }
 
     @Bean
@@ -107,11 +126,16 @@ class SecurityConfiguration {
                 .accessDeniedPage("/access-denied")
                 .and()
                 .oauth2Login()
-                .loginPage("/login");
-//                .redirectionEndpoint().baseUri("http://localhost:8080/home")
-//                .and()
-//                .clientRegistrationRepository(clientRegistrationRepository())
-//                .authorizedClientService(authorizedClientService());
+                .loginPage("/login")
+                .redirectionEndpoint().baseUri("http://localhost:8080/home")
+                .and()
+                .clientRegistrationRepository(clientRegistrationRepository())
+                .authorizedClientService(authorizedClientService())
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService)
+                .and()
+                .successHandler(oAuth2AuthenticationSuccessHandler)
+                .failureHandler(oAuth2AuthenticationFailureHandler);
         return http.build();
     }
 
