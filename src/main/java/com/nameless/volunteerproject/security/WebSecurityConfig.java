@@ -80,7 +80,7 @@ class SecurityConfiguration {
         if (client.equals("google")) {
             return CommonOAuth2Provider.GOOGLE.getBuilder(client)
                     .clientId(clientId)
-                    .clientSecret(clientSecret).redirectUriTemplate("http://localhost:8080/home").build();
+                    .clientSecret(clientSecret).scope("profile", "email").build();
         }
         if (client.equals("facebook")) {
             return CommonOAuth2Provider.FACEBOOK.getBuilder(client)
@@ -127,8 +127,6 @@ class SecurityConfiguration {
                 .and()
                 .oauth2Login()
                 .loginPage("/login")
-                .redirectionEndpoint().baseUri("http://localhost:8080/home")
-                .and()
                 .clientRegistrationRepository(clientRegistrationRepository())
                 .authorizedClientService(authorizedClientService())
                 .userInfoEndpoint()
