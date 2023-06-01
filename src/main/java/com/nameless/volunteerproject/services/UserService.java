@@ -2,31 +2,28 @@ package com.nameless.volunteerproject.services;
 
 import com.nameless.volunteerproject.dto.LoginDto;
 import com.nameless.volunteerproject.dto.UserDto;
+import com.nameless.volunteerproject.enums.UserRole;
 import com.nameless.volunteerproject.models.Donations;
 import com.nameless.volunteerproject.models.User;
 import com.nameless.volunteerproject.repositories.DonationsRepository;
 import com.nameless.volunteerproject.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Base64;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.UUID;
-import com.nameless.volunteerproject.enums.UserRole;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
@@ -35,12 +32,6 @@ public class UserService {
 
     private final static String UPLOADED_FOLDER = "src/main/resources/static/images/uploadedImagesUsers/";
 
-    @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                       DonationsRepository donationsRepository) {
-        this.userRepository = userRepository;
-        this.donationsRepository = donationsRepository;
-    }
 
     public List<User>findAllVolunteers(){
         return userRepository.findUserByRole(UserRole.VOLUNTEER);

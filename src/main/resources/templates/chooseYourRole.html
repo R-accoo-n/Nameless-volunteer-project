@@ -35,12 +35,20 @@
                     </div>
                 </ul>
                 <ul class="countinue">
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/google_icon.svg}" alt="google_icon">Продовжити з Google</span>
-                    </button>
-                    <button class="countinue-button">
-                        <span class="countinue-p"><img class="svg" th:src="@{/images/facebook_icon.svg}"  alt="facebook_icon">Продовжити з Facebook</span>
-                    </button>
+                    <div>
+                        <a th:href="@{/oauth2/authorization/facebook}">Facebook</a>
+                        <button class="countinue-button">
+                            <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
+                        </button>
+                        </a>
+                    </div>
+                    <div>
+                        <a th:href="@{/oauth2/authorization/google}">Google</a>
+                        <button class="countinue-button">
+                            <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
+                        </button>
+                        </a>
+                    </div>
                     <button class="countinue-button">
                         <span class="countinue-p"><img class="svg" th:src="@{/images/gmail_icon.svg}" alt="gmail_icon">Продовжити з e-mail</span>
                     </button>
